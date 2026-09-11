@@ -38,8 +38,8 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
       }
     }
 
-    // Default to demo domain if none provided and running in development/demo mode
-    if (!shopDomain && env.USE_DEMO_DATA) {
+    // Default to demo domain if none provided and running in development
+    if (!shopDomain && (env.USE_DEMO_DATA || env.NODE_ENV === 'development')) {
       shopDomain = env.DEMO_SHOP_DOMAIN;
     }
 
