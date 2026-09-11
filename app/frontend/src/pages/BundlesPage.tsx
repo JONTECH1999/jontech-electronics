@@ -127,7 +127,7 @@ export const BundlesPage: React.FC = () => {
                       #{bundle.rank || index + 1}
                     </td>
                     <td>
-                      <Link to={`/app/bundles/${bundle.id}`} style={{ fontWeight: 600, color: '#fff' }}>
+                      <Link to={`/app/bundles/${bundle.id}`} style={{ fontWeight: 600, color: 'var(--kf-heading)' }}>
                         {bundle.name}
                       </Link>
                       {bundle.description && (

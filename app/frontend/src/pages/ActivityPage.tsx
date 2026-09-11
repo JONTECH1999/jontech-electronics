@@ -50,7 +50,7 @@ const ActivityMetadata: React.FC<{ metadata: any }> = ({ metadata }) => {
     badges.push(
       <span key="author" className="kf-badge kf-badge-neutral" style={{ textTransform: 'none', fontWeight: 500, fontSize: '0.75rem', gap: '0.35rem' }}>
         <User size={12} color="var(--kf-text-muted)" />
-        <span>By: <strong style={{ color: '#fff' }}>{parsed.author}</strong></span>
+        <span>By: <strong style={{ color: 'var(--kf-heading)' }}>{parsed.author}</strong></span>
       </span>
     );
   }
@@ -58,7 +58,7 @@ const ActivityMetadata: React.FC<{ metadata: any }> = ({ metadata }) => {
     badges.push(
       <span key="source" className="kf-badge kf-badge-neutral" style={{ textTransform: 'none', fontWeight: 500, fontSize: '0.75rem', gap: '0.35rem' }}>
         <Layers size={12} color="var(--kf-text-muted)" />
-        <span>Via: <strong style={{ color: '#fff' }}>{parsed.source}</strong></span>
+        <span>Via: <strong style={{ color: 'var(--kf-heading)' }}>{parsed.source}</strong></span>
       </span>
     );
   }
@@ -153,7 +153,7 @@ const ActivityMetadata: React.FC<{ metadata: any }> = ({ metadata }) => {
     const formatKey = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
     badges.push(
       <span key={`extra-${key}`} className="kf-badge kf-badge-neutral" style={{ textTransform: 'none', fontWeight: 500, fontSize: '0.75rem' }}>
-        {formatKey}: <strong style={{ color: '#fff' }}>{String(val)}</strong>
+        {formatKey}: <strong style={{ color: 'var(--kf-heading)' }}>{String(val)}</strong>
       </span>
     );
   });
@@ -295,7 +295,7 @@ export const ActivityPage: React.FC = () => {
                 <div style={{ flexGrow: 1 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                     <div>
-                      <span style={{ fontWeight: 600, color: '#fff', fontSize: '0.9375rem' }}>
+                      <span style={{ fontWeight: 600, color: 'var(--kf-heading)', fontSize: '0.9375rem' }}>
                         {log.description}
                       </span>
                       {log.bundleName && log.bundleId && (

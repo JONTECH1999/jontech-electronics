@@ -1,32 +1,38 @@
 /* KitFlow Embedded Shopify App Stylesheet
-   Polaris-Inspired Clean Professional Dark Design System */
+   Warm Linen & Beige Design System */
 
 :root {
-  --kf-bg: #090d16;
-  --kf-surface: #111827;
-  --kf-surface-hover: #1f2937;
-  --kf-surface-elevated: #1a2234;
-  --kf-border: #243048;
-  --kf-border-subtle: #1a2334;
-  --kf-primary: #00e5ff;
-  --kf-primary-hover: #33ecff;
-  --kf-primary-bg: rgba(0, 229, 255, 0.1);
-  --kf-text: #f9fafb;
-  --kf-text-muted: #9ca3af;
-  --kf-text-dim: #6b7280;
-  --kf-success: #10b981;
-  --kf-success-bg: rgba(16, 185, 129, 0.12);
-  --kf-warning: #f59e0b;
-  --kf-warning-bg: rgba(245, 158, 11, 0.12);
-  --kf-danger: #ef4444;
-  --kf-danger-bg: rgba(239, 68, 68, 0.12);
-  --kf-info: #3b82f6;
-  --kf-info-bg: rgba(59, 130, 246, 0.12);
+  --kf-bg: #f8f6f0;              /* Soft oat / warm linen beige */
+  --kf-surface: #ffffff;         /* Crisp warm white card surface */
+  --kf-surface-hover: #f2ede4;   /* Soft warm sand hover */
+  --kf-surface-elevated: #ffffff;/* Elevated surfaces */
+  --kf-sidebar-bg: #f0ebe1;      /* Linen sandstone sidebar */
+  --kf-border: #e3dcd1;          /* Soft warm oat border */
+  --kf-border-subtle: #ede7dc;   /* Very faint warm divider */
+  
+  --kf-primary: #b45309;         /* Rich warm amber bronze / copper */
+  --kf-primary-hover: #92400e;   /* Deep amber */
+  --kf-primary-bg: rgba(180, 83, 9, 0.08); /* Warm accent tint */
+  --kf-primary-text: #ffffff;    /* Text on primary buttons */
+
+  --kf-heading: #1c1917;         /* Stone 900 - Deep warm espresso */
+  --kf-text: #292524;            /* Stone 800 - Warm dark slate */
+  --kf-text-muted: #686056;      /* Warm taupe */
+  --kf-text-dim: #928779;        /* Soft warm sandstone gray */
+
+  --kf-success: #15803d;         /* Forest emerald */
+  --kf-success-bg: rgba(21, 128, 61, 0.1);
+  --kf-warning: #b45309;         /* Amber bronze */
+  --kf-warning-bg: rgba(180, 83, 9, 0.1);
+  --kf-danger: #b91c1c;          /* Deep warm crimson */
+  --kf-danger-bg: rgba(185, 28, 28, 0.1);
+  --kf-info: #0369a1;            /* Ocean blue */
+  --kf-info-bg: rgba(3, 105, 161, 0.1);
 
   --kf-radius-sm: 6px;
   --kf-radius-md: 10px;
   --kf-radius-lg: 14px;
-  --kf-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --kf-shadow: 0 4px 18px -2px rgba(60, 50, 40, 0.06), 0 1px 4px -1px rgba(60, 50, 40, 0.04);
 }
 
 *, *::before, *::after {
@@ -56,6 +62,7 @@ button, input, select, textarea {
 .app-container {
   display: flex;
   min-height: 100vh;
+  background-color: var(--kf-bg);
 }
 
 .main-content {
@@ -80,7 +87,7 @@ button, input, select, textarea {
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--kf-heading);
 }
 
 .page-subtitle {
@@ -107,33 +114,35 @@ button, input, select, textarea {
 
 .kf-btn-primary {
   background: var(--kf-primary);
-  color: #000;
+  color: var(--kf-primary-text);
   border-color: var(--kf-primary);
 }
 .kf-btn-primary:hover {
   background: var(--kf-primary-hover);
-  box-shadow: 0 0 14px rgba(0, 229, 255, 0.3);
+  border-color: var(--kf-primary-hover);
+  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.25);
+  color: #ffffff;
 }
 
 .kf-btn-secondary {
   background: var(--kf-surface);
-  color: var(--kf-text);
+  color: var(--kf-heading);
   border-color: var(--kf-border);
 }
 .kf-btn-secondary:hover {
   background: var(--kf-surface-hover);
   border-color: var(--kf-primary);
-  color: #fff;
+  color: var(--kf-primary);
 }
 
 .kf-btn-danger {
   background: var(--kf-danger-bg);
   color: var(--kf-danger);
-  border-color: rgba(239, 68, 68, 0.3);
+  border-color: rgba(185, 28, 28, 0.25);
 }
 .kf-btn-danger:hover {
   background: var(--kf-danger);
-  color: #fff;
+  color: #ffffff;
 }
 
 .kf-btn-sm {
@@ -170,7 +179,7 @@ button, input, select, textarea {
 .kf-card-title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--kf-heading);
 }
 
 /* KPI Cards Grid */
@@ -191,6 +200,7 @@ button, input, select, textarea {
   gap: 0.5rem;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--kf-shadow);
 }
 
 .kpi-card::after {
@@ -199,7 +209,7 @@ button, input, select, textarea {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--kf-primary);
 }
 
@@ -214,7 +224,7 @@ button, input, select, textarea {
 .kpi-val {
   font-size: 2rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--kf-heading);
   line-height: 1.1;
 }
 
@@ -234,25 +244,25 @@ button, input, select, textarea {
 .kf-badge-success {
   background: var(--kf-success-bg);
   color: var(--kf-success);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(21, 128, 61, 0.25);
 }
 
 .kf-badge-warning {
   background: var(--kf-warning-bg);
   color: var(--kf-warning);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(180, 83, 9, 0.25);
 }
 
 .kf-badge-danger {
   background: var(--kf-danger-bg);
   color: var(--kf-danger);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(185, 28, 28, 0.25);
 }
 
 .kf-badge-info {
   background: var(--kf-info-bg);
   color: var(--kf-info);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(3, 105, 161, 0.25);
 }
 
 .kf-badge-neutral {
@@ -273,24 +283,24 @@ button, input, select, textarea {
   font-family: 'JetBrains Mono', monospace;
 }
 .score-tier-top {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(21, 128, 61, 0.12);
+  color: #15803d;
+  border: 1px solid rgba(21, 128, 61, 0.3);
 }
 .score-tier-good {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: rgba(3, 105, 161, 0.12);
+  color: #0369a1;
+  border: 1px solid rgba(3, 105, 161, 0.3);
 }
 .score-tier-fair {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: rgba(180, 83, 9, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(180, 83, 9, 0.3);
 }
 .score-tier-poor {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(185, 28, 28, 0.12);
+  color: #b91c1c;
+  border: 1px solid rgba(185, 28, 28, 0.3);
 }
 
 /* Tables */
@@ -299,6 +309,7 @@ button, input, select, textarea {
   border-radius: var(--kf-radius-md);
   overflow: hidden;
   background: var(--kf-surface);
+  box-shadow: var(--kf-shadow);
 }
 
 .kf-table {
@@ -309,13 +320,14 @@ button, input, select, textarea {
 }
 
 .kf-table th {
-  background: #0d121d;
+  background: #f1ede4;
   padding: 0.875rem 1.25rem;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--kf-text-muted);
   border-bottom: 1px solid var(--kf-border);
+  font-weight: 700;
 }
 
 .kf-table td {
@@ -325,7 +337,7 @@ button, input, select, textarea {
 }
 
 .kf-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(180, 83, 9, 0.025);
 }
 
 .kf-table tr:last-child td {
@@ -343,29 +355,29 @@ button, input, select, textarea {
 .form-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--kf-text);
+  color: var(--kf-heading);
 }
 
 .form-input, .form-select, .form-textarea {
-  background: var(--kf-bg);
+  background: #ffffff;
   border: 1px solid var(--kf-border);
   border-radius: var(--kf-radius-sm);
   padding: 0.625rem 0.875rem;
-  color: #fff;
+  color: var(--kf-heading);
   font-size: 0.9375rem;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
   border-color: var(--kf-primary);
-  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15);
 }
 
 /* Navigation Sidebar */
 .app-sidebar {
   width: 260px;
-  background: #0b101c;
+  background: var(--kf-sidebar-bg);
   border-right: 1px solid var(--kf-border);
   display: flex;
   flex-direction: column;
@@ -384,7 +396,7 @@ button, input, select, textarea {
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--kf-heading);
 }
 
 .sidebar-nav {
@@ -408,8 +420,8 @@ button, input, select, textarea {
 }
 
 .nav-item:hover {
-  color: #fff;
-  background: var(--kf-surface);
+  color: var(--kf-heading);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .nav-item.active {

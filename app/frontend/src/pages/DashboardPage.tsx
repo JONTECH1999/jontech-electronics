@@ -146,7 +146,7 @@ export const DashboardPage: React.FC = () => {
       {data.recentAlerts.length > 0 && (
         <div style={{ marginBottom: '2.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h2 style={{ fontSize: '1.125rem', fontWeight: 700, color: '#fff' }}>
+            <h2 style={{ fontSize: '1.125rem', fontWeight: 700, color: 'var(--kf-heading)' }}>
               Active Inventory & Performance Alerts ({data.recentAlerts.length})
             </h2>
             <Link to="/app/alerts" style={{ fontSize: '0.8125rem', color: 'var(--kf-primary)' }}>
@@ -200,7 +200,7 @@ export const DashboardPage: React.FC = () => {
                         {bundle.rank || index + 1}
                       </td>
                       <td>
-                        <div style={{ fontWeight: 600, color: '#fff' }}>{bundle.name}</div>
+                        <div style={{ fontWeight: 600, color: 'var(--kf-heading)' }}>{bundle.name}</div>
                         <div style={{ fontSize: '0.75rem', color: 'var(--kf-text-dim)' }}>
                           {bundle.targetCategory} • {bundle.discountPercent}% off
                         </div>
@@ -230,7 +230,7 @@ export const DashboardPage: React.FC = () => {
         {/* Right Column: AI Insights & Recent Activity */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {/* AI Insights Card */}
-          <div className="kf-card" style={{ borderColor: 'rgba(0, 229, 255, 0.3)', background: 'radial-gradient(circle at 100% 0%, rgba(0, 229, 255, 0.08) 0%, var(--kf-surface) 60%)' }}>
+          <div className="kf-card" style={{ borderColor: 'rgba(180, 83, 9, 0.3)', background: 'radial-gradient(circle at 100% 0%, rgba(180, 83, 9, 0.06) 0%, var(--kf-surface) 60%)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
               <Sparkles size={18} color="var(--kf-primary)" />
               <h2 className="kf-card-title">AI Strategic Recommendations</h2>
@@ -249,7 +249,7 @@ export const DashboardPage: React.FC = () => {
                     <p style={{ fontSize: '0.8125rem', color: 'var(--kf-text-muted)', lineHeight: 1.4, marginBottom: '0.5rem' }}>
                       {insight.summary}
                     </p>
-                    <div style={{ fontSize: '0.75rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--kf-heading)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                       <span style={{ color: 'var(--kf-success)', fontWeight: 700 }}>Action:</span>
                       <span>{insight.recommendation}</span>
                     </div>
@@ -272,7 +272,7 @@ export const DashboardPage: React.FC = () => {
                 <div key={act.id} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', fontSize: '0.8125rem' }}>
                   <Clock size={16} color="var(--kf-text-dim)" style={{ marginTop: '2px', flexShrink: 0 }} />
                   <div>
-                    <div style={{ color: '#fff', fontWeight: 500 }}>{act.description}</div>
+                    <div style={{ color: 'var(--kf-heading)', fontWeight: 500 }}>{act.description}</div>
                     <div style={{ color: 'var(--kf-text-dim)', fontSize: '0.75rem', marginTop: '0.125rem' }}>
                       {new Date(act.createdAt).toLocaleDateString()} at {new Date(act.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>

@@ -34,7 +34,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
       <div style={{ color: 'var(--kf-primary)', marginBottom: '1.25rem', display: 'flex', justifyContent: 'center' }}>
         {icon || <PackageOpen size={48} />}
       </div>
-      <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
+      <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--kf-heading)', marginBottom: '0.5rem' }}>
         {{ ...{ title } }.title}
       </h3>
       <p style={{ color: 'var(--kf-text-muted)', fontSize: '0.9375rem', marginBottom: '1.75rem', lineHeight: 1.6 }}>

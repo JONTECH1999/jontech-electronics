@@ -54,7 +54,7 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({ score }) => {
           <div key={i}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.375rem', fontSize: '0.875rem' }}>
               <div>
-                <span style={{ fontWeight: 600, color: '#fff' }}>{f.name}</span>
+                <span style={{ fontWeight: 600, color: 'var(--kf-heading)' }}>{f.name}</span>
                 <span style={{ color: 'var(--kf-text-dim)', fontSize: '0.75rem', marginLeft: '0.5rem' }}>({f.weight} weight)</span>
               </div>
               <span style={{ fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', color: barColor }}>

@@ -181,14 +181,14 @@ export const BundleDetailPage: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.875rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--kf-text-muted)' }}>
                 <span>Individual A La Carte Total:</span>
-                <span style={{ color: '#fff', textDecoration: 'line-through' }}>₱{rawSubtotal.toLocaleString()}</span>
+                <span style={{ color: 'var(--kf-text-dim)', textDecoration: 'line-through' }}>₱{rawSubtotal.toLocaleString()}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--kf-text-muted)' }}>
                 <span>Configured Bundle Discount:</span>
                 <span style={{ color: 'var(--kf-primary)', fontWeight: 700 }}>{bundle.discountPercent}% (-₱{discountAmount.toLocaleString()})</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid var(--kf-border)', fontSize: '1.125rem' }}>
-                <span style={{ fontWeight: 700, color: '#fff' }}>KitFlow Bundle Total:</span>
+                <span style={{ fontWeight: 700, color: 'var(--kf-heading)' }}>KitFlow Bundle Total:</span>
                 <span style={{ fontWeight: 800, color: 'var(--kf-primary)', fontFamily: 'JetBrains Mono, monospace' }}>
                   ₱{finalBundlePrice.toLocaleString()}
                 </span>
@@ -229,7 +229,7 @@ export const BundleDetailPage: React.FC = () => {
                       <Package size={18} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 600, color: '#fff', fontSize: '0.9375rem' }}>{item.productTitle}</div>
+                      <div style={{ fontWeight: 600, color: 'var(--kf-heading)', fontSize: '0.9375rem' }}>{item.productTitle}</div>
                       {item.variantTitle && (
                         <div style={{ fontSize: '0.75rem', color: 'var(--kf-text-dim)' }}>{item.variantTitle}</div>
                       )}
@@ -237,7 +237,7 @@ export const BundleDetailPage: React.FC = () => {
                   </div>
 
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontWeight: 700, color: '#fff' }}>₱{item.price.toLocaleString()}</div>
+                    <div style={{ fontWeight: 700, color: 'var(--kf-heading)' }}>₱{item.price.toLocaleString()}</div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--kf-text-dim)' }}>Qty: {item.quantity}</div>
                   </div>
                 </div>
@@ -249,8 +249,8 @@ export const BundleDetailPage: React.FC = () => {
           <div
             className="kf-card"
             style={{
-              border: '1px solid rgba(0, 229, 255, 0.4)',
-              background: 'radial-gradient(circle at 95% 5%, rgba(0, 229, 255, 0.08) 0%, var(--kf-surface) 65%)'
+              border: '1px solid rgba(180, 83, 9, 0.3)',
+              background: 'radial-gradient(circle at 95% 5%, rgba(180, 83, 9, 0.06) 0%, var(--kf-surface) 65%)'
             }}
           >
             <div className="kf-card-header">
@@ -288,7 +288,7 @@ export const BundleDetailPage: React.FC = () => {
                   <h4 style={{ fontSize: '0.8125rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--kf-text-dim)', marginBottom: '0.35rem' }}>
                     Executive Summary
                   </h4>
-                  <p style={{ fontSize: '0.9375rem', color: '#fff', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '0.9375rem', color: 'var(--kf-heading)', lineHeight: 1.6 }}>
                     {bundle.latestAnalysis.summary}
                   </p>
                 </div>

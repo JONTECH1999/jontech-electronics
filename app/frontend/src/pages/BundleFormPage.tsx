@@ -266,7 +266,7 @@ export const BundleFormPage: React.FC = () => {
                     }}
                   >
                     <div>
-                      <div style={{ fontWeight: 600, color: '#fff', fontSize: '0.9375rem' }}>{item.productTitle}</div>
+                      <div style={{ fontWeight: 600, color: 'var(--kf-heading)', fontSize: '0.9375rem' }}>{item.productTitle}</div>
                       <div style={{ fontSize: '0.75rem', color: 'var(--kf-text-dim)' }}>
                         ₱{item.price.toLocaleString()} each {item.variantTitle && `• ${item.variantTitle}`}
                       </div>
@@ -285,7 +285,7 @@ export const BundleFormPage: React.FC = () => {
                         />
                       </div>
 
-                      <div style={{ fontWeight: 700, color: '#fff', minWidth: '70px', textAlign: 'right' }}>
+                      <div style={{ fontWeight: 700, color: 'var(--kf-heading)', minWidth: '70px', textAlign: 'right' }}>
                         ₱{(item.price * item.quantity).toLocaleString()}
                       </div>
 
@@ -336,14 +336,14 @@ export const BundleFormPage: React.FC = () => {
             <div style={{ background: 'var(--kf-bg)', padding: '1rem', borderRadius: 'var(--kf-radius-sm)', border: '1px solid var(--kf-border)', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.875rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--kf-text-muted)' }}>
                 <span>Original Subtotal:</span>
-                <span style={{ color: '#fff' }}>₱{rawSubtotal.toLocaleString()}</span>
+                <span style={{ color: 'var(--kf-heading)' }}>₱{rawSubtotal.toLocaleString()}</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--kf-text-muted)' }}>
                 <span>Customer Savings:</span>
                 <span style={{ color: 'var(--kf-success)', fontWeight: 700 }}>-₱{discountAmount.toLocaleString()} ({discountPercent}%)</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--kf-border)', paddingTop: '0.5rem', fontSize: '1rem', fontWeight: 800 }}>
-                <span style={{ color: '#fff' }}>Bundle Price:</span>
+                <span style={{ color: 'var(--kf-heading)' }}>Bundle Price:</span>
                 <span style={{ color: 'var(--kf-primary)' }}>₱{finalTotal.toLocaleString()}</span>
               </div>
             </div>

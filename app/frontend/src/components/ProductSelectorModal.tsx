@@ -85,7 +85,7 @@ export const ProductSelectorModal: React.FC<ProductSelectorModalProps> = ({
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
           <div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff' }}>Select Shopify Products</h3>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--kf-heading)' }}>Select Shopify Products</h3>
             <p style={{ fontSize: '0.8125rem', color: 'var(--kf-text-muted)', marginTop: '0.25rem' }}>
               Choose items from your catalog to include in this bundle setup.
             </p>
@@ -180,7 +180,7 @@ export const ProductSelectorModal: React.FC<ProductSelectorModalProps> = ({
                     <Package size={20} />
                   </div>
                   <div>
-                    <div style={{ fontWeight: 600, color: '#fff', fontSize: '0.9375rem' }}>{product.title}</div>
+                    <div style={{ fontWeight: 600, color: 'var(--kf-heading)', fontSize: '0.9375rem' }}>{product.title}</div>
                     <div style={{ display: 'flex', gap: '0.75rem', fontSize: '0.8125rem', color: 'var(--kf-text-dim)', marginTop: '0.25rem' }}>
                       <span>{product.vendor}</span>
                       <span>•</span>

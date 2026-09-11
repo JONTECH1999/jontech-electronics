@@ -37,7 +37,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({ alert, onResolve }) =>
         </div>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-            <span style={{ fontWeight: 700, color: '#fff', fontSize: '0.9375rem' }}>{alert.title}</span>
+            <span style={{ fontWeight: 700, color: 'var(--kf-heading)', fontSize: '0.9375rem' }}>{alert.title}</span>
             {alert.bundleName && (
               <span style={{ fontSize: '0.75rem', color: 'var(--kf-primary)', background: 'var(--kf-primary-bg)', padding: '0.125rem 0.375rem', borderRadius: '4px' }}>
                 {alert.bundleName}

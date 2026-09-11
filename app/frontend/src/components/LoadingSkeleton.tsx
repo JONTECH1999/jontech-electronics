@@ -9,7 +9,7 @@ export const LoadingSkeleton: React.FC<{ rows?: number }> = ({ rows = 4 }) => {
           style={{
             height: '48px',
             borderRadius: 'var(--kf-radius-sm)',
-            background: 'linear-gradient(90deg, #111827 0%, #1f2937 50%, #111827 100%)',
+            background: 'linear-gradient(90deg, var(--kf-surface-hover) 0%, var(--kf-border) 50%, var(--kf-surface-hover) 100%)',
             backgroundSize: '200% 100%',
             animation: 'pulse 1.5s infinite ease-in-out'
           }}
