@@ -8,25 +8,25 @@
     <div class="hero-grid">
       <div class="hero-content">
         <div class="hero-badge">
-          {% render 'badge', type: 'bundle', text: section.settings.badge_text %}
+          {% render 'badge', type: 'bundle', text: section.settings.badge_text | default: 'EMBEDDED SYSTEMS & PROTOTYPING' %}
         </div>
 
         <h1 class="hero-title">
-          {{ section.settings.headline | default: 'Technology that fits the way you live.' }}
+          {{ section.settings.headline | default: 'Prototyping technology that fits the way you build.' }}
         </h1>
 
         <p class="hero-subtext">
-          {{ section.settings.subtext | default: 'Curated workspace gear, gaming essentials, and mobile workstation setups engineered for peak productivity and performance.' }}
+          {{ section.settings.subtext | default: 'Curated development boards (ESP32, Arduino, STM32, Raspberry Pi), precision sensors (DHT22, Ultrasonic, LiDAR), robotics drivers, and student lab kits.' }}
         </p>
 
         <div class="hero-cta-group">
           <a href="{{ section.settings.primary_cta_url | default: '/collections/all' }}" class="btn btn--primary btn--lg">
-            {{ section.settings.primary_cta_text | default: 'Explore Products' }}
+            {{ section.settings.primary_cta_text | default: 'Explore Electronics' }}
             {% render 'icon', name: 'chevron-right' %}
           </a>
 
           <a href="{{ section.settings.secondary_cta_url | default: '#build-my-setup' }}" class="btn btn--secondary btn--lg">
-            {{ section.settings.secondary_cta_text | default: 'Build My Setup' }}
+            {{ section.settings.secondary_cta_text | default: 'Build My Project Kit' }}
             {% render 'icon', name: 'zap' %}
           </a>
         </div>
@@ -37,23 +37,23 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               {% render 'icon', name: 'cpu', class: 'text-primary' %}
-              <span style="font-weight: 700; color: #fff; font-size: 1.125rem;">Curated Setup Preview</span>
+              <span style="font-weight: 700; color: #fff; font-size: 1.125rem;">Curated Prototyping Kit</span>
             </div>
-            {% render 'badge', type: 'sale', text: 'VERIFIED BUNDLE' %}
+            {% render 'badge', type: 'sale', text: 'VERIFIED KIT' %}
           </div>
 
           <p style="color: var(--color-text-muted); font-size: 0.9375rem; margin-bottom: 1.25rem;">
-            Every setup is mathematically scored and hand-tested for cable-free ergonomics, thermal efficiency, and zero input lag.
+            Every electronic kit is mathematically scored and bench-tested for voltage logic levels (3.3V/5V), pin compatibility, and zero-conflict I2C/UART bus routing.
           </p>
 
           <div style="background: var(--color-bg); border-radius: var(--radius-md); padding: 1rem; border: 1px solid var(--color-border); margin-bottom: 1.5rem;">
             <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
-              <span style="color: var(--color-text-muted);">Hardware Compatibility</span>
-              <span style="color: var(--color-sale); font-weight: 700;">100% Tested</span>
+              <span style="color: var(--color-text-muted);">Voltage & Pin Synergy</span>
+              <span style="color: var(--color-sale); font-weight: 700;">100% Bench Verified</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
-              <span style="color: var(--color-text-muted);">Average Setup Savings</span>
-              <span style="color: var(--color-primary); font-weight: 700;">₱1,450 / bundle</span>
+              <span style="color: var(--color-text-muted);">Average Student Savings</span>
+              <span style="color: var(--color-primary); font-weight: 700;">12% – 15% off bundle</span>
             </div>
             <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
               <span style="color: var(--color-text-muted);">Dispatch Status</span>

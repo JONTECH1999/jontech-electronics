@@ -6,62 +6,62 @@
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">
-        {{ section.settings.title | default: 'Curated Setup Categories' }}
+        {{ section.settings.title | default: 'Curated Electronics & Prototyping Categories' }}
       </h2>
       <p class="section-subtitle">
-        {{ section.settings.subtitle | default: 'Engineered equipment collections tailored for specific workflows and lifestyles.' }}
+        {{ section.settings.subtitle | default: 'Engineering development boards, precision sensors, robotics modules, and academic prototyping kits.' }}
       </p>
     </div>
 
     <div class="category-grid">
-      <!-- Category 1: Gaming -->
-      <a href="{{ section.settings.cat1_url | default: '/collections/gaming' }}" class="category-card">
-        <div class="category-card__icon">
-          {% render 'icon', name: 'zap' %}
-        </div>
-        <h3 class="category-card__title">{{ section.settings.cat1_title | default: 'Gaming Battlestations' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat1_desc | default: 'Rapid-trigger keyboards, high-DPI mice, and acoustic surround audio built for competitive esports.' }}</p>
-        <span class="category-card__link">
-          Explore Gaming Gear
-          {% render 'icon', name: 'chevron-right' %}
-        </span>
-      </a>
-
-      <!-- Category 2: Work -->
-      <a href="{{ section.settings.cat2_url | default: '/collections/work' }}" class="category-card">
+      <!-- Category 1: Microcontrollers -->
+      <a href="{{ section.settings.cat1_url | default: '/collections/microcontrollers' }}" class="category-card">
         <div class="category-card__icon">
           {% render 'icon', name: 'cpu' %}
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat2_title | default: 'Productivity & Work' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat2_desc | default: 'Ergonomic split mechanicals, multi-device flow tracking, and noise-cancelling conference audio.' }}</p>
+        <h3 class="category-card__title">{{ section.settings.cat1_title | default: 'Microcontrollers & Dev Boards' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat1_desc | default: 'ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM Cortex-M4, and Raspberry Pi 4 SBCs.' }}</p>
         <span class="category-card__link">
-          Explore Work Gear
+          Explore Microcontrollers
           {% render 'icon', name: 'chevron-right' %}
         </span>
       </a>
 
-      <!-- Category 3: Study -->
-      <a href="{{ section.settings.cat3_url | default: '/collections/study' }}" class="category-card">
+      <!-- Category 2: Sensors -->
+      <a href="{{ section.settings.cat2_url | default: '/collections/sensors' }}" class="category-card">
+        <div class="category-card__icon">
+          {% render 'icon', name: 'zap' %}
+        </div>
+        <h3 class="category-card__title">{{ section.settings.cat2_title | default: 'Sensors & Environmental' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat2_desc | default: 'DHT22 temp & humidity, HC-SR04 ultrasonic ranging, TFmini-S ToF LiDAR, and analog transducers.' }}</p>
+        <span class="category-card__link">
+          Explore Sensors
+          {% render 'icon', name: 'chevron-right' %}
+        </span>
+      </a>
+
+      <!-- Category 3: Robotics -->
+      <a href="{{ section.settings.cat3_url | default: '/collections/robotics' }}" class="category-card">
         <div class="category-card__icon">
           {% render 'icon', name: 'shield' %}
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat3_title | default: 'Study & Campus' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat3_desc | default: 'Silent library switches, compact eye-care lighting, and multi-OS tablet accessories.' }}</p>
+        <h3 class="category-card__title">{{ section.settings.cat3_title | default: 'Robotics & Motor Drivers' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat3_desc | default: 'L298N dual H-bridge motor drivers, SG90 micro servos, 4-channel relays, and robot chassis gear.' }}</p>
         <span class="category-card__link">
-          Explore Student Gear
+          Explore Robotics
           {% render 'icon', name: 'chevron-right' %}
         </span>
       </a>
 
-      <!-- Category 4: Travel -->
-      <a href="{{ section.settings.cat4_url | default: '/collections/travel' }}" class="category-card">
+      <!-- Category 4: Prototyping -->
+      <a href="{{ section.settings.cat4_url | default: '/collections/prototyping' }}" class="category-card">
         <div class="category-card__icon">
           {% render 'icon', name: 'truck' %}
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat4_title | default: 'Mobile Road Warrior' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat4_desc | default: 'Foldable keyboards, GaN fast chargers, and deep cabin-noise cancelling headsets.' }}</p>
+        <h3 class="category-card__title">{{ section.settings.cat4_title | default: 'Prototyping & Displays' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat4_desc | default: '0.96 inch I2C OLED displays, 830-point solderless breadboards, jumper wire kits, and power modules.' }}</p>
         <span class="category-card__link">
-          Explore Travel Gear
+          Explore Prototyping
           {% render 'icon', name: 'chevron-right' %}
         </span>
       </a>
@@ -77,29 +77,29 @@
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Curated Setup Categories"
+      "default": "Curated Electronics & Prototyping Categories"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Engineered equipment collections tailored for specific workflows."
+      "default": "Engineering development boards, precision sensors, robotics modules, and academic prototyping kits."
     },
     {
       "type": "header",
-      "content": "Category 1: Gaming"
+      "content": "Category 1: Microcontrollers"
     },
     {
       "type": "text",
       "id": "cat1_title",
       "label": "Category 1 Title",
-      "default": "Gaming Battlestations"
+      "default": "Microcontrollers & Dev Boards"
     },
     {
       "type": "textarea",
       "id": "cat1_desc",
       "label": "Category 1 Description",
-      "default": "Rapid-trigger keyboards, high-DPI mice, and acoustic surround audio built for competitive esports."
+      "default": "ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM Cortex-M4, and Raspberry Pi 4 SBCs."
     },
     {
       "type": "url",
@@ -108,19 +108,19 @@
     },
     {
       "type": "header",
-      "content": "Category 2: Work"
+      "content": "Category 2: Sensors"
     },
     {
       "type": "text",
       "id": "cat2_title",
       "label": "Category 2 Title",
-      "default": "Productivity & Work"
+      "default": "Sensors & Environmental"
     },
     {
       "type": "textarea",
       "id": "cat2_desc",
       "label": "Category 2 Description",
-      "default": "Ergonomic split mechanicals, multi-device flow tracking, and noise-cancelling conference audio."
+      "default": "DHT22 temp & humidity, HC-SR04 ultrasonic ranging, TFmini-S ToF LiDAR, and analog transducers."
     },
     {
       "type": "url",
@@ -129,19 +129,19 @@
     },
     {
       "type": "header",
-      "content": "Category 3: Study"
+      "content": "Category 3: Robotics"
     },
     {
       "type": "text",
       "id": "cat3_title",
       "label": "Category 3 Title",
-      "default": "Study & Campus"
+      "default": "Robotics & Motor Drivers"
     },
     {
       "type": "textarea",
       "id": "cat3_desc",
       "label": "Category 3 Description",
-      "default": "Silent library switches, compact eye-care lighting, and multi-OS tablet accessories."
+      "default": "L298N dual H-bridge motor drivers, SG90 micro servos, 4-channel relays, and robot chassis gear."
     },
     {
       "type": "url",
@@ -150,19 +150,19 @@
     },
     {
       "type": "header",
-      "content": "Category 4: Travel"
+      "content": "Category 4: Prototyping"
     },
     {
       "type": "text",
       "id": "cat4_title",
       "label": "Category 4 Title",
-      "default": "Mobile Road Warrior"
+      "default": "Prototyping & Displays"
     },
     {
       "type": "textarea",
       "id": "cat4_desc",
       "label": "Category 4 Description",
-      "default": "Foldable keyboards, GaN fast chargers, and deep cabin-noise cancelling headsets."
+      "default": "0.96 inch I2C OLED displays, 830-point solderless breadboards, jumper wire kits, and power modules."
     },
     {
       "type": "url",
