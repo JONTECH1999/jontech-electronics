@@ -16,7 +16,9 @@ import {
   AlertTriangle,
   Package,
   Layers,
-  Trash2
+  Trash2,
+  Zap,
+  Info
 } from 'lucide-react';
 
 export const BundleDetailPage: React.FC = () => {
@@ -283,6 +285,44 @@ export const BundleDetailPage: React.FC = () => {
 
             {bundle.latestAnalysis ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                {/* Real API vs Demo Mode Transparency Badge */}
+                {bundle.latestAnalysis.model?.includes('Live API') ? (
+                  <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    background: 'var(--kf-success-bg)',
+                    color: 'var(--kf-success)',
+                    border: '1px solid rgba(21, 128, 61, 0.3)',
+                    padding: '0.35rem 0.75rem',
+                    borderRadius: 'var(--kf-radius-sm)',
+                    fontSize: '0.75rem',
+                    fontWeight: 700
+                  }}>
+                    <Zap size={14} />
+                    <span>VERIFIED LIVE ANTHROPIC CLAUDE API RESPONSE</span>
+                  </div>
+                ) : (
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.25rem',
+                    background: 'var(--kf-warning-bg)',
+                    border: '1px solid rgba(180, 83, 9, 0.3)',
+                    padding: '0.625rem 0.875rem',
+                    borderRadius: 'var(--kf-radius-sm)',
+                    fontSize: '0.75rem'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontWeight: 700, color: 'var(--kf-warning)' }}>
+                      <Info size={14} />
+                      <span>SIMULATED DEMO ANALYSIS (API Key Not Configured)</span>
+                    </div>
+                    <div style={{ color: 'var(--kf-text-muted)', fontSize: '0.75rem' }}>
+                      To trigger live real-time analysis directly from Anthropic's Claude 3.7 model, add your <code style={{ background: 'rgba(0,0,0,0.06)', padding: '0.1rem 0.35rem', borderRadius: '3px', fontWeight: 600 }}>ANTHROPIC_API_KEY</code> in <code style={{ background: 'rgba(0,0,0,0.06)', padding: '0.1rem 0.35rem', borderRadius: '3px', fontWeight: 600 }}>app/backend/.env</code>.
+                    </div>
+                  </div>
+                )}
+
                 {/* Executive Summary */}
                 <div>
                   <h4 style={{ fontSize: '0.8125rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--kf-text-dim)', marginBottom: '0.35rem' }}>
@@ -291,6 +331,20 @@ export const BundleDetailPage: React.FC = () => {
                   <p style={{ fontSize: '0.9375rem', color: 'var(--kf-heading)', lineHeight: 1.6 }}>
                     {bundle.latestAnalysis.summary}
                   </p>
+
+                  {/* Evaluated Components Pill List */}
+                  <div style={{ marginTop: '0.75rem' }}>
+                    <div style={{ fontSize: '0.6875rem', color: 'var(--kf-text-dim)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.35rem' }}>
+                      Evaluated Hardware BOM:
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                      {bundle.items.map((it, idx) => (
+                        <span key={idx} className="kf-badge kf-badge-neutral" style={{ textTransform: 'none', fontSize: '0.6875rem', fontWeight: 500 }}>
+                          {it.quantity}x {it.productTitle} (₱{it.price.toLocaleString()})
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Strengths */}

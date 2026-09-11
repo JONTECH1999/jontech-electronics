@@ -218,7 +218,7 @@ export interface ProductQueryResult {
 
 export const shopifyProductsService = {
   async getProductsWithMetadata(session: ShopSession): Promise<ProductQueryResult> {
-    if (env.USE_DEMO_DATA) {
+    if (env.USE_DEMO_DATA || session.shopifyDomain === 'test-store.myshopify.com' || session.accessToken === 'test_token' || session.accessToken.startsWith('demo_')) {
       return {
         products: DEMO_PRODUCTS,
         isDemoData: true,

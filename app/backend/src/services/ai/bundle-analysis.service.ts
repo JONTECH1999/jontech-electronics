@@ -17,7 +17,7 @@ export const bundleAnalysisService = {
     ]);
 
     // 2. Build structured prompt
-    const { system, user } = buildBundleAnalysisPrompt({
+    const bundleData = {
       bundleName: bundle.name,
       category: bundle.targetCategory,
       discountPercent: bundle.discountPercent,
@@ -41,10 +41,12 @@ export const bundleAnalysisService = {
         severity: a.severity,
         message: a.message
       }))
-    });
+    };
+
+    const { system, user } = buildBundleAnalysisPrompt(bundleData);
 
     // 3. Call Anthropic server-side client
-    const { result, rawResponse } = await anthropicService.generateAnalysis(system, user);
+    const { result, rawResponse } = await anthropicService.generateAnalysis(system, user, bundleData);
 
     // 4. Persist analysis to database
     await dbRepository.saveAiAnalysis(bundle.id, result, result.model || env.ANTHROPIC_MODEL, rawResponse);
