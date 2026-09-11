@@ -21,233 +21,318 @@ class MemoryStore {
 
   bundles: Array<any> = [
     {
-      id: 'bundle_gaming_01',
+      id: 'bundle_iot_01',
       shopId: 'shop_demo_01',
-      name: 'Gaming Battlestation Starter Pack',
-      description: 'Competitive esports setup calibrated for fast-paced shooters with 8K polling and mechanical switches.',
+      name: 'ESP32 IoT Smart Weather & Telemetry Kit',
+      description: 'Cloud-connected environmental monitoring suite with dual-core WiFi/BLE, high-precision DHT22 temperature/humidity sensing, I2C OLED display, and full prototyping jumper setup.',
       status: 'active',
-      discountPercent: '12.00',
-      targetCategory: 'Gaming',
+      discountPercent: '15.00',
+      targetCategory: 'IoT & Wireless',
       createdAt: new Date('2026-09-02T10:00:00Z'),
       updatedAt: new Date('2026-09-10T14:30:00Z')
     },
     {
-      id: 'bundle_work_02',
+      id: 'bundle_robotics_02',
       shopId: 'shop_demo_01',
-      name: 'Work From Home Ergonomic Studio',
-      description: 'Orthopedic workstation suite designed for programmers and creators working 8+ hour screen sessions.',
+      name: 'Arduino Academic Robotics & Obstacle Avoidance Pack',
+      description: 'Comprehensive STEM robotics kit for school and university prototyping. Features ATmega328P brain, ultrasonic distance echo sensor, dual H-bridge motor driver, and micro servo steering.',
       status: 'active',
-      discountPercent: '14.00',
-      targetCategory: 'Work',
+      discountPercent: '12.00',
+      targetCategory: 'Robotics & STEM',
       createdAt: new Date('2026-09-03T11:00:00Z'),
       updatedAt: new Date('2026-09-11T09:15:00Z')
     },
     {
-      id: 'bundle_travel_03',
+      id: 'bundle_edgeai_03',
       shopId: 'shop_demo_01',
-      name: 'Nomad Road Warrior Travel Tech Kit',
-      description: 'Ultra-lightweight peripherals and 65W GaN charging engineered for airport lounges and coffee shop sprints.',
+      name: 'Raspberry Pi 4 Edge AI & LiDAR Autonomous Lab',
+      description: 'High-compute Linux vision and SLAM laser distance measurement rig powered by Raspberry Pi 4 4GB and solid-state ToF LiDAR for advanced robotics research.',
       status: 'active',
       discountPercent: '10.00',
-      targetCategory: 'Travel',
+      targetCategory: 'Edge AI & Vision',
       createdAt: new Date('2026-09-05T13:45:00Z'),
       updatedAt: new Date('2026-09-09T16:20:00Z')
+    },
+    {
+      id: 'bundle_stm32_04',
+      shopId: 'shop_demo_01',
+      name: 'STM32 Industrial Automation & Relay Control Rig',
+      description: '84MHz ARM Cortex-M4 embedded automation setup featuring Black Pill dev board, optocoupler-isolated 4-channel 220V relay switching, and breadboard prototyping wires.',
+      status: 'active',
+      discountPercent: '14.00',
+      targetCategory: 'Industrial Embedded',
+      createdAt: new Date('2026-09-06T15:00:00Z'),
+      updatedAt: new Date('2026-09-11T12:00:00Z')
     }
   ];
 
   bundleItems: Array<any> = [
-    // Bundle 1 items
+    // Bundle 1: ESP32 IoT Weather Station
     {
-      id: 'item_1_1',
-      bundleId: 'bundle_gaming_01',
-      shopifyProductId: 'gid://shopify/Product/901',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9011',
-      productTitle: 'ApexPro 8K Optical Gaming Mouse',
-      variantTitle: 'Midnight Black',
-      price: '1899.00',
+      id: 'item_iot_1',
+      bundleId: 'bundle_iot_01',
+      shopifyProductId: 'gid://shopify/Product/101',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1011',
+      productTitle: 'ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)',
+      variantTitle: '30-Pin CP2102 USB-C',
+      price: '280.00',
       quantity: 1,
       createdAt: new Date('2026-09-02T10:00:00Z')
     },
     {
-      id: 'item_1_2',
-      bundleId: 'bundle_gaming_01',
-      shopifyProductId: 'gid://shopify/Product/902',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9021',
-      productTitle: 'Vortex K75 Mechanical Keyboard',
-      variantTitle: 'Linear Red Switches',
-      price: '2199.00',
+      id: 'item_iot_2',
+      bundleId: 'bundle_iot_01',
+      shopifyProductId: 'gid://shopify/Product/105',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1051',
+      productTitle: 'DHT22 Digital Temperature & Humidity Sensor',
+      variantTitle: 'High-Precision Module',
+      price: '195.00',
       quantity: 1,
       createdAt: new Date('2026-09-02T10:00:00Z')
     },
     {
-      id: 'item_1_3',
-      bundleId: 'bundle_gaming_01',
-      shopifyProductId: 'gid://shopify/Product/903',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9031',
-      productTitle: 'TitanSound 7.1 Spatial Audio Headset',
-      variantTitle: 'Standard Edition',
-      price: '2499.00',
+      id: 'item_iot_3',
+      bundleId: 'bundle_iot_01',
+      shopifyProductId: 'gid://shopify/Product/108',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1081',
+      productTitle: '0.96 inch I2C OLED Display (128x64)',
+      variantTitle: '4-Pin I2C Blue/White',
+      price: '145.00',
       quantity: 1,
       createdAt: new Date('2026-09-02T10:00:00Z')
     },
     {
-      id: 'item_1_4',
-      bundleId: 'bundle_gaming_01',
-      shopifyProductId: 'gid://shopify/Product/904',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9041',
-      productTitle: 'AeroGlide Pro Gaming Desk Mat (900x400)',
-      variantTitle: 'Stealth Grey',
-      price: '799.00',
+      id: 'item_iot_4',
+      bundleId: 'bundle_iot_01',
+      shopifyProductId: 'gid://shopify/Product/112',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1121',
+      productTitle: 'Master Solderless Breadboard & 65-pc Jumper Wires',
+      variantTitle: '830-Point MB-102 Kit',
+      price: '175.00',
       quantity: 1,
       createdAt: new Date('2026-09-02T10:00:00Z')
     },
 
-    // Bundle 2 items
+    // Bundle 2: Arduino School Robotics
     {
-      id: 'item_2_1',
-      bundleId: 'bundle_work_02',
-      shopifyProductId: 'gid://shopify/Product/905',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9051',
-      productTitle: 'MasterCraft MX Multi-Device Flow Mouse',
-      variantTitle: 'Graphite',
-      price: '3499.00',
+      id: 'item_rob_1',
+      bundleId: 'bundle_robotics_02',
+      shopifyProductId: 'gid://shopify/Product/102',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1021',
+      productTitle: 'Arduino Uno R3 (ATmega328P + CH340G)',
+      variantTitle: 'DIP Edition + USB Cable',
+      price: '350.00',
       quantity: 1,
       createdAt: new Date('2026-09-03T11:00:00Z')
     },
     {
-      id: 'item_2_2',
-      bundleId: 'bundle_work_02',
-      shopifyProductId: 'gid://shopify/Product/906',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9061',
-      productTitle: 'NovaType Split Ergonomic Mechanical Keyboard',
-      variantTitle: 'Silent Brown Switches',
-      price: '4299.00',
+      id: 'item_rob_2',
+      bundleId: 'bundle_robotics_02',
+      shopifyProductId: 'gid://shopify/Product/106',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1061',
+      productTitle: 'HC-SR04 Ultrasonic Distance Sensor',
+      variantTitle: '5V Echo Transducer',
+      price: '85.00',
       quantity: 1,
       createdAt: new Date('2026-09-03T11:00:00Z')
     },
     {
-      id: 'item_2_3',
-      bundleId: 'bundle_work_02',
-      shopifyProductId: 'gid://shopify/Product/907',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9071',
-      productTitle: 'ClearVoice AI Noise-Cancelling Headset',
-      variantTitle: 'USB-C / Wireless',
-      price: '2499.00',
+      id: 'item_rob_3',
+      bundleId: 'bundle_robotics_02',
+      shopifyProductId: 'gid://shopify/Product/109',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1091',
+      productTitle: 'L298N Dual H-Bridge DC Motor Driver',
+      variantTitle: '2A Peak Driver Board',
+      price: '120.00',
+      quantity: 1,
+      createdAt: new Date('2026-09-03T11:00:00Z')
+    },
+    {
+      id: 'item_rob_4',
+      bundleId: 'bundle_robotics_02',
+      shopifyProductId: 'gid://shopify/Product/111',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1111',
+      productTitle: 'SG90 9g Micro Servo Motor',
+      variantTitle: '180-Degree Nylon Gear',
+      price: '95.00',
+      quantity: 1,
+      createdAt: new Date('2026-09-03T11:00:00Z')
+    },
+    {
+      id: 'item_rob_5',
+      bundleId: 'bundle_robotics_02',
+      shopifyProductId: 'gid://shopify/Product/112',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1121',
+      productTitle: 'Master Solderless Breadboard & 65-pc Jumper Wires',
+      variantTitle: '830-Point MB-102 Kit',
+      price: '175.00',
       quantity: 1,
       createdAt: new Date('2026-09-03T11:00:00Z')
     },
 
-    // Bundle 3 items
+    // Bundle 3: Raspberry Pi 4 Edge AI & LiDAR
     {
-      id: 'item_3_1',
-      bundleId: 'bundle_travel_03',
-      shopifyProductId: 'gid://shopify/Product/908',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9081',
-      productTitle: 'AnywhereGo Multi-Surface Bluetooth Mouse',
-      variantTitle: 'Pocket Edition',
-      price: '1699.00',
+      id: 'item_ai_1',
+      bundleId: 'bundle_edgeai_03',
+      shopifyProductId: 'gid://shopify/Product/103',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1031',
+      productTitle: 'Raspberry Pi 4 Model B (4GB RAM)',
+      variantTitle: 'Quad-Core 64-bit Linux',
+      price: '3899.00',
       quantity: 1,
       createdAt: new Date('2026-09-05T13:45:00Z')
     },
     {
-      id: 'item_3_2',
-      bundleId: 'bundle_travel_03',
-      shopifyProductId: 'gid://shopify/Product/909',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9091',
-      productTitle: 'TravelPro Folding Bluetooth Keyboard',
-      variantTitle: 'Magnetic Tri-Fold',
-      price: '2199.00',
+      id: 'item_ai_2',
+      bundleId: 'bundle_edgeai_03',
+      shopifyProductId: 'gid://shopify/Product/107',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1071',
+      productTitle: 'TFmini-S Micro Solid-State LiDAR Sensor',
+      variantTitle: 'UART / I2C 12m Rangefinder',
+      price: '1850.00',
       quantity: 1,
       createdAt: new Date('2026-09-05T13:45:00Z')
     },
     {
-      id: 'item_3_3',
-      bundleId: 'bundle_travel_03',
-      shopifyProductId: 'gid://shopify/Product/910',
-      shopifyVariantId: 'gid://shopify/ProductVariant/9101',
-      productTitle: 'PocketGaN 65W Foldable Travel Adapter',
-      variantTitle: 'Universal Multi-Port',
-      price: '1499.00',
+      id: 'item_ai_3',
+      bundleId: 'bundle_edgeai_03',
+      shopifyProductId: 'gid://shopify/Product/108',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1081',
+      productTitle: '0.96 inch I2C OLED Display (128x64)',
+      variantTitle: '4-Pin I2C Blue/White',
+      price: '145.00',
       quantity: 1,
       createdAt: new Date('2026-09-05T13:45:00Z')
+    },
+
+    // Bundle 4: STM32 Industrial Automation
+    {
+      id: 'item_stm_1',
+      bundleId: 'bundle_stm32_04',
+      shopifyProductId: 'gid://shopify/Product/104',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1041',
+      productTitle: 'STM32F401 "Black Pill" ARM Cortex-M4 Board',
+      variantTitle: '84MHz 256KB Flash USB-C',
+      price: '240.00',
+      quantity: 1,
+      createdAt: new Date('2026-09-06T15:00:00Z')
+    },
+    {
+      id: 'item_stm_2',
+      bundleId: 'bundle_stm32_04',
+      shopifyProductId: 'gid://shopify/Product/110',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1101',
+      productTitle: '4-Channel 5V Relay Module with Optocoupler',
+      variantTitle: '250VAC 10A Active Low',
+      price: '165.00',
+      quantity: 1,
+      createdAt: new Date('2026-09-06T15:00:00Z')
+    },
+    {
+      id: 'item_stm_3',
+      bundleId: 'bundle_stm32_04',
+      shopifyProductId: 'gid://shopify/Product/112',
+      shopifyVariantId: 'gid://shopify/ProductVariant/1121',
+      productTitle: 'Master Solderless Breadboard & 65-pc Jumper Wires',
+      variantTitle: '830-Point MB-102 Kit',
+      price: '175.00',
+      quantity: 1,
+      createdAt: new Date('2026-09-06T15:00:00Z')
     }
   ];
 
   bundleScores: Array<any> = [
     {
-      id: 'score_1',
-      bundleId: 'bundle_gaming_01',
-      salesScore: '94.00',
-      compatibilityScore: '96.00',
-      inventoryScore: '68.00',
-      discountScore: '90.00',
-      totalScore: '88.50',
+      id: 'score_iot_01',
+      bundleId: 'bundle_iot_01',
+      salesScore: '92.00',
+      compatibilityScore: '98.00',
+      inventoryScore: '88.00',
+      discountScore: '85.00',
+      totalScore: '91.80',
       scoreVersion: 'v1.0',
       metricsSnapshot: {
-        lowestStock: 3,
-        criticalItemCount: 1,
-        coOrderFrequency: 18,
-        discountPercent: 12
+        lowestStock: 38,
+        criticalItemCount: 0,
+        coOrderFrequency: 42,
+        discountPercent: 15
       },
       createdAt: new Date('2026-09-10T14:30:00Z'),
       updatedAt: new Date('2026-09-10T14:30:00Z')
     },
     {
-      id: 'score_2',
-      bundleId: 'bundle_work_02',
-      salesScore: '88.00',
-      compatibilityScore: '95.00',
-      inventoryScore: '92.00',
-      discountScore: '86.00',
-      totalScore: '90.15',
+      id: 'score_rob_02',
+      bundleId: 'bundle_robotics_02',
+      salesScore: '95.00',
+      compatibilityScore: '96.00',
+      inventoryScore: '90.00',
+      discountScore: '82.00',
+      totalScore: '91.95',
       scoreVersion: 'v1.0',
       metricsSnapshot: {
-        lowestStock: 14,
+        lowestStock: 30,
         criticalItemCount: 0,
-        coOrderFrequency: 12,
-        discountPercent: 14
+        coOrderFrequency: 48,
+        discountPercent: 12
       },
       createdAt: new Date('2026-09-11T09:15:00Z'),
       updatedAt: new Date('2026-09-11T09:15:00Z')
     },
     {
-      id: 'score_3',
-      bundleId: 'bundle_travel_03',
-      salesScore: '72.00',
-      compatibilityScore: '88.00',
-      inventoryScore: '85.00',
-      discountScore: '82.00',
-      totalScore: '80.60',
+      id: 'score_ai_03',
+      bundleId: 'bundle_edgeai_03',
+      salesScore: '78.00',
+      compatibilityScore: '92.00',
+      inventoryScore: '55.00',
+      discountScore: '80.00',
+      totalScore: '77.30',
       scoreVersion: 'v1.0',
       metricsSnapshot: {
-        lowestStock: 18,
-        criticalItemCount: 0,
-        coOrderFrequency: 7,
+        lowestStock: 2,
+        criticalItemCount: 1,
+        coOrderFrequency: 18,
         discountPercent: 10
       },
       createdAt: new Date('2026-09-09T16:20:00Z'),
       updatedAt: new Date('2026-09-09T16:20:00Z')
+    },
+    {
+      id: 'score_stm_04',
+      bundleId: 'bundle_stm32_04',
+      salesScore: '82.00',
+      compatibilityScore: '94.00',
+      inventoryScore: '91.00',
+      discountScore: '86.00',
+      totalScore: '87.80',
+      scoreVersion: 'v1.0',
+      metricsSnapshot: {
+        lowestStock: 25,
+        criticalItemCount: 0,
+        coOrderFrequency: 24,
+        discountPercent: 14
+      },
+      createdAt: new Date('2026-09-11T12:00:00Z'),
+      updatedAt: new Date('2026-09-11T12:00:00Z')
     }
   ];
 
   aiAnalyses: Array<any> = [
     {
       id: 'ai_analysis_1',
-      bundleId: 'bundle_gaming_01',
+      bundleId: 'bundle_iot_01',
       model: 'claude-3-5-sonnet-20241022',
-      summary: 'The Gaming Battlestation Starter Pack is a top revenue-generating setup with stellar synergy (96% compatibility) and proven co-purchase validation. However, the TitanSound Headset currently faces critical stock exhaustion.',
+      summary: 'The ESP32 IoT Weather Station Kit is an exceptional academic and prototyping bundle boasting a 98% hardware synergy score. All components operate synchronously across standard 3.3V/5V rails with extensive Arduino/ESP-IDF library support.',
       strengths: [
-        'High customer affinity: Mouse and mechanical keyboard are frequently purchased together in 68% of single checkout events.',
-        'Balanced price point under ₱10,000 gives strong perceived value against individual MSRP.',
-        'High conversion rate among first-time storefront visitors.'
+        'High STEM Co-Purchase Velocity: ESP32 boards and DHT22 environmental sensors co-occur in 72% of university project carts.',
+        'Balanced Student Pricing: ₱676 bundled cost provides a 15% discount, lowering the barrier to entry for engineering coursework.',
+        'Zero Pin Conflicts: OLED visualizer operates on I2C (GPIO 21/22) leaving plenty of ADC channels for additional telemetry expansion.'
       ],
       risks: [
-        'Inventory Risk: TitanSound 7.1 Gaming Headset only has 3 units left in warehouse stock.',
-        'A stockout on the headset will temporarily disqualify the bundle from instant fulfillment.'
+        'Breadboard Jumper Wire depletion during semester start spikes could cause partial kit delivery delay.'
       ],
       recommendations: [
-        'Prioritize an immediate warehouse reorder of at least 25 units for TitanSound 7.1 Headset.',
-        'Consider offering the AeroGlide Desk Mat as an optional bundle add-on at 15% discount to lift AOV further.'
+        'Consider offering an optional rain sensor or BMP280 barometric pressure add-on for advanced meteorological monitoring.',
+        'Include a pre-flashed GitHub starter firmware link in order confirmation emails.'
       ],
       rawResponse: null,
       createdAt: new Date('2026-09-10T14:32:00Z')
@@ -258,59 +343,50 @@ class MemoryStore {
     {
       id: 'act_1',
       shopId: 'shop_demo_01',
-      bundleId: 'bundle_gaming_01',
+      bundleId: 'bundle_iot_01',
       action: 'bundle_created',
-      description: 'Merchant created "Gaming Battlestation Starter Pack" with 4 initial items.',
-      metadata: { itemCount: 4, discountPercent: 12 },
+      description: 'Created ESP32 IoT Smart Weather & Telemetry Kit with 4 prototyping components and 15% discount.',
+      metadata: { author: 'Merchant Admin', source: 'KitFlow' },
       createdAt: new Date('2026-09-02T10:00:00Z')
     },
     {
       id: 'act_2',
       shopId: 'shop_demo_01',
-      bundleId: 'bundle_gaming_01',
-      action: 'score_recalculated',
-      description: 'Deterministic bundle score updated to 88.50/100.',
-      metadata: { previousScore: 84.0, newScore: 88.5 },
-      createdAt: new Date('2026-09-10T14:30:00Z')
+      bundleId: 'bundle_robotics_02',
+      action: 'bundle_created',
+      description: 'Published Arduino Academic Robotics & Obstacle Avoidance Pack for STEM university engineering.',
+      metadata: { author: 'Merchant Admin', source: 'KitFlow' },
+      createdAt: new Date('2026-09-03T11:00:00Z')
     },
     {
       id: 'act_3',
       shopId: 'shop_demo_01',
-      bundleId: 'bundle_gaming_01',
-      action: 'ai_analysis_generated',
-      description: 'AI Bundle Analyst generated strategic recommendations via Claude 3.5 Sonnet.',
-      metadata: { model: 'claude-3-5-sonnet-20241022' },
-      createdAt: new Date('2026-09-10T14:32:00Z')
+      bundleId: 'bundle_edgeai_03',
+      action: 'score_recalculated',
+      description: 'Recalculated deterministic score for Raspberry Pi 4 Autonomous Rig: 77.30/100 (Constrained by LiDAR stock).',
+      metadata: { previousScore: 82.0, newScore: 77.3, factors: { sales: 78, compatibility: 92, inventory: 55, discount: 80 } },
+      createdAt: new Date('2026-09-09T16:20:00Z')
     },
     {
       id: 'act_4',
       shopId: 'shop_demo_01',
-      bundleId: 'bundle_gaming_01',
+      bundleId: 'bundle_edgeai_03',
       action: 'inventory_alert_triggered',
-      description: 'Inventory alert triggered: TitanSound Headset stock fell to 3 units.',
-      metadata: { severity: 'warning', stock: 3 },
+      description: 'Inventory threshold alert triggered: TFmini-S LiDAR Sensor remaining stock reached 2 units.',
+      metadata: { severity: 'critical', stock: 2, source: 'KitFlow Watchdog' },
       createdAt: new Date('2026-09-10T14:35:00Z')
-    },
-    {
-      id: 'act_5',
-      shopId: 'shop_demo_01',
-      bundleId: 'bundle_work_02',
-      action: 'bundle_created',
-      description: 'Merchant created "Work From Home Ergonomic Studio" with 3 curated items.',
-      metadata: { itemCount: 3, discountPercent: 14 },
-      createdAt: new Date('2026-09-03T11:00:00Z')
     }
   ];
 
   alerts: Array<any> = [
     {
-      id: 'alert_1',
+      id: 'alert_lidar_01',
       shopId: 'shop_demo_01',
-      bundleId: 'bundle_gaming_01',
-      type: 'inventory_warning',
-      severity: 'warning',
-      title: 'Low Inventory on Included Item',
-      message: 'TitanSound 7.1 Gaming Headset has only 3 units remaining. Bundle fulfillment will be blocked if stock reaches zero.',
+      bundleId: 'bundle_edgeai_03',
+      type: 'inventory_critical',
+      severity: 'critical',
+      title: 'Critical Inventory on TFmini-S LiDAR Sensor',
+      message: 'TFmini-S Micro Solid-State LiDAR Sensor has only 2 units remaining in stock. Autonomous lab bundles will fail fulfillment if inventory is depleted.',
       status: 'active',
       createdAt: new Date('2026-09-10T14:35:00Z'),
       resolvedAt: null

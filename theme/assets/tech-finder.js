@@ -7,146 +7,100 @@
 (function () {
   'use strict';
 
-  // Curated Setup Catalog with Rule-Based Mapping Matrix
+  // Curated Setup Catalog with Rule-Based Mapping Matrix (JonTech Electronics)
   const SETUP_DATABASE = {
-    // GAMING SETUPS
-    'gaming-budget-performance': {
-      title: 'Competitive Esports Starter Pack',
-      category: 'Gaming',
-      badge: 'High Refresh & Precision',
+    // IOT & WIRELESS SETUPS
+    'iot-budget-connectivity': {
+      title: 'ESP32 IoT Smart Weather & Telemetry Kit',
+      category: 'IoT & Wireless',
+      badge: 'WiFi & BLE Telemetry',
       items: [
-        { name: 'ApexPro 8K Optical Gaming Mouse', role: 'Precision Aiming', price: 1899 },
-        { name: 'Vortex K75 Mechanical Keyboard (Red Switches)', role: 'Rapid Input', price: 2199 },
-        { name: 'AeroGlide Pro Gaming Desk Mat (900x400)', role: 'Low Friction Tracking', price: 799 }
-      ],
-      discountPercent: 10,
-      description: 'Zero-latency inputs calibrated for competitive tactical shooters and battle royale games.'
-    },
-    'gaming-mid-performance': {
-      title: 'Apex Battlestation Gaming Bundle',
-      category: 'Gaming',
-      badge: 'Best Seller Performance',
-      items: [
-        { name: 'ApexPro 8K Optical Gaming Mouse', role: 'Precision Aiming', price: 1899 },
-        { name: 'CyberBlade 75% Wireless Mechanical Keyboard', role: 'Hot-swappable Custom Keys', price: 3499 },
-        { name: 'TitanSound 7.1 Spatial Audio Gaming Headset', role: 'Directional Acoustic Cues', price: 2499 },
-        { name: 'AeroGlide Pro Gaming Desk Mat (900x400)', role: 'Low Friction Tracking', price: 799 }
-      ],
-      discountPercent: 12,
-      description: 'Tournament-ready setup with spatial surround sound and tactile mechanical actuation.'
-    },
-    'gaming-premium-performance': {
-      title: 'Ultimate Esports Pro Tournament Rig',
-      category: 'Gaming',
-      badge: 'Flagship Esports Rig',
-      items: [
-        { name: 'HyperSpeed Ultra Wireless Mouse (49g)', role: 'Ultralight Competitive Tracking', price: 3899 },
-        { name: 'CyberBlade Hall Effect Magnetic Switch Keyboard', role: 'Rapid Trigger 0.1mm Actuation', price: 6499 },
-        { name: 'NovaStudio Wireless Audiophile Gaming Headset', role: 'Hi-Res Planar Magnetic Audio', price: 5499 },
-        { name: 'Starlight Tempered Glass Precision Mousepad', role: 'Ultra-fast Micro-glide Surface', price: 1899 }
+        { name: 'ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)', role: 'Dual-Core Controller', price: 280 },
+        { name: 'DHT22 Digital Temperature & Humidity Sensor', role: 'Environmental Telemetry', price: 195 },
+        { name: '0.96 inch I2C OLED Display (128x64)', role: 'Real-time Metrics Display', price: 145 },
+        { name: 'Master Solderless Breadboard & 65-pc Wires', role: 'Rapid Prototyping Hookup', price: 175 }
       ],
       discountPercent: 15,
-      description: 'The pinnacle of competitive electronics: magnetic hall effect rapid-trigger keys and ultra-lightweight mouse.'
+      description: 'Plug-and-play cloud connected weather station. Reads ambient temperature and humidity with instant local OLED visualization and MQTT telemetry streaming.'
+    },
+    'iot-mid-sensors': {
+      title: 'ESP32 Advanced Multi-Zone Environmental Lab',
+      category: 'IoT & Wireless',
+      badge: 'Multi-Sensor Precision',
+      items: [
+        { name: 'ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)', role: 'Dual-Core Controller', price: 280 },
+        { name: 'DHT22 Digital Temperature & Humidity Sensor', role: 'High-Precision Sensing', price: 195 },
+        { name: 'HC-SR04 Ultrasonic Distance Sensor', role: 'Proximity Trigger', price: 85 },
+        { name: '4-Channel 5V Relay Module with Optocoupler', role: 'Appliance Switching', price: 165 },
+        { name: '0.96 inch I2C OLED Display (128x64)', role: 'Status Readout', price: 145 },
+        { name: 'Master Solderless Breadboard & 65-pc Wires', role: 'Prototyping Grid', price: 175 }
+      ],
+      discountPercent: 15,
+      description: 'Comprehensive smart home & agriculture telemetry suite capable of reading climate conditions and triggering 220V irrigation or exhaust relays.'
     },
 
-    // WORK SETUPS
-    'work-budget-comfort': {
-      title: 'ErgoCompact Desk Essentials',
-      category: 'Work',
-      badge: 'Ergonomic Productivity',
+    // ROBOTICS & STEM SETUPS
+    'robotics-budget-learning': {
+      title: 'Arduino Academic Robotics & Obstacle Avoidance Pack',
+      category: 'Robotics & STEM',
+      badge: 'Academic STEM Favorite',
       items: [
-        { name: 'VerticalGrip Ergonomic Wireless Mouse', role: 'Carpal Tunnel Pressure Relief', price: 1499 },
-        { name: 'SilentType Ultra-slim Scissor Keyboard', role: 'Whisper-quiet Office Typing', price: 1799 },
-        { name: 'ErgoRest Memory Foam Wrist Support', role: 'Orthopedic Posture Alignment', price: 699 }
+        { name: 'Arduino Uno R3 (ATmega328P + CH340G)', role: 'Microcontroller Core', price: 350 },
+        { name: 'HC-SR04 Ultrasonic Distance Sensor', role: 'Echo Distance Echo Ranging', price: 85 },
+        { name: 'L298N Dual H-Bridge DC Motor Driver', role: 'High-Current Motor Drive', price: 120 },
+        { name: 'SG90 9g Micro Servo Motor', role: 'Steering & Sensor Sweep', price: 95 },
+        { name: 'Master Solderless Breadboard & 65-pc Wires', role: 'Circuit Assembly', price: 175 }
       ],
-      discountPercent: 10,
-      description: 'Ergonomically engineered for pain-free long hours at your desk or home office.'
+      discountPercent: 12,
+      description: 'The definitive educational robotics starter pack. Build an autonomous obstacle-avoiding vehicle with ultrasonic scanning and servo guidance.'
     },
-    'work-mid-performance': {
-      title: 'Pro-Developer Dual Workstation Kit',
-      category: 'Work',
-      badge: 'High Productivity Multi-Device',
+    'robotics-mid-automation': {
+      title: 'Arduino Autonomous Mechatronics Engineering Kit',
+      category: 'Robotics & STEM',
+      badge: 'Advanced Motor & Sensor Control',
       items: [
-        { name: 'MasterCraft MX Multi-Device Flow Mouse', role: 'Seamless Multi-Screen Cross-Control', price: 3499 },
-        { name: 'NovaType Split Ergonomic Mechanical Keyboard', role: 'Natural Hand Angles & Gasket Mount', price: 4299 },
-        { name: 'ClearVoice AI Noise-Cancelling Conference Headset', role: 'Studio Grade Microphone', price: 2499 },
-        { name: 'OmniDesk Felt & Leather Minimalist Pad', role: 'Premium Workspace Base', price: 999 }
+        { name: 'Arduino Uno R3 (ATmega328P + CH340G)', role: 'Microcontroller Core', price: 350 },
+        { name: 'L298N Dual H-Bridge DC Motor Driver', role: 'Dual Motor Drive', price: 120 },
+        { name: 'SG90 9g Micro Servo Motor (x2)', role: 'Pan-Tilt Turret Mechanism', price: 190 },
+        { name: 'HC-SR04 Ultrasonic Distance Sensor', role: 'Ranging Sensor', price: 85 },
+        { name: '0.96 inch I2C OLED Display (128x64)', role: 'Telemetry HUD', price: 145 },
+        { name: 'Master Solderless Breadboard & 65-pc Wires', role: 'Power Bus & Signal Grid', price: 175 }
       ],
       discountPercent: 14,
-      description: 'Designed for software engineers, designers, and managers requiring flawless multi-tasking and all-day typing comfort.'
-    },
-    'work-premium-comfort': {
-      title: 'Executive Studio Workspace Suite',
-      category: 'Work',
-      badge: 'Executive Comfort & Silence',
-      items: [
-        { name: 'MasterCraft MX Titanium Multi-Device Mouse', role: 'Precision Magnetic Scroll', price: 4299 },
-        { name: 'CraftWood Solid Walnut Ergonomic Mechanical Keyboard', role: 'Lube-tuned Silent Gasket Switches', price: 6899 },
-        { name: 'AcousticShield Active Noise Cancelling Headphones', role: '45dB Hybrid Deep ANC', price: 6499 },
-        { name: 'OmniDock 14-in-1 Thunderbolt 4 Hub', role: 'Single-cable 4K 120Hz & 100W Charging', price: 4899 }
-      ],
-      discountPercent: 15,
-      description: 'The premier luxury productivity setup combining handcrafted materials, acoustic silence, and single-cable docking.'
+      description: 'Mechatronics engineering package featuring dual-axis servo panning, ultrasonic distance telemetry, and motor speed control.'
     },
 
-    // STUDY SETUPS
-    'study-budget-value': {
-      title: 'Campus Scholar Starter Kit',
-      category: 'Study',
-      badge: 'Maximum Student Value',
+    // EDGE AI & COMPUTER VISION
+    'edgeai-premium-sensors': {
+      title: 'Raspberry Pi 4 Edge AI & LiDAR Autonomous Lab',
+      category: 'Edge AI & Vision',
+      badge: 'Computer Vision & Laser SLAM',
       items: [
-        { name: 'EchoGlide Silent Bluetooth Mouse', role: 'Silent Library Clicking', price: 899 },
-        { name: 'SlimTab Compact Multi-OS Bluetooth Keyboard', role: 'Fits Inside Any Backpack', price: 1299 },
-        { name: 'NeoLite Clip-on Laptop Eye-Care Light', role: 'Anti-Glare Anti-Blue Light', price: 899 }
+        { name: 'Raspberry Pi 4 Model B (4GB RAM)', role: 'Quad-Core Linux Brain', price: 3899 },
+        { name: 'TFmini-S Micro Solid-State LiDAR Sensor', role: '12m Millimeter Ranging', price: 1850 },
+        { name: '0.96 inch I2C OLED Display (128x64)', role: 'IP Address & CPU HUD', price: 145 }
       ],
       discountPercent: 10,
-      description: 'Budget-friendly, library-quiet gear engineered for student study sessions and lectures.'
-    },
-    'study-mid-portability': {
-      title: 'Digital Student Productivity Kit',
-      category: 'Study',
-      badge: 'All-Day Battery & Lightweight',
-      items: [
-        { name: 'AnywhereGo Multi-Surface Bluetooth Mouse', role: 'Works on Library Glass Tables', price: 1699 },
-        { name: 'FlexType Magnetic Folio Wireless Keyboard', role: 'Instant Tablet/Laptop Typing', price: 2499 },
-        { name: 'AudioPod ANC Wireless Earbuds with Mic', role: 'Focus Mode Active Noise Cancelling', price: 2299 },
-        { name: 'VoltPack 65W GaN Fast Charger & Cables', role: 'Powers Laptop + Phone in Class', price: 1599 }
-      ],
-      discountPercent: 12,
-      description: 'Compact, high-mobility study kit designed to slip into a backpack and power through back-to-back classes.'
+      description: 'High-compute edge intelligence workstation. Run real-time Python computer vision, ROS robot navigation, and laser SLAM point cloud mapping.'
     },
 
-    // TRAVEL / MOBILE WORKER SETUPS
-    'travel-mid-portability': {
-      title: 'Nomad Mobile Road Warrior Pack',
-      category: 'Travel',
-      badge: 'Ultra-Compact & Rugged',
+    // INDUSTRIAL EMBEDDED
+    'industrial-budget-automation': {
+      title: 'STM32 Industrial Automation & Relay Control Rig',
+      category: 'Industrial Embedded',
+      badge: '84MHz ARM Cortex-M4 Speed',
       items: [
-        { name: 'AnywhereGo Multi-Surface Bluetooth Mouse', role: 'Works on Cafe Tables & Airplane Trays', price: 1699 },
-        { name: 'TravelPro Folding Bluetooth Keyboard with Trackpad', role: 'Folds Flat into Pocket', price: 2199 },
-        { name: 'AeroBuds Pro Dual-Device ANC Earbuds', role: 'Airplane Cabin Noise Cancelling', price: 2799 },
-        { name: 'PocketGaN 65W Foldable Travel Adapter', role: 'Global Multi-Plug Support', price: 1499 }
+        { name: 'STM32F401 "Black Pill" ARM Cortex-M4 Board', role: 'High-Speed Core MCU', price: 240 },
+        { name: '4-Channel 5V Relay Module with Optocoupler', role: '250VAC Isolated Switching', price: 165 },
+        { name: 'Master Solderless Breadboard & 65-pc Wires', role: 'Testing Grid', price: 175 }
       ],
-      discountPercent: 12,
-      description: 'Ultra-packable, lightweight gear built for remote workers, airport lounges, and coffee shop sprints.'
-    },
-    'travel-premium-portability': {
-      title: 'Global Remote Executive Travel Suite',
-      category: 'Travel',
-      badge: 'First-Class Mobile Setup',
-      items: [
-        { name: 'MasterCraft Travel Precision Wireless Mouse', role: 'Multi-host Switching', price: 3499 },
-        { name: 'AeroSlim Carbon Fiber Mechanical 65% Keyboard', role: 'Ultra-thin Low Profile Gateron Keys', price: 4899 },
-        { name: 'AcousticShield Active Noise Cancelling Headphones', role: 'Deep Plane Engine Noise Filtering', price: 6499 },
-        { name: 'VoltMatrix 100W 25,000mAh Flight-Approved Powerbank', role: 'Fast Charges Laptop at 30,000ft', price: 3899 }
-      ],
-      discountPercent: 15,
-      description: 'Flagship mobile workstation package engineered to maintain full desktop-level productivity from any airport lounge or hotel suite.'
+      discountPercent: 14,
+      description: 'High-frequency embedded engineering bundle for simulated PLC automation, PWM motor timing, and opto-isolated high voltage switching.'
     }
   };
 
   // Fallback Setup for any atypical combinations
-  const DEFAULT_SETUP = SETUP_DATABASE['work-mid-performance'];
+  const DEFAULT_SETUP = SETUP_DATABASE['iot-budget-connectivity'];
 
   function initTechFinder() {
     const container = document.querySelector('[data-tech-finder]');

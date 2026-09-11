@@ -12,29 +12,29 @@ describe('Deterministic Inventory Alert Logic', () => {
   it('detects critical stock (<= 2 units) correctly', async () => {
     const items: any[] = [
       {
-        shopifyProductId: 'gid://shopify/Product/903', // TitanSound in demo catalog has stock 3
-        shopifyVariantId: 'gid://shopify/ProductVariant/9031',
-        productTitle: 'TitanSound Headset'
+        shopifyProductId: 'gid://shopify/Product/107', // TFmini-S LiDAR in electronics catalog has stock 2
+        shopifyVariantId: 'gid://shopify/ProductVariant/1071',
+        productTitle: 'TFmini-S Micro Solid-State LiDAR Sensor'
       }
     ];
 
     const health = await shopifyInventoryService.evaluateBundleInventory(mockSession, items);
-    expect(health.lowestStock).toBe(3);
-    expect(health.warningItems).toHaveLength(1);
+    expect(health.lowestStock).toBe(2);
+    expect(health.criticalItems).toHaveLength(1);
     expect(health.isAtRisk).toBe(true);
   });
 
   it('marks abundant stock as healthy without risk flags', async () => {
     const items: any[] = [
       {
-        shopifyProductId: 'gid://shopify/Product/904', // AeroGlide has stock 42
-        shopifyVariantId: 'gid://shopify/ProductVariant/9041',
-        productTitle: 'AeroGlide Desk Mat'
+        shopifyProductId: 'gid://shopify/Product/106', // HC-SR04 Ultrasonic has stock 60
+        shopifyVariantId: 'gid://shopify/ProductVariant/1061',
+        productTitle: 'HC-SR04 Ultrasonic Distance Sensor'
       }
     ];
 
     const health = await shopifyInventoryService.evaluateBundleInventory(mockSession, items);
-    expect(health.lowestStock).toBe(42);
+    expect(health.lowestStock).toBe(60);
     expect(health.criticalItems).toHaveLength(0);
     expect(health.warningItems).toHaveLength(0);
     expect(health.isAtRisk).toBe(false);

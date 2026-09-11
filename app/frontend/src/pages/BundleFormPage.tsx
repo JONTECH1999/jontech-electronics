@@ -14,7 +14,7 @@ export const BundleFormPage: React.FC = () => {
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<'active' | 'draft' | 'archived'>('active');
   const [discountPercent, setDiscountPercent] = useState<number>(10);
-  const [targetCategory, setTargetCategory] = useState('Gaming');
+  const [targetCategory, setTargetCategory] = useState('IoT & Wireless');
   const [items, setItems] = useState<BundleItemDto[]>([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +32,7 @@ export const BundleFormPage: React.FC = () => {
           setDescription(b.description || '');
           setStatus(b.status);
           setDiscountPercent(b.discountPercent);
-          setTargetCategory(b.targetCategory || 'Gaming');
+          setTargetCategory(b.targetCategory || 'IoT & Wireless');
           setItems(b.items);
         })
         .catch(err => alert(`Failed to load bundle: ${err.message}`))
@@ -159,7 +159,7 @@ export const BundleFormPage: React.FC = () => {
               <input
                 id="bundle-name"
                 type="text"
-                placeholder="e.g. Esports Battlestation Starter Pack"
+                placeholder="e.g. ESP32 IoT Smart Weather & Telemetry Kit"
                 value={name}
                 onChange={e => setName(e.target.value)}
                 className="form-input"
@@ -172,7 +172,7 @@ export const BundleFormPage: React.FC = () => {
               <textarea
                 id="bundle-desc"
                 rows={3}
-                placeholder="Explain the workflow, ergonomics, and target audience for this setup..."
+                placeholder="Explain the hardware architecture, pinout compatibility, and target engineering coursework..."
                 value={description}
                 onChange={e => setDescription(e.target.value)}
                 className="form-textarea"
@@ -188,11 +188,12 @@ export const BundleFormPage: React.FC = () => {
                   onChange={e => setTargetCategory(e.target.value)}
                   className="form-select"
                 >
-                  <option value="Gaming">Gaming Battlestation</option>
-                  <option value="Work">Work & Productivity</option>
-                  <option value="Study">Study & Campus</option>
-                  <option value="Travel">Mobile Road Warrior</option>
-                  <option value="General">General Technology</option>
+                  <option value="IoT & Wireless">IoT & Wireless</option>
+                  <option value="Robotics & STEM">Robotics & STEM</option>
+                  <option value="Edge AI & Vision">Edge AI & Vision</option>
+                  <option value="Industrial Embedded">Industrial Embedded</option>
+                  <option value="Sensors & Measurement">Sensors & Measurement</option>
+                  <option value="General Prototyping">General Prototyping</option>
                 </select>
               </div>
 

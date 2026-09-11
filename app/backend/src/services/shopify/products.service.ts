@@ -2,175 +2,209 @@ import { ShopifyGraphQLClient } from './client';
 import { ShopSession, ShopifyProductSummary } from '../../types';
 import { env } from '../../config/env';
 
-// Realistic JonTech Electronics catalog for development mode and fallback
+// Realistic JonTech Electronics catalog: Microcontrollers, Sensors, Modules, Prototyping
 export const DEMO_PRODUCTS: ShopifyProductSummary[] = [
   {
-    id: 'gid://shopify/Product/901',
-    title: 'ApexPro 8K Optical Gaming Mouse',
-    vendor: 'JonTech Gaming',
-    productType: 'Gaming Mouse',
-    tags: ['Gaming', 'Peripherals', 'High-DPI', 'Esports'],
+    id: 'gid://shopify/Product/101',
+    title: 'ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)',
+    vendor: 'Espressif / JonTech',
+    productType: 'Microcontroller',
+    tags: ['Microcontroller', 'IoT', 'WiFi', 'Bluetooth', 'ESP32', 'Prototyping'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9011',
-        title: 'Midnight Black',
-        price: 1899.00,
-        compareAtPrice: 2199.00,
-        inventoryQuantity: 24,
-        sku: 'JT-APEX-8K-BLK'
+        id: 'gid://shopify/ProductVariant/1011',
+        title: '30-Pin CP2102 USB-C',
+        price: 280.00,
+        compareAtPrice: 320.00,
+        inventoryQuantity: 45,
+        sku: 'JT-MCU-ESP32-30P'
       }
     ]
   },
   {
-    id: 'gid://shopify/Product/902',
-    title: 'Vortex K75 Mechanical Keyboard',
-    vendor: 'JonTech Gaming',
-    productType: 'Mechanical Keyboard',
-    tags: ['Gaming', 'Peripherals', 'Mechanical', 'RGB'],
+    id: 'gid://shopify/Product/102',
+    title: 'Arduino Uno R3 (ATmega328P + CH340G)',
+    vendor: 'Arduino / JonTech',
+    productType: 'Microcontroller',
+    tags: ['Microcontroller', 'Arduino', 'School', 'STEM', 'Prototyping'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9021',
-        title: 'Linear Red Switches',
-        price: 2199.00,
-        compareAtPrice: 2599.00,
-        inventoryQuantity: 18,
-        sku: 'JT-VRTX-K75-RED'
+        id: 'gid://shopify/ProductVariant/1021',
+        title: 'DIP Edition + USB Cable',
+        price: 350.00,
+        compareAtPrice: 399.00,
+        inventoryQuantity: 32,
+        sku: 'JT-MCU-UNO-R3'
       }
     ]
   },
   {
-    id: 'gid://shopify/Product/903',
-    title: 'TitanSound 7.1 Spatial Audio Headset',
-    vendor: 'JonTech Audio',
-    productType: 'Gaming Headset',
-    tags: ['Gaming', 'Audio', 'Surround Sound'],
+    id: 'gid://shopify/Product/103',
+    title: 'Raspberry Pi 4 Model B (4GB RAM)',
+    vendor: 'Raspberry Pi Foundation',
+    productType: 'Single Board Computer',
+    tags: ['SBC', 'Raspberry Pi', 'Linux', 'Edge AI', 'Prototyping'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9031',
-        title: 'Standard Edition',
-        price: 2499.00,
-        compareAtPrice: 2899.00,
-        inventoryQuantity: 3, // Low inventory to demonstrate alerts
-        sku: 'JT-TTN-71-BLK'
+        id: 'gid://shopify/ProductVariant/1031',
+        title: 'Quad-Core 64-bit Linux',
+        price: 3899.00,
+        compareAtPrice: 4299.00,
+        inventoryQuantity: 12,
+        sku: 'JT-SBC-RPI4-4GB'
       }
     ]
   },
   {
-    id: 'gid://shopify/Product/904',
-    title: 'AeroGlide Pro Gaming Desk Mat (900x400)',
-    vendor: 'JonTech Accessories',
-    productType: 'Desk Mat',
-    tags: ['Gaming', 'Accessories', 'Desk Mat'],
+    id: 'gid://shopify/Product/104',
+    title: 'STM32F401 "Black Pill" ARM Cortex-M4 Board',
+    vendor: 'STMicroelectronics / WeAct',
+    productType: 'Microcontroller',
+    tags: ['Microcontroller', 'ARM', 'STM32', 'Cortex-M4', 'Embedded'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9041',
-        title: 'Stealth Grey',
-        price: 799.00,
-        compareAtPrice: 999.00,
-        inventoryQuantity: 42,
-        sku: 'JT-AERO-9040'
-      }
-    ]
-  },
-  {
-    id: 'gid://shopify/Product/905',
-    title: 'MasterCraft MX Multi-Device Flow Mouse',
-    vendor: 'JonTech Studio',
-    productType: 'Office Mouse',
-    tags: ['Work', 'Productivity', 'Ergonomic', 'Bluetooth'],
-    variants: [
-      {
-        id: 'gid://shopify/ProductVariant/9051',
-        title: 'Graphite',
-        price: 3499.00,
-        compareAtPrice: 3899.00,
-        inventoryQuantity: 15,
-        sku: 'JT-MC-MX-GRF'
-      }
-    ]
-  },
-  {
-    id: 'gid://shopify/Product/906',
-    title: 'NovaType Split Ergonomic Mechanical Keyboard',
-    vendor: 'JonTech Studio',
-    productType: 'Ergonomic Keyboard',
-    tags: ['Work', 'Productivity', 'Ergonomic', 'Mechanical'],
-    variants: [
-      {
-        id: 'gid://shopify/ProductVariant/9061',
-        title: 'Silent Brown Switches',
-        price: 4299.00,
-        compareAtPrice: 4799.00,
-        inventoryQuantity: 11,
-        sku: 'JT-NV-SPLIT-BRN'
-      }
-    ]
-  },
-  {
-    id: 'gid://shopify/Product/907',
-    title: 'ClearVoice AI Noise-Cancelling Headset',
-    vendor: 'JonTech Audio',
-    productType: 'Conference Audio',
-    tags: ['Work', 'Audio', 'Noise-Cancelling'],
-    variants: [
-      {
-        id: 'gid://shopify/ProductVariant/9071',
-        title: 'USB-C / Wireless',
-        price: 2499.00,
-        compareAtPrice: 2799.00,
+        id: 'gid://shopify/ProductVariant/1041',
+        title: '84MHz 256KB Flash USB-C',
+        price: 240.00,
+        compareAtPrice: 280.00,
         inventoryQuantity: 28,
-        sku: 'JT-CV-ANC-USB'
+        sku: 'JT-MCU-STM32-F401'
       }
     ]
   },
   {
-    id: 'gid://shopify/Product/908',
-    title: 'AnywhereGo Multi-Surface Bluetooth Mouse',
-    vendor: 'JonTech Mobility',
-    productType: 'Travel Mouse',
-    tags: ['Travel', 'Study', 'Compact', 'Bluetooth'],
+    id: 'gid://shopify/Product/105',
+    title: 'DHT22 Digital Temperature & Humidity Sensor',
+    vendor: 'JonTech Sensors',
+    productType: 'Environmental Sensor',
+    tags: ['Sensor', 'Temperature', 'Humidity', 'IoT', 'DHT22'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9081',
-        title: 'Pocket Edition',
-        price: 1699.00,
-        compareAtPrice: 1999.00,
-        inventoryQuantity: 35,
-        sku: 'JT-AWG-BT-MINI'
+        id: 'gid://shopify/ProductVariant/1051',
+        title: 'High-Precision Module',
+        price: 195.00,
+        compareAtPrice: 240.00,
+        inventoryQuantity: 50,
+        sku: 'JT-SEN-DHT22-MOD'
       }
     ]
   },
   {
-    id: 'gid://shopify/Product/909',
-    title: 'TravelPro Folding Bluetooth Keyboard',
-    vendor: 'JonTech Mobility',
-    productType: 'Folding Keyboard',
-    tags: ['Travel', 'Study', 'Portable', 'Bluetooth'],
+    id: 'gid://shopify/Product/106',
+    title: 'HC-SR04 Ultrasonic Distance Sensor',
+    vendor: 'JonTech Sensors',
+    productType: 'Distance Sensor',
+    tags: ['Sensor', 'Ultrasonic', 'Robotics', 'Obstacle Avoidance', 'School'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9091',
-        title: 'Magnetic Tri-Fold',
-        price: 2199.00,
-        compareAtPrice: 2499.00,
-        inventoryQuantity: 19,
-        sku: 'JT-TRV-FOLD-TRI'
+        id: 'gid://shopify/ProductVariant/1061',
+        title: '5V Echo Transducer',
+        price: 85.00,
+        compareAtPrice: 110.00,
+        inventoryQuantity: 60,
+        sku: 'JT-SEN-HCSR04'
       }
     ]
   },
   {
-    id: 'gid://shopify/Product/910',
-    title: 'PocketGaN 65W Foldable Travel Adapter',
+    id: 'gid://shopify/Product/107',
+    title: 'TFmini-S Micro Solid-State LiDAR Sensor',
+    vendor: 'Benewake / JonTech',
+    productType: 'LiDAR Sensor',
+    tags: ['Sensor', 'LiDAR', 'Robotics', 'High Precision', 'Distance'],
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/1071',
+        title: 'UART / I2C 12m Rangefinder',
+        price: 1850.00,
+        compareAtPrice: 2100.00,
+        inventoryQuantity: 2, // Low inventory to demonstrate alerts
+        sku: 'JT-SEN-TFMINI-S'
+      }
+    ]
+  },
+  {
+    id: 'gid://shopify/Product/108',
+    title: '0.96 inch I2C OLED Display (128x64)',
+    vendor: 'JonTech Displays',
+    productType: 'Display Module',
+    tags: ['Display', 'OLED', 'I2C', 'Visualizer', 'Prototyping'],
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/1081',
+        title: '4-Pin I2C Blue/White',
+        price: 145.00,
+        compareAtPrice: 180.00,
+        inventoryQuantity: 38,
+        sku: 'JT-DSP-OLED-096'
+      }
+    ]
+  },
+  {
+    id: 'gid://shopify/Product/109',
+    title: 'L298N Dual H-Bridge DC Motor Driver',
     vendor: 'JonTech Power',
-    productType: 'Charger',
-    tags: ['Travel', 'Accessories', 'Fast-Charge', 'GaN'],
+    productType: 'Motor Driver',
+    tags: ['Robotics', 'Motor Driver', 'H-Bridge', 'School', 'DC Motor'],
     variants: [
       {
-        id: 'gid://shopify/ProductVariant/9101',
-        title: 'Universal Multi-Port',
-        price: 1499.00,
-        compareAtPrice: 1799.00,
+        id: 'gid://shopify/ProductVariant/1091',
+        title: '2A Peak Driver Board',
+        price: 120.00,
+        compareAtPrice: 150.00,
+        inventoryQuantity: 30,
+        sku: 'JT-MOD-L298N'
+      }
+    ]
+  },
+  {
+    id: 'gid://shopify/Product/110',
+    title: '4-Channel 5V Relay Module with Optocoupler',
+    vendor: 'JonTech Industrial',
+    productType: 'Relay Module',
+    tags: ['Module', 'Relay', 'Automation', 'Home Automation', '5V'],
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/1101',
+        title: '250VAC 10A Active Low',
+        price: 165.00,
+        compareAtPrice: 200.00,
+        inventoryQuantity: 25,
+        sku: 'JT-MOD-RELAY-4CH'
+      }
+    ]
+  },
+  {
+    id: 'gid://shopify/Product/111',
+    title: 'SG90 9g Micro Servo Motor',
+    vendor: 'TowerPro / JonTech',
+    productType: 'Actuator',
+    tags: ['Actuator', 'Servo', 'Robotics', 'School', 'STEM'],
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/1111',
+        title: '180-Degree Nylon Gear',
+        price: 95.00,
+        compareAtPrice: 125.00,
         inventoryQuantity: 40,
-        sku: 'JT-GAN-65W-UNIV'
+        sku: 'JT-ACT-SG90'
+      }
+    ]
+  },
+  {
+    id: 'gid://shopify/Product/112',
+    title: 'Master Solderless Breadboard & 65-pc Jumper Wires',
+    vendor: 'JonTech Lab',
+    productType: 'Prototyping Accessory',
+    tags: ['Prototyping', 'Breadboard', 'Wires', 'School', 'Essentials'],
+    variants: [
+      {
+        id: 'gid://shopify/ProductVariant/1121',
+        title: '830-Point MB-102 Kit',
+        price: 175.00,
+        compareAtPrice: 220.00,
+        inventoryQuantity: 55,
+        sku: 'JT-ACC-BB830-65J'
       }
     ]
   }
