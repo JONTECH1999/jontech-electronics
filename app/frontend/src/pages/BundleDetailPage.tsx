@@ -190,7 +190,7 @@ export const BundleDetailPage: React.FC = () => {
                 <span style={{ color: 'var(--kf-primary)', fontWeight: 700 }}>{bundle.discountPercent}% (-₱{discountAmount.toLocaleString()})</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid var(--kf-border)', fontSize: '1.125rem' }}>
-                <span style={{ fontWeight: 700, color: 'var(--kf-heading)' }}>KitFlow Bundle Total:</span>
+                <span style={{ fontWeight: 700, color: 'var(--kf-heading)' }}>JonTech Bundle Total:</span>
                 <span style={{ fontWeight: 800, color: 'var(--kf-primary)', fontFamily: 'JetBrains Mono, monospace' }}>
                   ₱{finalBundlePrice.toLocaleString()}
                 </span>

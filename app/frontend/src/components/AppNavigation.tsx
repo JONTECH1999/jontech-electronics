@@ -31,13 +31,15 @@ export const AppNavigation: React.FC = () => {
   return (
     <aside className="app-sidebar">
       <div className="sidebar-logo">
-        <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'var(--kf-primary-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--kf-primary)' }}>
+        <div style={{ width: '38px', height: '38px', borderRadius: '8px', background: 'var(--kf-primary-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--kf-primary)', flexShrink: 0 }}>
           <Cpu size={22} />
         </div>
-        <div>
-          <span className="sidebar-logo-text">KitFlow</span>
-          <div style={{ fontSize: '0.6875rem', color: 'var(--kf-primary)', fontFamily: 'JetBrains Mono, monospace' }}>
-            BUNDLE ENGINE
+        <div style={{ minWidth: 0 }}>
+          <div className="sidebar-logo-text" style={{ fontSize: '1.0625rem', lineHeight: 1.2, fontWeight: 800 }}>
+            JonTech Electronics
+          </div>
+          <div style={{ fontSize: '0.625rem', color: 'var(--kf-primary)', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, letterSpacing: '0.04em', marginTop: '0.15rem' }}>
+            EMBEDDED SHOPIFY APP
           </div>
         </div>
       </div>
