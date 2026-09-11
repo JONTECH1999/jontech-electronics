@@ -1,0 +1,64 @@
+{% comment %}
+  JonTech Electronics - Header Section
+{% endcomment %}
+
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+    <div class="site-header__left">
+      <a href="/" class="site-header__logo" aria-label="{{ shop.name | default: 'JonTech Electronics' }}">
+        {% render 'icon', name: 'cpu', class: 'site-header__logo-icon' %}
+        <span>{{ section.settings.logo_text | default: 'JONTECH' }}</span>
+        <span class="site-header__logo-tag">LABS</span>
+      </a>
+    </div>
+
+    <nav class="site-nav" data-site-nav role="navigation" aria-label="Main Navigation">
+      <a href="/" class="site-nav__link {% if request.path == '/' %}site-nav__link--active{% endif %}">
+        Home
+      </a>
+      <a href="/collections/all" class="site-nav__link {% if request.path contains '/collections' %}site-nav__link--active{% endif %}">
+        All Gear
+      </a>
+      <a href="#build-my-setup" class="site-nav__link">
+        Build My Setup
+      </a>
+      <a href="/#categories" class="site-nav__link">
+        Curated Kits
+      </a>
+      <a href="/#why-jontech" class="site-nav__link">
+        Why JonTech
+      </a>
+    </nav>
+
+    <div class="site-header__tools">
+      <a href="/cart" class="cart-trigger" aria-label="{{ 'header.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count-badge" data-cart-count>{{ cart.item_count | default: 0 }}</span>
+      </a>
+
+      <button
+        type="button"
+        class="mobile-nav-toggle"
+        data-mobile-menu-toggle
+        aria-expanded="false"
+        aria-label="{{ 'accessibility.nav_toggle' | t }}"
+      >
+        {% render 'icon', name: 'menu' %}
+      </button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "JONTECH"
+    }
+  ]
+}
+{% endschema %}

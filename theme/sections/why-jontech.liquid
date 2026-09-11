@@ -1,0 +1,143 @@
+{% comment %}
+  JonTech Electronics - Why JonTech Section
+{% endcomment %}
+
+<section id="why-jontech" class="why-jontech-section" style="padding: 5rem 0; border-top: 1px solid var(--color-border);" role="region" aria-label="Why JonTech">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <h2 class="section-title">
+        {{ section.settings.title | default: 'Why Choose JonTech?' }}
+      </h2>
+      <p class="section-subtitle">
+        {{ section.settings.subtitle | default: 'Engineered hardware standards backed by rigorous compatibility and reliability testing.' }}
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <!-- Item 1 -->
+      <div class="why-item">
+        <div class="why-icon-box">
+          {% render 'icon', name: 'shield' %}
+        </div>
+        <h3 class="why-title">{{ section.settings.item1_title | default: 'Curated Products' }}</h3>
+        <p class="why-desc">{{ section.settings.item1_desc | default: 'Every mouse sensor, switch type, and cable is hand-tested in our hardware lab. No white-labeled junk.' }}</p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="why-item">
+        <div class="why-icon-box">
+          {% render 'icon', name: 'zap' %}
+        </div>
+        <h3 class="why-title">{{ section.settings.item2_title | default: 'Practical Bundles' }}</h3>
+        <p class="why-desc">{{ section.settings.item2_desc | default: 'Cohesive setups that work together straight out of the box with built-in bundle savings up to 15%.' }}</p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="why-item">
+        <div class="why-icon-box">
+          {% render 'icon', name: 'truck' %}
+        </div>
+        <h3 class="why-title">{{ section.settings.item3_title | default: 'Fast Express Support' }}</h3>
+        <p class="why-desc">{{ section.settings.item3_desc | default: 'Direct support from engineers who actually understand polling rates, firmware, and ergonomic angles.' }}</p>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="why-item">
+        <div class="why-icon-box">
+          {% render 'icon', name: 'cpu' %}
+        </div>
+        <h3 class="why-title">{{ section.settings.item4_title | default: 'Reliable Technology' }}</h3>
+        <p class="why-desc">{{ section.settings.item4_desc | default: '2-year comprehensive hardware warranty on all setups with zero-hassle immediate replacements.' }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why JonTech",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why Choose JonTech?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Engineered hardware standards backed by rigorous compatibility and reliability testing."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 1"
+    },
+    {
+      "type": "text",
+      "id": "item1_title",
+      "label": "Item 1 Title",
+      "default": "Curated Products"
+    },
+    {
+      "type": "textarea",
+      "id": "item1_desc",
+      "label": "Item 1 Description",
+      "default": "Every mouse sensor, switch type, and cable is hand-tested in our hardware lab. No white-labeled junk."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 2"
+    },
+    {
+      "type": "text",
+      "id": "item2_title",
+      "label": "Item 2 Title",
+      "default": "Practical Bundles"
+    },
+    {
+      "type": "textarea",
+      "id": "item2_desc",
+      "label": "Item 2 Description",
+      "default": "Cohesive setups that work together straight out of the box with built-in bundle savings up to 15%."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 3"
+    },
+    {
+      "type": "text",
+      "id": "item3_title",
+      "label": "Item 3 Title",
+      "default": "Fast Express Support"
+    },
+    {
+      "type": "textarea",
+      "id": "item3_desc",
+      "label": "Item 3 Description",
+      "default": "Direct support from engineers who actually understand polling rates, firmware, and ergonomic angles."
+    },
+    {
+      "type": "header",
+      "content": "Pillar 4"
+    },
+    {
+      "type": "text",
+      "id": "item4_title",
+      "label": "Item 4 Title",
+      "default": "Reliable Technology"
+    },
+    {
+      "type": "textarea",
+      "id": "item4_desc",
+      "label": "Item 4 Description",
+      "default": "2-year comprehensive hardware warranty on all setups with zero-hassle immediate replacements."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why JonTech"
+    }
+  ]
+}
+{% endschema %}

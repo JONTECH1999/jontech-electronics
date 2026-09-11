@@ -1,0 +1,34 @@
+{
+  "name": "kitflow-monorepo",
+  "version": "1.0.0",
+  "description": "KitFlow Shopify Embedded App and JonTech Electronics Storefront Theme",
+  "private": true,
+  "workspaces": [
+    "app/backend",
+    "app/frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm --prefix app/backend run dev",
+    "dev:frontend": "npm --prefix app/frontend run dev",
+    "dev": "npm --prefix app run dev",
+    "build": "npm --prefix app run build",
+    "test": "npm --prefix app test",
+    "lint": "npm --prefix app run lint",
+    "typecheck": "npm --prefix app run typecheck",
+    "db:generate": "npm --prefix app/backend run db:generate",
+    "db:migrate": "npm --prefix app/backend run db:migrate",
+    "seed": "npm --prefix app/backend run seed"
+  },
+  "keywords": [
+    "shopify",
+    "embedded-app",
+    "shopify-theme",
+    "liquid",
+    "drizzle-orm",
+    "anthropic",
+    "claude",
+    "product-bundles"
+  ],
+  "author": "JonTech Engineering",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,21 @@
+{% comment %}
+  Renders a visual badge (Sale, Bundle, Stock, Tech Tag)
+  Usage: {% render 'badge', type: 'sale', text: 'Save 20%' %}
+{% endcomment %}
+{%- liquid
+  assign badge_class = 'badge--default'
+  case type
+    when 'sale'
+      assign badge_class = 'badge--sale'
+    when 'bundle'
+      assign badge_class = 'badge--bundle'
+    when 'warning'
+      assign badge_class = 'badge--warning'
+    when 'new'
+      assign badge_class = 'badge--new'
+  endcase
+-%}
+
+<span class="badge {{ badge_class }} {{ class }}">
+  {{ text }}
+</span>

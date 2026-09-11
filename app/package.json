@@ -1,0 +1,30 @@
+{
+  "name": "kitflow-app",
+  "version": "1.0.0",
+  "description": "KitFlow - Shopify Embedded Merchant App for Product Bundle Scoring, Ranking, and AI Analysis",
+  "private": true,
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev": "npm --prefix backend run dev",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "test": "npm --prefix backend test",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck",
+    "lint": "npm --prefix backend run lint",
+    "db:generate": "npm --prefix backend run db:generate",
+    "db:migrate": "npm --prefix backend run db:migrate",
+    "seed": "npm --prefix backend run seed"
+  },
+  "keywords": [
+    "shopify",
+    "embedded-app",
+    "kitflow",
+    "bundles",
+    "drizzle-orm",
+    "anthropic"
+  ],
+  "author": "JonTech Engineering",
+  "license": "UNLICENSED"
+}

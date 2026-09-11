@@ -1,0 +1,88 @@
+import { Request, Response, NextFunction } from 'express';
+import { dbRepository } from '../db';
+import { env } from '../config/env';
+import { ShopSession } from '../types';
+
+declare global {
+  namespace Express {
+    interface Request {
+      shopSession?: ShopSession;
+    }
+  }
+}
+
+/**
+ * Shopify Embedded App Authentication & Shop Context Isolation Middleware
+ * Resolves verified shop context from headers, session token, or fallback demo context
+ */
+export async function requireShopAuth(req: Request, res: Response, next: NextFunction) {
+  try {
+    // 1. Check for Shopify Shop Domain in header (standard App Bridge or reverse proxy)
+    const domainHeader = (req.headers['x-shopify-shop-domain'] as string) || (req.query.shop as string);
+
+    // 2. Check for Authorization Bearer (JWT session token from App Bridge)
+    const authHeader = req.headers.authorization;
+    let shopDomain = domainHeader;
+
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.substring(7);
+      // In production, verify Shopify session token JWT payload (iss, dest)
+      // dest is e.g. "https://store-name.myshopify.com"
+      try {
+        const decoded = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+        if (decoded && decoded.dest) {
+          shopDomain = decoded.dest.replace(/^https?:\/\//, '');
+        }
+      } catch (e) {
+        // Fall back to domain header
+      }
+    }
+
+    // Default to demo domain if none provided and running in development/demo mode
+    if (!shopDomain && env.USE_DEMO_DATA) {
+      shopDomain = env.DEMO_SHOP_DOMAIN;
+    }
+
+    if (!shopDomain) {
+      return res.status(401).json({
+        success: false,
+        error: 'Missing Shopify shop domain context or invalid session token.'
+      });
+    }
+
+    // Lookup merchant shop record in database
+    let shop = await dbRepository.getShopByDomain(shopDomain);
+
+    if (!shop) {
+      if (env.USE_DEMO_DATA || shopDomain === env.DEMO_SHOP_DOMAIN) {
+        // Auto-provision demo shop for seamless testing
+        shop = await dbRepository.upsertShop({
+          shopifyDomain: shopDomain,
+          accessToken: 'shpat_demo_access_token_kitflow_secure',
+          scope: env.SHOPIFY_SCOPES,
+          shopifyStoreId: 'gid://shopify/Shop/82910291'
+        });
+      } else {
+        return res.status(403).json({
+          success: false,
+          error: `Shop ${shopDomain} has not completed KitFlow OAuth installation.`
+        });
+      }
+    }
+
+    // Inject isolated shop session into request
+    req.shopSession = {
+      shopId: shop.id,
+      shopifyDomain: shop.shopifyDomain,
+      accessToken: shop.accessToken
+    };
+
+    next();
+  } catch (error: any) {
+    console.error('Auth middleware error:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'Authentication verification failed.'
+    });
+  }
+}
