@@ -2,10 +2,19 @@ import { describe, it, expect } from 'vitest';
 import { dbRepository } from '../../backend/src/db';
 
 describe('Multi-Tenant Data Isolation (Shop Scoping)', () => {
-  const shopAId = 'shop_tenant_A';
-  const shopBId = 'shop_tenant_B';
-
   it('ensures Shop A cannot access bundles created by Shop B', async () => {
+    // 0. Provision tenant shops to satisfy database foreign keys
+    const shopA = await dbRepository.upsertShop({
+      shopifyDomain: 'tenant-a-isolation.myshopify.com',
+      accessToken: 'token_tenant_a'
+    });
+    const shopB = await dbRepository.upsertShop({
+      shopifyDomain: 'tenant-b-isolation.myshopify.com',
+      accessToken: 'token_tenant_b'
+    });
+    const shopAId = shopA.id;
+    const shopBId = shopB.id;
+
     // 1. Create a bundle belonging exclusively to Shop B
     const bundleB = await dbRepository.createBundle(shopBId, {
       name: 'Shop B Exclusive Gaming Bundle',
