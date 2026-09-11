@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "badge_text": "404 // ROUTE NOT FOUND",
+        "headline": "Hardware setup not found.",
+        "subtext": "The page or gear configuration you are looking for has been relocated or archived.",
+        "primary_cta_text": "Return to Storefront",
+        "primary_cta_url": "/",
+        "secondary_cta_text": "Build My Setup",
+        "secondary_cta_url": "/#build-my-setup",
+        "alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "hero_banner"
+  ]
+}

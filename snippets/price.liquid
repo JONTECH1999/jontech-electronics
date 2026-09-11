@@ -1,0 +1,36 @@
+{% comment %}
+  Renders a price element with regular, compare-at, and discount calculations
+  Usage: {% render 'price', product: product, show_savings: true %}
+{% endcomment %}
+{%- liquid
+  assign target = product
+  if target == blank
+    assign target = variant
+  endif
+
+  assign price = target.price | default: 0
+  assign compare_at_price = target.compare_at_price | default: 0
+  assign on_sale = false
+  if compare_at_price > price
+    assign on_sale = true
+    assign savings = compare_at_price | minus: price
+    assign savings_percent = savings | times: 100.0 | divided_by: compare_at_price | round
+  endif
+-%}
+
+<div class="price-container {% if on_sale %}price--on-sale{% endif %}">
+  <span class="price-current">
+    {{ price | money }}
+  </span>
+
+  {%- if on_sale -%}
+    <s class="price-compare">
+      {{ compare_at_price | money }}
+    </s>
+    {%- if show_savings and savings_percent > 0 -%}
+      <span class="price-badge-discount">
+        Save {{ savings_percent }}%
+      </span>
+    {%- endif -%}
+  {%- endif -%}
+</div>

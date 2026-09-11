@@ -1,0 +1,186 @@
+{% comment %}
+  JonTech Electronics - Standout Interactive Feature
+  "Build My Setup" - Deterministic Setup Matcher
+{% endcomment %}
+
+<section id="build-my-setup" class="tech-finder-section" role="region" aria-label="Interactive Setup Matcher">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div style="margin-bottom: 0.75rem;">
+        {% render 'badge', type: 'bundle', text: 'INTERACTIVE SETUP MATCHER' %}
+      </div>
+      <h2 class="section-title">
+        {{ section.settings.title | default: 'Build My Setup' }}
+      </h2>
+      <p class="section-subtitle">
+        {{ section.settings.subtitle | default: 'Answer 3 quick questions and our deterministic matching engine will configure your ideal setup with verified bundle savings.' }}
+      </p>
+    </div>
+
+    <div class="tech-finder-card" data-tech-finder>
+      <!-- Progress Bar & Step Indicators -->
+      <div class="tech-finder-progress" aria-hidden="true">
+        <div class="step-indicator active" data-indicator="1">
+          <span class="step-num">1</span>
+          <span>Category</span>
+        </div>
+        <div class="step-indicator" data-indicator="2">
+          <span class="step-num">2</span>
+          <span>Budget</span>
+        </div>
+        <div class="step-indicator" data-indicator="3">
+          <span class="step-num">3</span>
+          <span>Priority</span>
+        </div>
+        <div class="step-indicator" data-indicator="4">
+          <span class="step-num">4</span>
+          <span>Recommendation</span>
+        </div>
+      </div>
+
+      <!-- Question 1: What are you shopping for? -->
+      <div class="quiz-step active" data-step="1">
+        <h3 class="quiz-step-title">Question 1: What are you shopping for?</h3>
+        <div class="quiz-options-grid">
+          <button type="button" class="quiz-option-btn" data-question="shoppingFor" data-option="gaming">
+            <span class="quiz-option-title">🎮 Gaming</span>
+            <span class="quiz-option-desc">Esports, high-refresh rates, zero latency, tactile mechanical response</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="shoppingFor" data-option="work">
+            <span class="quiz-option-title">💼 Work & Coding</span>
+            <span class="quiz-option-desc">Ergonomics, multi-screen flow, silent office switches, conference audio</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="shoppingFor" data-option="study">
+            <span class="quiz-option-title">📚 Study & Campus</span>
+            <span class="quiz-option-desc">Library-quiet clicks, eye-care lighting, compact multi-OS tablet accessories</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="shoppingFor" data-option="travel">
+            <span class="quiz-option-title">✈️ Travel & Nomad</span>
+            <span class="quiz-option-desc">Ultra-lightweight, folding peripherals, deep ANC, global GaN fast charging</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question 2: What's your budget? -->
+      <div class="quiz-step" data-step="2">
+        <h3 class="quiz-step-title">Question 2: What's your budget?</h3>
+        <div class="quiz-options-grid">
+          <button type="button" class="quiz-option-btn" data-question="budget" data-option="budget">
+            <span class="quiz-option-title">Under ₱5,000</span>
+            <span class="quiz-option-desc">Essential high-value peripherals carefully selected for durable everyday reliability</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="budget" data-option="mid">
+            <span class="quiz-option-title">₱5,000 – ₱15,000</span>
+            <span class="quiz-option-desc">Enthusiast-tier mechanical switches, high-DPI sensors, and spatial headsets</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="budget" data-option="premium">
+            <span class="quiz-option-title">₱15,000+</span>
+            <span class="quiz-option-desc">Flagship tournament hardware: Hall Effect magnetic switches and audiophile gear</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question 3: What matters most? -->
+      <div class="quiz-step" data-step="3">
+        <h3 class="quiz-step-title">Question 3: What matters most to you?</h3>
+        <div class="quiz-options-grid">
+          <button type="button" class="quiz-option-btn" data-question="priority" data-option="performance">
+            <span class="quiz-option-title">⚡ Raw Performance</span>
+            <span class="quiz-option-desc">Lowest possible input latency, maximum sensor precision, and high actuation speed</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="priority" data-option="portability">
+            <span class="quiz-option-title">🎒 Portability & Battery</span>
+            <span class="quiz-option-desc">Compact footprint, multi-week battery longevity, and easy backpack packing</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="priority" data-option="comfort">
+            <span class="quiz-option-title">🧘 Ergonomics & Comfort</span>
+            <span class="quiz-option-desc">Orthopedic neutral wrist angle, low strain, split layout, and whisper-quiet operation</span>
+          </button>
+          <button type="button" class="quiz-option-btn" data-question="priority" data-option="value">
+            <span class="quiz-option-title">💎 Maximum Value</span>
+            <span class="quiz-option-desc">Highest specification-to-price ratio with verified long-term durability</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Matched Setup Result -->
+      <div class="quiz-step" data-step="4">
+        <div class="finder-result-box" data-result-box>
+          <div class="finder-result-header">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                <span class="badge badge--bundle" data-result-badge>Matched Setup</span>
+                <span style="font-size: 0.8125rem; color: var(--color-primary); font-family: var(--font-mono);">DETERMINISTIC SCORE: 96/100</span>
+              </div>
+              <h3 class="section-title" style="font-size: 1.75rem;" data-result-title>Loading Setup...</h3>
+              <p style="color: var(--color-text-muted); font-size: 0.9375rem; max-width: 650px;" data-result-desc></p>
+            </div>
+            <button type="button" class="btn btn--outline btn--sm" data-reset-btn>
+              {% render 'icon', name: 'close' %}
+              <span>Start Over</span>
+            </button>
+          </div>
+
+          <h4 style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-dim); margin-bottom: 1rem;">
+            Included Hardware in Curated Bundle
+          </h4>
+          <ul class="finder-result-items" data-result-items>
+            <!-- Injected dynamically by tech-finder.js -->
+          </ul>
+
+          <div class="finder-pricing-summary">
+            <div>
+              <span style="font-size: 0.8125rem; color: var(--color-text-dim); text-transform: uppercase;">A la carte price:</span>
+              <span style="text-decoration: line-through; color: var(--color-text-muted); margin-left: 0.5rem;" data-result-original-price>₱0</span>
+            </div>
+            <div>
+              <span style="font-size: 0.875rem; color: var(--color-text-muted);">KitFlow Bundle Total:</span>
+              <div class="finder-price-val" data-result-final-price>₱0</div>
+            </div>
+            <div>
+              <span class="badge badge--sale" data-result-savings>Bundle Savings</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button type="button" class="btn btn--primary btn--lg" data-add-all-btn>
+              {% render 'icon', name: 'cart' %}
+              <span>Add Complete Setup to Cart</span>
+            </button>
+            <a href="/collections/all" class="btn btn--secondary btn--lg">
+              <span>View Individual Products</span>
+              {% render 'icon', name: 'chevron-right' %}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ 'tech-finder.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Tech Finder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Build My Setup"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Answer 3 quick questions and our deterministic matching engine will configure your ideal setup with verified bundle savings."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tech Finder"
+    }
+  ]
+}
+{% endschema %}

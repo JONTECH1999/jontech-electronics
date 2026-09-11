@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "badge_text": "JONTECH CURATED WORKSPACES 2026",
+        "headline": "Technology that fits the way you live.",
+        "subtext": "Curated workspace gear, gaming essentials, and mobile workstation setups engineered for peak productivity and performance.",
+        "primary_cta_text": "Explore Products",
+        "primary_cta_url": "/collections/all",
+        "secondary_cta_text": "Build My Setup",
+        "secondary_cta_url": "#build-my-setup",
+        "alignment": "left"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Featured Technology & Bundles",
+        "subtitle": "Carefully selected and rigorously tested setups ready for immediate deployment.",
+        "products_to_show": 8
+      }
+    },
+    "category_showcase": {
+      "type": "category-showcase",
+      "settings": {
+        "title": "Curated Setup Categories",
+        "subtitle": "Engineered equipment collections tailored for specific workflows."
+      }
+    },
+    "tech_finder": {
+      "type": "tech-finder",
+      "settings": {
+        "title": "Build My Setup",
+        "subtitle": "Answer 3 quick questions and our deterministic matching engine will configure your ideal setup with verified bundle savings."
+      }
+    },
+    "why_jontech": {
+      "type": "why-jontech",
+      "settings": {
+        "title": "Why Choose JonTech?",
+        "subtitle": "Built by engineers for professionals, creators, and enthusiasts."
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "featured_products",
+    "category_showcase",
+    "tech_finder",
+    "why_jontech"
+  ]
+}

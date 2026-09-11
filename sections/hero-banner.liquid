@@ -1,0 +1,145 @@
+{% comment %}
+  JonTech Electronics - Hero Banner Section
+  Fully configurable via theme schema
+{% endcomment %}
+
+<section class="hero-section text-{{ section.settings.alignment }}" role="region" aria-label="Hero Banner">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          {% render 'badge', type: 'bundle', text: section.settings.badge_text %}
+        </div>
+
+        <h1 class="hero-title">
+          {{ section.settings.headline | default: 'Technology that fits the way you live.' }}
+        </h1>
+
+        <p class="hero-subtext">
+          {{ section.settings.subtext | default: 'Curated workspace gear, gaming essentials, and mobile workstation setups engineered for peak productivity and performance.' }}
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="{{ section.settings.primary_cta_url | default: '/collections/all' }}" class="btn btn--primary btn--lg">
+            {{ section.settings.primary_cta_text | default: 'Explore Products' }}
+            {% render 'icon', name: 'chevron-right' %}
+          </a>
+
+          <a href="{{ section.settings.secondary_cta_url | default: '#build-my-setup' }}" class="btn btn--secondary btn--lg">
+            {{ section.settings.secondary_cta_text | default: 'Build My Setup' }}
+            {% render 'icon', name: 'zap' %}
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-preview">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              {% render 'icon', name: 'cpu', class: 'text-primary' %}
+              <span style="font-weight: 700; color: #fff; font-size: 1.125rem;">Curated Setup Preview</span>
+            </div>
+            {% render 'badge', type: 'sale', text: 'VERIFIED BUNDLE' %}
+          </div>
+
+          <p style="color: var(--color-text-muted); font-size: 0.9375rem; margin-bottom: 1.25rem;">
+            Every setup is mathematically scored and hand-tested for cable-free ergonomics, thermal efficiency, and zero input lag.
+          </p>
+
+          <div style="background: var(--color-bg); border-radius: var(--radius-md); padding: 1rem; border: 1px solid var(--color-border); margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+              <span style="color: var(--color-text-muted);">Hardware Compatibility</span>
+              <span style="color: var(--color-sale); font-weight: 700;">100% Tested</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.5rem;">
+              <span style="color: var(--color-text-muted);">Average Setup Savings</span>
+              <span style="color: var(--color-primary); font-weight: 700;">₱1,450 / bundle</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+              <span style="color: var(--color-text-muted);">Dispatch Status</span>
+              <span style="color: #fff; font-weight: 600;">Immediate Warehouse Stock</span>
+            </div>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <h4>99.4%</h4>
+              <p>Setup Satisfaction</p>
+            </div>
+            <div class="hero-stat-item">
+              <h4>0ms</h4>
+              <p>Wireless Latency</p>
+            </div>
+            <div class="hero-stat-item">
+              <h4>2-Yr</h4>
+              <p>Warranty Care</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Top Badge Text",
+      "default": "JONTECH CURATED WORKSPACES 2026"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Technology that fits the way you live."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Supporting Text",
+      "default": "Curated workspace gear, gaming essentials, and mobile workstation setups engineered for peak productivity and performance."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary CTA Label",
+      "default": "Explore Products"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_url",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA Label",
+      "default": "Build My Setup"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_url",
+      "label": "Secondary CTA Link"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

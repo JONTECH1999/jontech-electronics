@@ -1,0 +1,84 @@
+{
+  "general": {
+    "skip_to_content": "Skip to content",
+    "search": "Search tech setups, accessories, and gear...",
+    "close": "Close",
+    "menu": "Menu",
+    "currency_format": "₱{{ amount }}"
+  },
+  "header": {
+    "cart": "Cart",
+    "cart_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    }
+  },
+  "sections": {
+    "hero": {
+      "headline": "Technology that fits the way you live.",
+      "subtext": "Curated workspace gear, gaming essentials, and mobile workstation setups engineered for peak productivity and performance.",
+      "primary_cta": "Explore Products",
+      "secondary_cta": "Build My Setup"
+    },
+    "featured_products": {
+      "title": "Featured Technology & Bundles",
+      "subtitle": "Carefully selected and rigorously tested setups ready for immediate deployment."
+    },
+    "category_showcase": {
+      "title": "Curated Setup Categories",
+      "subtitle": "Engineered equipment collections tailored for specific workflows."
+    },
+    "why_jontech": {
+      "title": "Why Choose JonTech?",
+      "subtitle": "Built by engineers for professionals, creators, and enthusiasts."
+    },
+    "tech_finder": {
+      "badge": "Interactive Setup Matcher",
+      "title": "Build My Setup",
+      "subtitle": "Answer 3 quick questions and our deterministic matching engine will configure your ideal setup with verified bundle savings.",
+      "step_1": "1. What are you shopping for?",
+      "step_2": "2. What is your budget?",
+      "step_3": "3. What matters most to you?",
+      "calculating": "Calculating recommended setup...",
+      "recommended_heading": "Recommended Setup Package",
+      "estimated_total": "Estimated Total",
+      "bundle_savings": "Bundle Savings",
+      "view_products": "View Recommended Products",
+      "add_all_to_cart": "Add Complete Setup to Cart",
+      "reset": "Start Over"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is currently empty.",
+      "continue_shopping": "Continue Shopping",
+      "product": "Product",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "taxes_included_shipping_at_checkout": "Taxes calculated at checkout. Free shipping on bundles over ₱3,500.",
+      "checkout": "Proceed to Checkout",
+      "remove": "Remove item",
+      "note": "Order notes / delivery instructions"
+    },
+    "collection": {
+      "all_products": "All Products",
+      "sort_by": "Sort by",
+      "filter": "Filter",
+      "no_products": "No products found in this collection."
+    },
+    "product": {
+      "in_stock": "In Stock — Ready to ship",
+      "low_stock": "Low Stock — Only {{ count }} units remaining",
+      "out_of_stock": "Sold Out",
+      "add_to_cart": "Add to Cart",
+      "adding": "Adding...",
+      "added": "Added to Cart!",
+      "bundle_offer": "Pair with complementary setup gear and save up to 15%."
+    }
+  },
+  "accessibility": {
+    "loading": "Loading...",
+    "nav_toggle": "Toggle navigation menu",
+    "cart_drawer": "Shopping cart drawer"
+  }
+}

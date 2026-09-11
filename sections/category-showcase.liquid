@@ -1,0 +1,179 @@
+{% comment %}
+  JonTech Electronics - Category Showcase Section
+{% endcomment %}
+
+<section id="categories" class="category-showcase-section" style="padding: 5rem 0;" role="region" aria-label="Curated Categories">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ section.settings.title | default: 'Curated Setup Categories' }}
+      </h2>
+      <p class="section-subtitle">
+        {{ section.settings.subtitle | default: 'Engineered equipment collections tailored for specific workflows and lifestyles.' }}
+      </p>
+    </div>
+
+    <div class="category-grid">
+      <!-- Category 1: Gaming -->
+      <a href="{{ section.settings.cat1_url | default: '/collections/gaming' }}" class="category-card">
+        <div class="category-card__icon">
+          {% render 'icon', name: 'zap' %}
+        </div>
+        <h3 class="category-card__title">{{ section.settings.cat1_title | default: 'Gaming Battlestations' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat1_desc | default: 'Rapid-trigger keyboards, high-DPI mice, and acoustic surround audio built for competitive esports.' }}</p>
+        <span class="category-card__link">
+          Explore Gaming Gear
+          {% render 'icon', name: 'chevron-right' %}
+        </span>
+      </a>
+
+      <!-- Category 2: Work -->
+      <a href="{{ section.settings.cat2_url | default: '/collections/work' }}" class="category-card">
+        <div class="category-card__icon">
+          {% render 'icon', name: 'cpu' %}
+        </div>
+        <h3 class="category-card__title">{{ section.settings.cat2_title | default: 'Productivity & Work' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat2_desc | default: 'Ergonomic split mechanicals, multi-device flow tracking, and noise-cancelling conference audio.' }}</p>
+        <span class="category-card__link">
+          Explore Work Gear
+          {% render 'icon', name: 'chevron-right' %}
+        </span>
+      </a>
+
+      <!-- Category 3: Study -->
+      <a href="{{ section.settings.cat3_url | default: '/collections/study' }}" class="category-card">
+        <div class="category-card__icon">
+          {% render 'icon', name: 'shield' %}
+        </div>
+        <h3 class="category-card__title">{{ section.settings.cat3_title | default: 'Study & Campus' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat3_desc | default: 'Silent library switches, compact eye-care lighting, and multi-OS tablet accessories.' }}</p>
+        <span class="category-card__link">
+          Explore Student Gear
+          {% render 'icon', name: 'chevron-right' %}
+        </span>
+      </a>
+
+      <!-- Category 4: Travel -->
+      <a href="{{ section.settings.cat4_url | default: '/collections/travel' }}" class="category-card">
+        <div class="category-card__icon">
+          {% render 'icon', name: 'truck' %}
+        </div>
+        <h3 class="category-card__title">{{ section.settings.cat4_title | default: 'Mobile Road Warrior' }}</h3>
+        <p class="category-card__desc">{{ section.settings.cat4_desc | default: 'Foldable keyboards, GaN fast chargers, and deep cabin-noise cancelling headsets.' }}</p>
+        <span class="category-card__link">
+          Explore Travel Gear
+          {% render 'icon', name: 'chevron-right' %}
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Curated Setup Categories"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Engineered equipment collections tailored for specific workflows."
+    },
+    {
+      "type": "header",
+      "content": "Category 1: Gaming"
+    },
+    {
+      "type": "text",
+      "id": "cat1_title",
+      "label": "Category 1 Title",
+      "default": "Gaming Battlestations"
+    },
+    {
+      "type": "textarea",
+      "id": "cat1_desc",
+      "label": "Category 1 Description",
+      "default": "Rapid-trigger keyboards, high-DPI mice, and acoustic surround audio built for competitive esports."
+    },
+    {
+      "type": "url",
+      "id": "cat1_url",
+      "label": "Category 1 Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 2: Work"
+    },
+    {
+      "type": "text",
+      "id": "cat2_title",
+      "label": "Category 2 Title",
+      "default": "Productivity & Work"
+    },
+    {
+      "type": "textarea",
+      "id": "cat2_desc",
+      "label": "Category 2 Description",
+      "default": "Ergonomic split mechanicals, multi-device flow tracking, and noise-cancelling conference audio."
+    },
+    {
+      "type": "url",
+      "id": "cat2_url",
+      "label": "Category 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 3: Study"
+    },
+    {
+      "type": "text",
+      "id": "cat3_title",
+      "label": "Category 3 Title",
+      "default": "Study & Campus"
+    },
+    {
+      "type": "textarea",
+      "id": "cat3_desc",
+      "label": "Category 3 Description",
+      "default": "Silent library switches, compact eye-care lighting, and multi-OS tablet accessories."
+    },
+    {
+      "type": "url",
+      "id": "cat3_url",
+      "label": "Category 3 Link"
+    },
+    {
+      "type": "header",
+      "content": "Category 4: Travel"
+    },
+    {
+      "type": "text",
+      "id": "cat4_title",
+      "label": "Category 4 Title",
+      "default": "Mobile Road Warrior"
+    },
+    {
+      "type": "textarea",
+      "id": "cat4_desc",
+      "label": "Category 4 Description",
+      "default": "Foldable keyboards, GaN fast chargers, and deep cabin-noise cancelling headsets."
+    },
+    {
+      "type": "url",
+      "id": "cat4_url",
+      "label": "Category 4 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Showcase"
+    }
+  ]
+}
+{% endschema %}

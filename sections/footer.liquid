@@ -1,0 +1,71 @@
+{% comment %}
+  JonTech Electronics - Footer Section
+{% endcomment %}
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="site-header__logo">
+          {% render 'icon', name: 'cpu', class: 'site-header__logo-icon' %}
+          <span>{{ section.settings.footer_brand_name | default: 'JONTECH ELECTRONICS' }}</span>
+        </div>
+        <p>{{ section.settings.footer_bio | default: 'Curating modern workstations, esports gear, and travel-ready electronics engineered for seamless performance.' }}</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Curated Setups</h4>
+        <ul class="footer-links">
+          <li><a href="/collections/gaming">Gaming Battlestation</a></li>
+          <li><a href="/collections/work">Productivity Studio</a></li>
+          <li><a href="/collections/study">Student Mobility Kit</a></li>
+          <li><a href="/collections/travel">Nomad Road Warrior</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Engineering & Trust</h4>
+        <ul class="footer-links">
+          <li><a href="#why-jontech">Why JonTech</a></li>
+          <li><a href="#build-my-setup">Setup Matcher</a></li>
+          <li><a href="/pages/warranty">2-Year Precision Warranty</a></li>
+          <li><a href="/pages/shipping">Fast Express Dispatch</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-title">Customer Care</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:support@jontech-electronics.com">support@jontech-electronics.com</a></li>
+          <li><a href="/pages/returns">30-Day Setup Return Policy</a></li>
+          <li><a href="/pages/track">Track Order Status</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} JonTech Electronics. All rights reserved.</p>
+      <p>Powered by KitFlow Merchant Engine</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_brand_name",
+      "label": "Brand Name",
+      "default": "JONTECH ELECTRONICS"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_bio",
+      "label": "Bio Description",
+      "default": "Curating modern workstations, esports gear, and travel-ready electronics engineered for seamless performance."
+    }
+  ]
+}
+{% endschema %}

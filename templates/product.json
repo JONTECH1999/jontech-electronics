@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main_product": {
+      "type": "product-main",
+      "settings": {
+        "show_vendor": true
+      }
+    },
+    "tech_finder_upsell": {
+      "type": "tech-finder",
+      "settings": {
+        "title": "Need a Complete Setup?",
+        "subtitle": "Pair this hardware with complementary verified gear using our interactive matching engine."
+      }
+    }
+  },
+  "order": [
+    "main_product",
+    "tech_finder_upsell"
+  ]
+}

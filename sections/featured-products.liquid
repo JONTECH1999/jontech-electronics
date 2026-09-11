@@ -1,0 +1,199 @@
+{% comment %}
+  JonTech Electronics - Featured Products & Bundles Section
+{% endcomment %}
+
+<section class="featured-products-section" style="padding: 5rem 0;" role="region" aria-label="Featured Products">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <h2 class="section-title">
+        {{ section.settings.title | default: 'Featured Technology & Bundles' }}
+      </h2>
+      <p class="section-subtitle">
+        {{ section.settings.subtitle | default: 'Carefully selected and rigorously tested setups ready for immediate deployment.' }}
+      </p>
+    </div>
+
+    {%- assign selected_collection = collections[section.settings.collection] -%}
+    {%- assign limit = section.settings.products_to_show | default: 8 -%}
+
+    <div class="product-grid">
+      {%- if selected_collection != blank and selected_collection.products_count > 0 -%}
+        {%- for product in selected_collection.products limit: limit -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%}
+          Curated realistic fallback cards when previewing without imported products
+        {%- endcomment -%}
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <div class="product-card__placeholder">
+              {% render 'icon', name: 'cpu' %}
+              <span>Apex Battlestation Gaming Bundle</span>
+            </div>
+            <div class="product-card__badges">
+              {% render 'badge', type: 'sale', text: 'SAVE 12%' %}
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #1' %}
+            </div>
+          </div>
+          <div class="product-card__content">
+            <p class="product-card__vendor">JonTech Gaming</p>
+            <h3 class="product-card__title">
+              <a href="/products/apex-battlestation" class="product-card__title-link">Apex Battlestation Gaming Bundle</a>
+            </h3>
+            <div class="product-card__price">
+              <div class="price-container price--on-sale">
+                <span class="price-current">₱8,499.00</span>
+                <s class="price-compare">₱9,696.00</s>
+                <span class="price-badge-discount">Save 12%</span>
+              </div>
+            </div>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--sm btn--full">
+                {% render 'icon', name: 'cart' %}
+                <span>Add Bundle to Cart</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <div class="product-card__placeholder">
+              {% render 'icon', name: 'zap' %}
+              <span>Pro-Developer Dual Workstation Kit</span>
+            </div>
+            <div class="product-card__badges">
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #2' %}
+            </div>
+          </div>
+          <div class="product-card__content">
+            <p class="product-card__vendor">JonTech Studio</p>
+            <h3 class="product-card__title">
+              <a href="/products/pro-developer-kit" class="product-card__title-link">Pro-Developer Dual Workstation Kit</a>
+            </h3>
+            <div class="product-card__price">
+              <div class="price-container price--on-sale">
+                <span class="price-current">₱11,499.00</span>
+                <s class="price-compare">₱13,296.00</s>
+                <span class="price-badge-discount">Save 14%</span>
+              </div>
+            </div>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--sm btn--full">
+                {% render 'icon', name: 'cart' %}
+                <span>Add Bundle to Cart</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <div class="product-card__placeholder">
+              {% render 'icon', name: 'truck' %}
+              <span>Nomad Road Warrior Travel Tech Pack</span>
+            </div>
+            <div class="product-card__badges">
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #3' %}
+            </div>
+          </div>
+          <div class="product-card__content">
+            <p class="product-card__vendor">JonTech Mobility</p>
+            <h3 class="product-card__title">
+              <a href="/products/nomad-road-warrior" class="product-card__title-link">Nomad Road Warrior Travel Tech Pack</a>
+            </h3>
+            <div class="product-card__price">
+              <div class="price-container price--on-sale">
+                <span class="price-current">₱7,299.00</span>
+                <s class="price-compare">₱8,196.00</s>
+                <span class="price-badge-discount">Save 11%</span>
+              </div>
+            </div>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--sm btn--full">
+                {% render 'icon', name: 'cart' %}
+                <span>Add Bundle to Cart</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <div class="product-card__placeholder">
+              {% render 'icon', name: 'shield' %}
+              <span>MasterCraft MX Multi-Device Mouse</span>
+            </div>
+            <div class="product-card__badges">
+              {% render 'badge', type: 'new', text: 'IN STOCK' %}
+            </div>
+          </div>
+          <div class="product-card__content">
+            <p class="product-card__vendor">JonTech Precision</p>
+            <h3 class="product-card__title">
+              <a href="/products/mastercraft-mouse" class="product-card__title-link">MasterCraft MX Multi-Device Mouse</a>
+            </h3>
+            <div class="product-card__price">
+              <div class="price-container">
+                <span class="price-current">₱3,499.00</span>
+              </div>
+            </div>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--sm btn--full">
+                {% render 'icon', name: 'cart' %}
+                <span>Add to Cart</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      {%- endif -%}
+    </div>
+
+    <div style="text-align: center; margin-top: 3.5rem;">
+      <a href="/collections/all" class="btn btn--outline btn--lg">
+        View All Equipment & Kits
+        {% render 'icon', name: 'chevron-right' %}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Technology & Bundles"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Carefully selected and rigorously tested setups ready for immediate deployment."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "label": "Products to show",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

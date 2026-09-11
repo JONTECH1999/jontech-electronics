@@ -1,0 +1,179 @@
+{% comment %}
+  JonTech Electronics - Cart Main Section
+{% endcomment %}
+
+<section class="cart-page" role="region" aria-label="Shopping Cart">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">Your Setup Cart</h1>
+      <p class="section-subtitle">
+        Review your selected equipment and bundle packages before secure checkout.
+      </p>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="/cart" method="post" novalidate>
+        <div class="cart-table-wrapper">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th aria-label="Actions"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for item in cart.items -%}
+                <tr>
+                  <!-- Product Column -->
+                  <td>
+                    <div class="cart-item-flex">
+                      {%- if item.image != blank -%}
+                        <img
+                          src="{{ item.image | image_url: width: 150 }}"
+                          alt="{{ item.title | escape }}"
+                          class="cart-item-thumb"
+                          width="72"
+                          height="72"
+                        >
+                      {%- else -%}
+                        <div class="cart-item-thumb" style="display: flex; align-items: center; justify-content: center; background: #131b2a;">
+                          {% render 'icon', name: 'cpu' %}
+                        </div>
+                      {%- endif -%}
+
+                      <div>
+                        <div class="cart-item-title">
+                          <a href="{{ item.url }}">{{ item.product.title }}</a>
+                        </div>
+                        {%- unless item.product.has_only_default_variant -%}
+                          <div class="cart-item-variant">{{ item.variant.title }}</div>
+                        {%- endunless -%}
+
+                        {%- if item.line_level_discount_allocations.size > 0 -%}
+                          <div style="margin-top: 0.25rem;">
+                            {%- for discount in item.line_level_discount_allocations -%}
+                              {% render 'badge', type: 'sale', text: discount.discount_application.title %}
+                            {%- endfor -%}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </td>
+
+                  <!-- Unit Price -->
+                  <td>
+                    <div class="price-container">
+                      <span class="price-current">{{ item.original_price | money }}</span>
+                    </div>
+                  </td>
+
+                  <!-- Quantity -->
+                  <td>
+                    <div class="quantity-selector" data-qty-wrapper style="display: inline-flex;">
+                      <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="quantity-btn" aria-label="Decrease quantity">-</a>
+                      <input
+                        type="number"
+                        name="updates[]"
+                        id="updates_{{ item.key }}"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        class="quantity-input"
+                        aria-label="Quantity for {{ item.title }}"
+                      >
+                      <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="quantity-btn" aria-label="Increase quantity">+</a>
+                    </div>
+                  </td>
+
+                  <!-- Line Total -->
+                  <td>
+                    <div class="price-current">
+                      {{ item.final_line_price | money }}
+                    </div>
+                  </td>
+
+                  <!-- Remove -->
+                  <td style="text-align: right;">
+                    <a
+                      href="/cart/change?line={{ forloop.index }}&quantity=0"
+                      class="cart-item-remove"
+                      aria-label="Remove {{ item.title }}"
+                    >
+                      {% render 'icon', name: 'trash' %}
+                    </a>
+                  </td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Cart Summary Card -->
+        <div class="cart-summary-card">
+          <h3 style="font-size: 1.25rem; margin-bottom: 1.25rem; color: #fff;">Order Summary</h3>
+
+          <div class="cart-summary-row">
+            <span style="color: var(--color-text-muted);">Estimated Subtotal</span>
+            <span style="font-weight: 700; color: #fff;">{{ cart.total_price | money }}</span>
+          </div>
+
+          <div style="font-size: 0.8125rem; color: var(--color-text-dim); margin-bottom: 1.5rem; line-height: 1.5;">
+            Taxes calculated at checkout. All orders include JonTech 2-Year Precision Warranty and express courier dispatch.
+          </div>
+
+          <!-- Order Note -->
+          <div style="margin-bottom: 1.5rem;">
+            <label for="CartNote" style="display: block; font-size: 0.8125rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">
+              Delivery instructions / order notes (optional):
+            </label>
+            <textarea
+              name="note"
+              id="CartNote"
+              rows="3"
+              style="width: 100%; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem; color: #fff; resize: vertical;"
+            >{{ cart.note }}</textarea>
+          </div>
+
+          <button type="submit" name="checkout" class="btn btn--primary btn--lg btn--full">
+            Proceed to Checkout
+            {% render 'icon', name: 'chevron-right' %}
+          </button>
+
+          <div style="margin-top: 1rem; text-align: center;">
+            <a href="/collections/all" style="font-size: 0.875rem; color: var(--color-text-muted);">
+              ← Continue Shopping
+            </a>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <!-- Empty Cart State -->
+      <div style="text-align: center; padding: 5rem 2rem; background: var(--color-surface); border-radius: var(--radius-xl); border: 1px solid var(--color-border); max-width: 640px; margin: 0 auto;">
+        <div style="color: var(--color-text-dim); margin-bottom: 1.5rem;">
+          {% render 'icon', name: 'cart', class: 'placeholder-icon' %}
+        </div>
+        <h2 style="font-size: 1.75rem; margin-bottom: 0.75rem; color: #fff;">Your cart is currently empty</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 2rem; line-height: 1.6;">
+          You haven't added any electronics setups or accessories yet. Use our interactive setup builder to find an engineered gear package matching your budget.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="/#build-my-setup" class="btn btn--primary btn--lg">
+            Build My Setup
+          </a>
+          <a href="/collections/all" class="btn btn--secondary btn--lg">
+            Browse All Gear
+          </a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Main",
+  "settings": []
+}
+{% endschema %}
