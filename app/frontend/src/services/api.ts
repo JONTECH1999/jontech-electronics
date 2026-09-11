@@ -29,9 +29,16 @@ async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
     headers
   });
 
-  const data = await response.json();
+  const text = await response.text();
+  let data: any = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch {
+    throw new Error(`Server returned invalid response (HTTP ${response.status}). Please check backend service.`);
+  }
+
   if (!response.ok || data.success === false) {
-    const errorMsg = data.error || `HTTP error ${response.status}: ${response.statusText}`;
+    const errorMsg = data.error || `HTTP error ${response.status}: ${response.statusText || 'Service unavailable'}`;
     throw new Error(errorMsg);
   }
 
