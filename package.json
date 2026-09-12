@@ -10,14 +10,15 @@
   "scripts": {
     "dev:backend": "npm --prefix app/backend run dev",
     "dev:frontend": "npm --prefix app/frontend run dev",
-    "dev": "npm --prefix app run dev",
+    "dev": "concurrently -k -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "build": "npm --prefix app run build",
     "test": "npm --prefix app test",
     "lint": "npm --prefix app run lint",
     "typecheck": "npm --prefix app run typecheck",
     "db:generate": "npm --prefix app/backend run db:generate",
     "db:migrate": "npm --prefix app/backend run db:migrate",
-    "seed": "npm --prefix app/backend run seed"
+    "seed": "npm --prefix app/backend run seed",
+    "sync:shopify": "npx tsx app/scripts/sync-products-to-shopify.ts"
   },
   "keywords": [
     "shopify",
@@ -30,5 +31,8 @@
     "product-bundles"
   ],
   "author": "JonTech Engineering",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
 }

@@ -12,7 +12,7 @@ import {
 
 const getShopDomain = (): string => {
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get('shop') || localStorage.getItem('kitflow_shop') || 'jontech-electronics.myshopify.com';
+  return urlParams.get('shop') || localStorage.getItem('kitflow_shop') || 'jontech-electronics-xs08gbw3.myshopify.com';
 };
 
 async function request<T>(url: string, options: RequestInit = {}): Promise<T> {

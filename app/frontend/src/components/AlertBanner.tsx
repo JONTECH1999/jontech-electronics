@@ -17,26 +17,23 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({ alert, onResolve }) =>
 
   return (
     <div
+      className="alert-banner-wrap"
       style={{
         border: `1px solid ${borderColor}`,
         background: bgColor,
         borderRadius: 'var(--kf-radius-md)',
         padding: '1rem 1.25rem',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        gap: '1rem',
         marginBottom: '1rem'
       }}
     >
-      <div style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
+      <div style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start', flex: '1 1 280px' }}>
         <div style={{ marginTop: '2px' }}>
           {isCritical && <AlertCircle size={20} color="var(--kf-danger)" />}
           {isWarning && <AlertTriangle size={20} color="var(--kf-warning)" />}
           {!isCritical && !isWarning && <Info size={20} color="var(--kf-info)" />}
         </div>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
             <span style={{ fontWeight: 700, color: 'var(--kf-heading)', fontSize: '0.9375rem' }}>{alert.title}</span>
             {alert.bundleName && (
               <span style={{ fontSize: '0.75rem', color: 'var(--kf-primary)', background: 'var(--kf-primary-bg)', padding: '0.125rem 0.375rem', borderRadius: '4px' }}>
@@ -50,7 +47,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({ alert, onResolve }) =>
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
+      <div className="alert-banner-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
         {alert.bundleId && (
           <Link to={`/app/bundles/${alert.bundleId}`} className="kf-btn kf-btn-secondary kf-btn-sm">
             <span>Inspect Bundle</span>

@@ -77,7 +77,7 @@ export const SettingsPage: React.FC = () => {
             Adjust the weight percentage assigned to each deterministic metric. Total must equal 100%.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="form-row-2col" style={{ gap: '1.5rem' }}>
             <div className="form-group">
               <label className="form-label">
                 Sales Performance Weight: {(settings.scoringWeights.salesWeight * 100).toFixed(0)}%
@@ -159,7 +159,7 @@ export const SettingsPage: React.FC = () => {
             <h2 className="kf-card-title">Inventory Risk Thresholds</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="form-row-2col" style={{ gap: '1.5rem' }}>
             <div className="form-group">
               <label className="form-label">Critical Stock Threshold (Units)</label>
               <input

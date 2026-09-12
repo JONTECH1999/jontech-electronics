@@ -135,12 +135,12 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 INSERT INTO `shops` (`id`, `shopify_domain`, `shopify_store_id`, `access_token`, `scope`, `is_active`)
 VALUES (
   'shop_demo_01',
-  'jontech-electronics.myshopify.com',
+  'jontech-electronics-xs08gbw3.myshopify.com',
   'gid://shopify/Shop/82910291',
   'shpat_demo_access_token_kitflow_secure',
   'read_products,write_products,read_orders,read_inventory',
   TRUE
-) ON DUPLICATE KEY UPDATE `updated_at` = CURRENT_TIMESTAMP;
+) ON DUPLICATE KEY UPDATE `shopify_domain` = VALUES(`shopify_domain`), `updated_at` = CURRENT_TIMESTAMP;
 
 -- Seed 2: Create Core Curated Bundles (Electronics & Prototyping)
 INSERT INTO `bundles` (`id`, `shop_id`, `name`, `description`, `status`, `discount_percent`, `target_category`)

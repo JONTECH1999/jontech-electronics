@@ -59,7 +59,7 @@ export const BundlesPage: React.FC = () => {
       <div className="kf-card" style={{ marginBottom: '1.5rem', padding: '1.25rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
           {/* Search Input */}
-          <div style={{ position: 'relative', flex: '1', minWidth: '260px' }}>
+          <div style={{ position: 'relative', flex: '1 1 240px', minWidth: '200px' }}>
             <Search size={16} style={{ position: 'absolute', top: '50%', left: '0.875rem', transform: 'translateY(-50%)', color: 'var(--kf-text-dim)' }} />
             <input
               type="text"
@@ -72,7 +72,7 @@ export const BundlesPage: React.FC = () => {
           </div>
 
           {/* Status Filter Tabs */}
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div className="filter-tabs-row" style={{ width: 'auto' }}>
             {[
               { id: 'all', label: 'All Bundles' },
               { id: 'active', label: 'Active' },

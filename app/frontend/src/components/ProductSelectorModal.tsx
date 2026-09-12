@@ -54,34 +54,8 @@ export const ProductSelectorModal: React.FC<ProductSelectorModalProps> = ({
   );
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'rgba(0, 0, 0, 0.75)',
-        backdropFilter: 'blur(4px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 1000,
-        padding: '1.5rem'
-      }}
-    >
-      <div
-        className="kf-card"
-        style={{
-          width: '100%',
-          maxWidth: '680px',
-          maxHeight: '85vh',
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '1.75rem',
-          position: 'relative'
-        }}
-      >
+    <div className="modal-backdrop">
+      <div className="kf-card modal-dialog">
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
           <div>
@@ -151,9 +125,28 @@ export const ProductSelectorModal: React.FC<ProductSelectorModalProps> = ({
           )}
 
           {!loading && !error && filtered.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--kf-text-dim)' }}>
-              No products found matching your search.
-            </div>
+            products.length === 0 && !isDemoData ? (
+              <div style={{ textAlign: 'center', padding: '2.5rem 1rem', color: 'var(--kf-text-muted)' }}>
+                <Package size={36} style={{ margin: '0 auto 0.75rem', opacity: 0.5 }} />
+                <div style={{ fontWeight: 600, color: 'var(--kf-heading)', marginBottom: '0.25rem' }}>No products in your Shopify Store</div>
+                <p style={{ fontSize: '0.8125rem', marginBottom: '1rem', color: 'var(--kf-text-muted)' }}>
+                  Your live Shopify store (<code>jontech-electronics-xs08gbw3</code>) doesn't have any products created yet.
+                </p>
+                <a
+                  href="https://admin.shopify.com/store/jontech-electronics-xs08gbw3/products"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="kf-btn kf-btn-primary kf-btn-sm"
+                  style={{ display: 'inline-flex' }}
+                >
+                  Create Products in Shopify Admin
+                </a>
+              </div>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--kf-text-dim)' }}>
+                No products found matching {search ? `"${search}"` : 'criteria'}.
+              </div>
+            )
           )}
 
           {!loading && !error && filtered.map(product => {
@@ -165,6 +158,7 @@ export const ProductSelectorModal: React.FC<ProductSelectorModalProps> = ({
             return (
               <div
                 key={product.id}
+                className="modal-product-item"
                 style={{
                   border: '1px solid var(--kf-border)',
                   borderRadius: 'var(--kf-radius-sm)',

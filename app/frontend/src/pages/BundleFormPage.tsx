@@ -147,7 +147,7 @@ export const BundleFormPage: React.FC = () => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '2rem', alignItems: 'start' }}>
+      <form onSubmit={handleSubmit} className="bundle-form-grid">
         {/* Left Column: Form Details & Items */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {/* Main Info Card */}
@@ -179,7 +179,7 @@ export const BundleFormPage: React.FC = () => {
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row-2col">
               <div className="form-group">
                 <label className="form-label" htmlFor="bundle-category">Target Category</label>
                 <select

@@ -52,15 +52,18 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
 
     // Lookup merchant shop record in database
     let shop = await dbRepository.getShopByDomain(shopDomain);
+    const configuredToken = (env.SHOPIFY_ADMIN_ACCESS_TOKEN && env.SHOPIFY_ADMIN_ACCESS_TOKEN.trim().startsWith('shpat_'))
+      ? env.SHOPIFY_ADMIN_ACCESS_TOKEN.trim()
+      : 'shpat_demo_access_token_kitflow_secure';
 
     if (!shop) {
-      if (env.USE_DEMO_DATA || shopDomain === env.DEMO_SHOP_DOMAIN) {
-        // Auto-provision demo shop for seamless testing
+      if (env.USE_DEMO_DATA || shopDomain === env.DEMO_SHOP_DOMAIN || env.NODE_ENV === 'development') {
+        // Auto-provision shop for seamless testing or live connection
         shop = await dbRepository.upsertShop({
           shopifyDomain: shopDomain,
-          accessToken: 'shpat_demo_access_token_kitflow_secure',
+          accessToken: configuredToken,
           scope: env.SHOPIFY_SCOPES,
-          shopifyStoreId: 'gid://shopify/Shop/82910291'
+          shopifyStoreId: 'gid://shopify/Shop/jontech_electronics'
         });
       } else {
         return res.status(403).json({
@@ -68,6 +71,14 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
           error: `Shop ${shopDomain} has not completed KitFlow OAuth installation.`
         });
       }
+    } else if (configuredToken !== 'shpat_demo_access_token_kitflow_secure' && shop.accessToken !== configuredToken) {
+      // Automatically synchronize updated Shopify Admin API access token from environment
+      shop = await dbRepository.upsertShop({
+        shopifyDomain: shopDomain,
+        accessToken: configuredToken,
+        scope: env.SHOPIFY_SCOPES,
+        shopifyStoreId: shop.shopifyStoreId || 'gid://shopify/Shop/jontech_electronics'
+      });
     }
 
     // Inject isolated shop session into request

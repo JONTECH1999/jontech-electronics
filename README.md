@@ -77,20 +77,41 @@ Test Files  7 passed (7)
      Tests  37 passed (37)
 ```
 
-### 4. Run the Embedded App Locally (Safe Demo Mode)
-KitFlow includes a zero-dependency **Safe Demo Mode** (`USE_DEMO_DATA=true`). It requires no active Shopify store credentials or external MySQL server to evaluate immediately:
+### 4. Run the Application in VS Code
 
+#### Option A: One Command (Recommended)
+Open a terminal in the root project folder (`Shopify Store`):
 ```bash
-# In terminal 1 (Backend API):
-cd app/backend
 npm run dev
-# Running on http://localhost:3000
-
-# In terminal 2 (Frontend Admin UI):
-cd app/frontend
-npm run dev
-# Running on http://localhost:5173
 ```
+> This uses `concurrently` to start **both** the Backend (`http://localhost:3000`) and the Frontend (`http://localhost:5173/app`) at the same time with color-coded logs.
+
+**To STOP running:**
+- Press `Ctrl + C` in the terminal (and type `Y` if prompted). Both servers will shut down together cleanly.
+
+---
+
+#### Option B: Two Separate Terminals
+If you prefer dedicated terminal tabs:
+```bash
+# Terminal 1 — Backend:
+npm run dev:backend
+# Or: cd app/backend && npm run dev
+
+# Terminal 2 — Frontend:
+npm run dev:frontend
+# Or: cd app/frontend && npm run dev
+```
+
+**To STOP running:**
+- In each terminal tab, press `Ctrl + C` or click the trash can icon (Kill Terminal).
+
+---
+
+#### Option C: VS Code Task Menu
+Press `Ctrl + Shift + P` (or go to **Terminal** -> **Run Task...**), select:
+`Start JonTech App (Backend + Frontend)`
+
 
 Open `http://localhost:5173/app` in your browser. You can immediately inspect:
 - **Dashboard**: KPI cards, top bundles ranking, active alerts, recent activity timeline, and AI insights.

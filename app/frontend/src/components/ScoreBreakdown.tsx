@@ -52,12 +52,12 @@ export const ScoreBreakdown: React.FC<ScoreBreakdownProps> = ({ score }) => {
 
         return (
           <div key={i}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.375rem', fontSize: '0.875rem' }}>
-              <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.25rem', marginBottom: '0.375rem', fontSize: '0.875rem' }}>
+              <div style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 <span style={{ fontWeight: 600, color: 'var(--kf-heading)' }}>{f.name}</span>
                 <span style={{ color: 'var(--kf-text-dim)', fontSize: '0.75rem', marginLeft: '0.5rem' }}>({f.weight} weight)</span>
               </div>
-              <span style={{ fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', color: barColor }}>
+              <span style={{ fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', color: barColor, flexShrink: 0 }}>
                 {f.score.toFixed(1)} / 100
               </span>
             </div>

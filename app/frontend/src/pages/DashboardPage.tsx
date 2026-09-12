@@ -91,7 +91,7 @@ export const DashboardPage: React.FC = () => {
         flexWrap: 'wrap',
         gap: '0.75rem'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', flex: '1 1 280px', minWidth: 0 }}>
           <span style={{
             background: data.isDemoMode !== false ? '#f59e0b' : '#10b981',
             color: '#000',
@@ -160,7 +160,7 @@ export const DashboardPage: React.FC = () => {
       )}
 
       {/* Main Two-Column Layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '2rem', alignItems: 'start' }}>
+      <div className="dashboard-content-grid">
         {/* Left Column: Top Scored Bundles */}
         <div className="kf-card">
           <div className="kf-card-header">

@@ -249,7 +249,7 @@ export const ActivityPage: React.FC = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+      <div className="filter-tabs-row" style={{ marginBottom: '1.5rem' }}>
         {[
           { id: 'all', label: 'All Activities' },
           { id: 'bundle_created', label: 'Creations' },

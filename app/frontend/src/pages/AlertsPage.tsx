@@ -44,7 +44,7 @@ export const AlertsPage: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
+      <div className="filter-tabs-row" style={{ marginBottom: '1.5rem' }}>
         {[
           { id: 'active', label: 'Active Alerts' },
           { id: 'resolved', label: 'Resolved History' },

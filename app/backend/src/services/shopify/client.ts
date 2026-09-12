@@ -17,8 +17,8 @@ export class ShopifyGraphQLClient {
   }
 
   async query<T = any>(queryString: string, variables: Record<string, any> = {}): Promise<GraphQLResponse<T>> {
-    // If running in development demo mode or using demo shop credentials, return simulated response
-    if (env.USE_DEMO_DATA || this.domain === env.DEMO_SHOP_DOMAIN || this.accessToken.startsWith('shpat_demo')) {
+    // If no access token provided or using demo simulation credentials, return simulated response
+    if (!this.accessToken || this.accessToken.startsWith('shpat_demo') || this.accessToken === 'test_token') {
       return { data: undefined };
     }
 

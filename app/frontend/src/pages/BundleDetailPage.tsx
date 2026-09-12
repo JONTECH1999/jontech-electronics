@@ -119,9 +119,9 @@ export const BundleDetailPage: React.FC = () => {
       </div>
 
       <div className="top-header">
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem' }}>
-            <h1 className="page-title">{bundle.name}</h1>
+        <div style={{ flex: '1 1 300px', minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
+            <h1 className="page-title" style={{ wordBreak: 'break-word' }}>{bundle.name}</h1>
             <StatusBadge status={bundle.status} />
             <span className="kf-badge kf-badge-neutral">{bundle.targetCategory}</span>
           </div>
@@ -131,7 +131,7 @@ export const BundleDetailPage: React.FC = () => {
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <button
             type="button"
             onClick={handleRecalculate}
@@ -159,7 +159,7 @@ export const BundleDetailPage: React.FC = () => {
       </div>
 
       {/* Grid: Left (Score & Telemetry) + Right (Items & AI Analyst) */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1.5fr', gap: '2rem', alignItems: 'start' }}>
+      <div className="bundle-detail-grid">
         {/* Left Column: Deterministic Scoring Breakdown */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {/* Main Score Hero Card */}

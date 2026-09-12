@@ -218,7 +218,14 @@ export interface ProductQueryResult {
 
 export const shopifyProductsService = {
   async getProductsWithMetadata(session: ShopSession): Promise<ProductQueryResult> {
-    if (env.USE_DEMO_DATA || session.shopifyDomain === 'test-store.myshopify.com' || session.accessToken === 'test_token' || session.accessToken.startsWith('demo_')) {
+    if (
+      env.USE_DEMO_DATA ||
+      session.shopifyDomain === 'test-store.myshopify.com' ||
+      session.accessToken === 'test_token' ||
+      session.accessToken.startsWith('demo_') ||
+      session.accessToken.startsWith('shpat_demo') ||
+      !session.accessToken
+    ) {
       return {
         products: DEMO_PRODUCTS,
         isDemoData: true,
@@ -258,16 +265,16 @@ export const shopifyProductsService = {
 
     try {
       const response = await client.query(query, { first: 50 });
-      if (response.data?.products?.edges?.length > 0) {
+      if (response.data?.products?.edges !== undefined) {
         const products = response.data.products.edges.map((edge: any) => {
           const p = edge.node;
           return {
             id: p.id,
             title: p.title,
-            vendor: p.vendor,
-            productType: p.productType,
-            tags: p.tags,
-            variants: p.variants.edges.map((v: any) => ({
+            vendor: p.vendor || 'JonTech Electronics',
+            productType: p.productType || 'Hardware',
+            tags: p.tags || [],
+            variants: (p.variants?.edges || []).map((v: any) => ({
               id: v.node.id,
               title: v.node.title,
               price: parseFloat(v.node.price || 0),

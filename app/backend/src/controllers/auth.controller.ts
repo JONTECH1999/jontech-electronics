@@ -210,11 +210,13 @@ export const authController = {
       return res.status(401).json({ authenticated: false });
     }
 
+    const isDemo = env.USE_DEMO_DATA || !req.shopSession.accessToken || req.shopSession.accessToken.startsWith('shpat_demo') || req.shopSession.accessToken === 'test_token';
+
     res.json({
       authenticated: true,
       shop: req.shopSession.shopifyDomain,
       shopId: req.shopSession.shopId,
-      isDemoMode: env.USE_DEMO_DATA,
+      isDemoMode: isDemo,
       apiVersion: env.SHOPIFY_API_VERSION
     });
   }
