@@ -18,7 +18,8 @@
     "db:generate": "npm --prefix app/backend run db:generate",
     "db:migrate": "npm --prefix app/backend run db:migrate",
     "seed": "npm --prefix app/backend run seed",
-    "sync:shopify": "npx tsx app/scripts/sync-products-to-shopify.ts"
+    "sync:shopify": "npx tsx app/scripts/sync-products-to-shopify.ts",
+    "push:theme": "node app/scripts/sync-theme-branch.js"
   },
   "keywords": [
     "shopify",
