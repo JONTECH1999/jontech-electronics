@@ -65,10 +65,38 @@
     });
   }
 
+  // Enforce Philippine Peso (₱) across any dynamic or static price elements
+  function enforcePesoCurrency() {
+    const priceSelectors = [
+      '.price-current',
+      '.price-compare',
+      '.price-container',
+      '.cart-table td',
+      '.cart-summary-row span',
+      '.product-info__price-block',
+      '[data-price]'
+    ];
+
+    document.querySelectorAll(priceSelectors.join(',')).forEach(function (el) {
+      if (el.children.length === 0 && el.textContent && el.textContent.includes('$')) {
+        el.textContent = el.textContent.replace(/\$/g, '₱');
+      }
+    });
+  }
+
   // Initialize all theme handlers on DOMContentLoaded
   document.addEventListener('DOMContentLoaded', function () {
     initMobileNav();
     initCartForms();
     initQuantitySelectors();
+    enforcePesoCurrency();
+
+    // Re-verify currency if DOM dynamically mutates (e.g. cart adjustments)
+    if ('MutationObserver' in window) {
+      const observer = new MutationObserver(function () {
+        enforcePesoCurrency();
+      });
+      observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    }
   });
 })();

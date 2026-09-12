@@ -15,135 +15,172 @@
 
     {%- assign selected_collection = collections[section.settings.collection] -%}
     {%- assign limit = section.settings.products_to_show | default: 8 -%}
+    {%- assign product_list = selected_collection.products -%}
+    {%- if product_list == blank or product_list.size == 0 -%}
+      {%- assign product_list = collections.all.products -%}
+    {%- endif -%}
 
     <div class="product-grid">
-      {%- if selected_collection != blank and selected_collection.products_count > 0 -%}
-        {%- for product in selected_collection.products limit: limit -%}
+      {%- if product_list != blank and product_list.size > 0 -%}
+        {%- for product in product_list limit: limit -%}
           {% render 'product-card', product: product %}
         {%- endfor -%}
       {%- else -%}
         {%- comment -%}
-          Curated realistic fallback cards when previewing without imported products
+          Curated realistic JonTech Electronics bundles matching database & embedded app
         {%- endcomment -%}
+        <!-- Bundle 1: ESP32 IoT Smart Weather & Telemetry Kit -->
         <article class="product-card">
           <div class="product-card__image-wrapper">
-            <div class="product-card__placeholder">
-              {% render 'icon', name: 'cpu' %}
-              <span>Apex Battlestation Gaming Bundle</span>
-            </div>
+            <a href="/products/esp32-nodemcu-devkit-v1" class="product-card__media-link" aria-label="ESP32 IoT Smart Weather & Telemetry Kit">
+              <img
+                src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800&auto=format&fit=crop&q=80"
+                alt="ESP32 IoT Smart Weather & Telemetry Kit"
+                class="product-card__image"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </a>
             <div class="product-card__badges">
-              {% render 'badge', type: 'sale', text: 'SAVE 12%' %}
-              {% render 'badge', type: 'bundle', text: 'KITFLOW #1' %}
+              {% render 'badge', type: 'sale', text: 'SAVE 15%' %}
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #1 · 91.8 SCORE' %}
             </div>
           </div>
           <div class="product-card__content">
-            <p class="product-card__vendor">JonTech Gaming</p>
+            <p class="product-card__vendor">JonTech Labs · IoT & Wireless</p>
             <h3 class="product-card__title">
-              <a href="/products/apex-battlestation" class="product-card__title-link">Apex Battlestation Gaming Bundle</a>
+              <a href="/products/esp32-nodemcu-devkit-v1" class="product-card__title-link">ESP32 IoT Smart Weather & Telemetry Kit</a>
             </h3>
             <div class="product-card__price">
               <div class="price-container price--on-sale">
-                <span class="price-current">₱8,499.00</span>
-                <s class="price-compare">₱9,696.00</s>
+                <span class="price-current">₱675.00</span>
+                <s class="price-compare">₱795.00</s>
+                <span class="price-badge-discount">Save 15%</span>
+              </div>
+            </div>
+            <div class="product-card__actions">
+              <a href="/#build-my-setup" class="btn btn--secondary btn--sm btn--full">
+                {% render 'icon', name: 'cart' %}
+                <span>Configure Bundle (₱675.00)</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bundle 2: Arduino Academic Robotics & Obstacle Avoidance Pack -->
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <a href="/products/arduino-uno-r3" class="product-card__media-link" aria-label="Arduino Academic Robotics & Obstacle Avoidance Pack">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg"
+                alt="Arduino Academic Robotics & Obstacle Avoidance Pack"
+                class="product-card__image"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </a>
+            <div class="product-card__badges">
+              {% render 'badge', type: 'sale', text: 'SAVE 12%' %}
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #2 · 92.0 SCORE' %}
+            </div>
+          </div>
+          <div class="product-card__content">
+            <p class="product-card__vendor">JonTech Robotics · STEM</p>
+            <h3 class="product-card__title">
+              <a href="/products/arduino-uno-r3" class="product-card__title-link">Arduino Academic Robotics & Obstacle Avoidance Pack</a>
+            </h3>
+            <div class="product-card__price">
+              <div class="price-container price--on-sale">
+                <span class="price-current">₱726.00</span>
+                <s class="price-compare">₱825.00</s>
                 <span class="price-badge-discount">Save 12%</span>
               </div>
             </div>
             <div class="product-card__actions">
-              <button type="button" class="btn btn--secondary btn--sm btn--full">
+              <a href="/#build-my-setup" class="btn btn--secondary btn--sm btn--full">
                 {% render 'icon', name: 'cart' %}
-                <span>Add Bundle to Cart</span>
-              </button>
+                <span>Configure Bundle (₱726.00)</span>
+              </a>
             </div>
           </div>
         </article>
 
+        <!-- Bundle 3: Raspberry Pi 4 Edge AI & LiDAR Autonomous Lab -->
         <article class="product-card">
           <div class="product-card__image-wrapper">
-            <div class="product-card__placeholder">
-              {% render 'icon', name: 'zap' %}
-              <span>Pro-Developer Dual Workstation Kit</span>
-            </div>
+            <a href="/products/raspberry-pi-4-model-b-4gb" class="product-card__media-link" aria-label="Raspberry Pi 4 Edge AI & LiDAR Autonomous Lab">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg"
+                alt="Raspberry Pi 4 Edge AI & LiDAR Autonomous Lab"
+                class="product-card__image"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </a>
             <div class="product-card__badges">
-              {% render 'badge', type: 'bundle', text: 'KITFLOW #2' %}
+              {% render 'badge', type: 'sale', text: 'SAVE 10%' %}
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #3 · 77.3 SCORE' %}
             </div>
           </div>
           <div class="product-card__content">
-            <p class="product-card__vendor">JonTech Studio</p>
+            <p class="product-card__vendor">JonTech Linux · Edge AI</p>
             <h3 class="product-card__title">
-              <a href="/products/pro-developer-kit" class="product-card__title-link">Pro-Developer Dual Workstation Kit</a>
+              <a href="/products/raspberry-pi-4-model-b-4gb" class="product-card__title-link">Raspberry Pi 4 Edge AI & LiDAR Autonomous Lab</a>
             </h3>
             <div class="product-card__price">
               <div class="price-container price--on-sale">
-                <span class="price-current">₱11,499.00</span>
-                <s class="price-compare">₱13,296.00</s>
+                <span class="price-current">₱5,304.00</span>
+                <s class="price-compare">₱5,894.00</s>
+                <span class="price-badge-discount">Save 10%</span>
+              </div>
+            </div>
+            <div class="product-card__actions">
+              <a href="/#build-my-setup" class="btn btn--secondary btn--sm btn--full">
+                {% render 'icon', name: 'cart' %}
+                <span>Configure Bundle (₱5,304.00)</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bundle 4: STM32 Industrial Automation & Relay Control Rig -->
+        <article class="product-card">
+          <div class="product-card__image-wrapper">
+            <a href="/products/stm32f401-black-pill" class="product-card__media-link" aria-label="STM32 Industrial Automation & Relay Control Rig">
+              <img
+                src="https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=800&auto=format&fit=crop&q=80"
+                alt="STM32 Industrial Automation & Relay Control Rig"
+                class="product-card__image"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            </a>
+            <div class="product-card__badges">
+              {% render 'badge', type: 'sale', text: 'SAVE 14%' %}
+              {% render 'badge', type: 'bundle', text: 'KITFLOW #4 · 87.8 SCORE' %}
+            </div>
+          </div>
+          <div class="product-card__content">
+            <p class="product-card__vendor">JonTech Industrial · Embedded</p>
+            <h3 class="product-card__title">
+              <a href="/products/stm32f401-black-pill" class="product-card__title-link">STM32 Industrial Automation & Relay Control Rig</a>
+            </h3>
+            <div class="product-card__price">
+              <div class="price-container price--on-sale">
+                <span class="price-current">₱499.00</span>
+                <s class="price-compare">₱580.00</s>
                 <span class="price-badge-discount">Save 14%</span>
               </div>
             </div>
             <div class="product-card__actions">
-              <button type="button" class="btn btn--secondary btn--sm btn--full">
+              <a href="/#build-my-setup" class="btn btn--secondary btn--sm btn--full">
                 {% render 'icon', name: 'cart' %}
-                <span>Add Bundle to Cart</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image-wrapper">
-            <div class="product-card__placeholder">
-              {% render 'icon', name: 'truck' %}
-              <span>Nomad Road Warrior Travel Tech Pack</span>
-            </div>
-            <div class="product-card__badges">
-              {% render 'badge', type: 'bundle', text: 'KITFLOW #3' %}
-            </div>
-          </div>
-          <div class="product-card__content">
-            <p class="product-card__vendor">JonTech Mobility</p>
-            <h3 class="product-card__title">
-              <a href="/products/nomad-road-warrior" class="product-card__title-link">Nomad Road Warrior Travel Tech Pack</a>
-            </h3>
-            <div class="product-card__price">
-              <div class="price-container price--on-sale">
-                <span class="price-current">₱7,299.00</span>
-                <s class="price-compare">₱8,196.00</s>
-                <span class="price-badge-discount">Save 11%</span>
-              </div>
-            </div>
-            <div class="product-card__actions">
-              <button type="button" class="btn btn--secondary btn--sm btn--full">
-                {% render 'icon', name: 'cart' %}
-                <span>Add Bundle to Cart</span>
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__image-wrapper">
-            <div class="product-card__placeholder">
-              {% render 'icon', name: 'shield' %}
-              <span>MasterCraft MX Multi-Device Mouse</span>
-            </div>
-            <div class="product-card__badges">
-              {% render 'badge', type: 'new', text: 'IN STOCK' %}
-            </div>
-          </div>
-          <div class="product-card__content">
-            <p class="product-card__vendor">JonTech Precision</p>
-            <h3 class="product-card__title">
-              <a href="/products/mastercraft-mouse" class="product-card__title-link">MasterCraft MX Multi-Device Mouse</a>
-            </h3>
-            <div class="product-card__price">
-              <div class="price-container">
-                <span class="price-current">₱3,499.00</span>
-              </div>
-            </div>
-            <div class="product-card__actions">
-              <button type="button" class="btn btn--secondary btn--sm btn--full">
-                {% render 'icon', name: 'cart' %}
-                <span>Add to Cart</span>
-              </button>
+                <span>Configure Bundle (₱499.00)</span>
+              </a>
             </div>
           </div>
         </article>

@@ -37,7 +37,7 @@
           <p class="product-info__vendor">{{ product.vendor }}</p>
         {%- endif -%}
 
-        <h1 class="product-info__title">{{ product.title | default: 'Apex Battlestation Gaming Bundle' }}</h1>
+        <h1 class="product-info__title">{{ product.title | default: 'ESP32 IoT Smart Weather & Telemetry Kit' }}</h1>
 
         <div class="product-info__price-block">
           {% render 'price', product: product, show_savings: true %}
@@ -75,12 +75,18 @@
                 style="width: 100%; padding: 0.75rem 1rem;"
               >
                 {%- for variant in product.variants -%}
+                  {%- assign opt_money = variant.price | money -%}
+                  {%- if opt_money contains '$' or cart.currency.iso_code == 'PHP' or settings.currency_symbol == '₱' or settings.currency_symbol == blank -%}
+                    {%- assign opt_price_str = '₱' | append: (variant.price | money_without_currency) -%}
+                  {%- else -%}
+                    {%- assign opt_price_str = opt_money -%}
+                  {%- endif -%}
                   <option
                     {% if variant == current_variant %}selected="selected"{% endif %}
                     {% unless variant.available %}disabled="disabled"{% endunless %}
                     value="{{ variant.id }}"
                   >
-                    {{ variant.title }} - {{ variant.price | money }}
+                    {{ variant.title }} - {{ opt_price_str }}
                     {% unless variant.available %} (Sold Out){% endunless %}
                   </option>
                 {%- endfor -%}

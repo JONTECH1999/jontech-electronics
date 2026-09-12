@@ -1,5 +1,6 @@
 {% comment %}
   Renders a price element with regular, compare-at, and discount calculations
+  Guaranteed Philippine Peso (₱) formatting matching database & embedded app
   Usage: {% render 'price', product: product, show_savings: true %}
 {% endcomment %}
 {%- liquid
@@ -16,16 +17,28 @@
     assign savings = compare_at_price | minus: price
     assign savings_percent = savings | times: 100.0 | divided_by: compare_at_price | round
   endif
+
+  # Enforce Philippine Peso currency symbol across storefront
+  assign money_str = price | money
+  if money_str contains '$' or cart.currency.iso_code == 'PHP' or settings.currency_symbol == '₱' or settings.currency_symbol == blank
+    assign raw_price_amount = price | money_without_currency
+    assign display_price = '₱' | append: raw_price_amount
+    assign raw_compare_amount = compare_at_price | money_without_currency
+    assign display_compare = '₱' | append: raw_compare_amount
+  else
+    assign display_price = money_str
+    assign display_compare = compare_at_price | money
+  endif
 -%}
 
 <div class="price-container {% if on_sale %}price--on-sale{% endif %}">
-  <span class="price-current">
-    {{ price | money }}
+  <span class="price-current" data-price="{{ price }}">
+    {{ display_price }}
   </span>
 
   {%- if on_sale -%}
     <s class="price-compare">
-      {{ compare_at_price | money }}
+      {{ display_compare }}
     </s>
     {%- if show_savings and savings_percent > 0 -%}
       <span class="price-badge-discount">
