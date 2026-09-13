@@ -256,6 +256,50 @@
       {%- endif -%}
     {%- endif -%}
 
+    {%- comment -%} Amazon-style Deliver to Philippines location pill {%- endcomment -%}
+    <div class="header__delivery-location small-hide medium-hide">
+      <span class="delivery-pin-icon">📍</span>
+      <div class="delivery-text">
+        <span class="delivery-label">Deliver to</span>
+        <span class="delivery-destination">Philippines</span>
+      </div>
+    </div>
+
+    {%- comment -%} Amazon-style Embedded Search Bar {%- endcomment -%}
+    <div class="header__amazon-search small-hide">
+      <form action="{{ routes.search_url }}" method="get" role="search" class="amazon-search-form">
+        <div class="amazon-search-select-wrap">
+          <select name="type" class="amazon-search-select" aria-label="Search Category">
+            <option value="product" selected>All Hardware</option>
+            <option value="product">Microcontrollers</option>
+            <option value="product">Sensors & Telemetry</option>
+            <option value="product">Robotics & Drivers</option>
+            <option value="product">Prototyping & Displays</option>
+          </select>
+          <span class="amazon-search-caret">▼</span>
+        </div>
+        <div class="amazon-search-input-wrap">
+          <input
+            type="search"
+            name="q"
+            id="AmazonSearchInput"
+            value="{{ search.terms | escape }}"
+            placeholder="Search JonTech electronics, ESP32, Raspberry Pi, sensors, robotics..."
+            class="amazon-search-input"
+            autocomplete="off"
+            aria-label="Search electronics"
+          >
+          <input type="hidden" name="options[prefix]" value="last">
+        </div>
+        <button type="submit" class="amazon-search-submit" aria-label="Search">
+          <svg class="icon icon-search" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
+
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -280,7 +324,9 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      <div class="header__search-modal-wrap large-up-hide">
+        {% render 'header-search', input_id: 'Search-In-Modal' %}
+      </div>
 
       {%- if shop.customer_accounts_enabled -%}
         <shopify-account

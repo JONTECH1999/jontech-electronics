@@ -1,4 +1,4 @@
-﻿{% comment %}
+{% comment %}
   JonTech Electronics - Amazon-Style Featured Deals & Best Sellers Grid
 {% endcomment %}
 
@@ -25,8 +25,109 @@
       </div>
     </div>
 
-    <!-- Product Cards Grid -->
-    <div class="jt-product-grid">
+    <!-- Amazon-Style Two-Column Shopping Layout (Fixed Sidebar + Product Stream) -->
+    <div class="jt-amazon-layout">
+      <!-- Amazon-Style Left Sidebar -->
+      <aside class="jt-sidebar" aria-label="Product Filters and Departments">
+        <!-- Delivery Banner / Area Notice -->
+        <div class="jt-sidebar-banner">
+          <span class="jt-sb-banner-icon">⚡</span>
+          <div>
+            <strong>Fast Delivery in your area</strong>
+            <p>Order today for next-day dispatch across Metro Manila.</p>
+          </div>
+        </div>
+
+        <!-- Popular Shopping Ideas / Categories -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Popular Departments</h4>
+          <ul class="jt-sidebar-list">
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link active" data-sb-filter="all"><span class="sb-bullet">▸</span> All Hardware <span class="jt-sb-count">(12)</span></a></li>
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-filter="mcu"><span class="sb-bullet">▸</span> Microcontrollers & SBCs <span class="jt-sb-count">(4)</span></a></li>
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-filter="sensors"><span class="sb-bullet">▸</span> Sensors & Displays <span class="jt-sb-count">(4)</span></a></li>
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-filter="robotics"><span class="sb-bullet">▸</span> Robotics & Motor Drivers <span class="jt-sb-count">(3)</span></a></li>
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-filter="prototyping"><span class="sb-bullet">▸</span> Breadboards & Wiring <span class="jt-sb-count">(1)</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Free Shipping Filter -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Delivery & Shipping</h4>
+          <label class="jt-sb-checkbox-label">
+            <input type="checkbox" id="filterFreeShip" class="jt-sb-checkbox" checked>
+            <span class="jt-sb-custom-check"></span>
+            <span>Eligible for Free Shipping</span>
+          </label>
+          <label class="jt-sb-checkbox-label">
+            <input type="checkbox" id="filterExpress" class="jt-sb-checkbox" checked>
+            <span class="jt-sb-custom-check"></span>
+            <span>⚡ Express Next-Day Delivery</span>
+          </label>
+        </div>
+
+        <!-- Brands Filter -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Verified Brands</h4>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>Espressif Systems</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>Arduino Official / Clone</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>Raspberry Pi Foundation</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>STMicroelectronics</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>JonTech Certified Lab</span></label>
+        </div>
+
+        <!-- Customer Reviews -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Customer Reviews</h4>
+          <div class="jt-sb-stars-list">
+            <a href="javascript:void(0)" class="jt-sb-star-row">
+              <span class="jt-stars">★★★★☆</span>
+              <span class="jt-sb-star-text">& Up (4.0+)</span>
+            </a>
+            <a href="javascript:void(0)" class="jt-sb-star-row">
+              <span class="jt-stars">★★★★★</span>
+              <span class="jt-sb-star-text">(4.8+ Top Rated)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Price Range -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Price Range (₱)</h4>
+          <ul class="jt-sidebar-list">
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="under-200">Under ₱200.00</a></li>
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="200-500">₱200.00 to ₱500.00</a></li>
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="over-500">Over ₱500.00</a></li>
+          </ul>
+        </div>
+
+        <!-- Condition & Warranty -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Hardware Condition</h4>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>New (Factory Fresh)</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>2-Year Full Replacement</span></label>
+        </div>
+      </aside>
+
+      <!-- Main Results Area -->
+      <div class="jt-main-results">
+        <!-- Results Bar: Count and Sorting -->
+        <div class="jt-results-bar">
+          <div class="jt-results-count">
+            Showing <strong id="jtResultCount">12</strong> verified electronic components for <span class="jt-results-query">"all hardware"</span>
+          </div>
+          <div class="jt-results-sort">
+            <label for="jtSortSelect" class="jt-sort-label">Sort by:</label>
+            <select id="jtSortSelect" class="jt-sort-select">
+              <option value="featured" selected>Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Avg. Customer Review</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="jt-product-grid">
 
       <!-- Product 1: ESP32 -->
       <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-ESP32-30P">
@@ -532,7 +633,9 @@
         </div>
       </div>
 
-    </div>
+        </div><!-- /.jt-product-grid -->
+      </div><!-- /.jt-main-results -->
+    </div><!-- /.jt-amazon-layout -->
   </div>
 </section>
 
@@ -543,26 +646,84 @@
 </div>
 
 <script>
-  // Simple interactive filter tabs
   document.addEventListener('DOMContentLoaded', function() {
     const filterBtns = document.querySelectorAll('.jt-filter-btn');
-    const cards = document.querySelectorAll('.jt-card');
-    
+    const sbFilterLinks = document.querySelectorAll('.jt-sb-filter-link');
+    const cards = Array.from(document.querySelectorAll('.jt-card'));
+    const resultCountEl = document.getElementById('jtResultCount');
+    const sortSelect = document.getElementById('jtSortSelect');
+    const gridEl = document.querySelector('.jt-product-grid');
+
+    function applyFilter(filter) {
+      // sync pill buttons
+      filterBtns.forEach(b => {
+        if (b.getAttribute('data-filter') === filter) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      // sync sidebar links
+      sbFilterLinks.forEach(l => {
+        if (l.getAttribute('data-sb-filter') === filter) {
+          l.classList.add('active');
+        } else {
+          l.classList.remove('active');
+        }
+      });
+
+      let visibleCount = 0;
+      cards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (resultCountEl) {
+        resultCountEl.textContent = visibleCount;
+      }
+    }
+
     filterBtns.forEach(btn => {
       btn.addEventListener('click', function() {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        
         const filter = this.getAttribute('data-filter');
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-cat') === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        applyFilter(filter);
       });
     });
+
+    sbFilterLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const filter = this.getAttribute('data-sb-filter');
+        if (filter) {
+          applyFilter(filter);
+        }
+      });
+    });
+
+    // Sorting Logic
+    if (sortSelect && gridEl) {
+      sortSelect.addEventListener('change', function() {
+        const val = this.value;
+        const sorted = [...cards].sort((a, b) => {
+          const priceA = parseFloat(a.querySelector('.jt-add-cart-btn')?.getAttribute('data-price') || '0');
+          const priceB = parseFloat(b.querySelector('.jt-add-cart-btn')?.getAttribute('data-price') || '0');
+          const ratingA = parseFloat(a.querySelector('.jt-rating-val')?.textContent || '0');
+          const ratingB = parseFloat(b.querySelector('.jt-rating-val')?.textContent || '0');
+
+          if (val === 'price-low') return priceA - priceB;
+          if (val === 'price-high') return priceB - priceA;
+          if (val === 'rating') return ratingB - ratingA;
+          return 0; // featured/default
+        });
+
+        sorted.forEach(card => gridEl.appendChild(card));
+      });
+    }
 
     // Instant Add-to-Cart with toast notification
     const addBtns = document.querySelectorAll('.jt-add-cart-btn');
