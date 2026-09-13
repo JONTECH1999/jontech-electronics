@@ -9,7 +9,7 @@
     <!-- Top Alert Strip (Amazon area delivery advisories) -->
     <div class="jt-alert-strip" role="alert">
       <div class="jt-alert-content">
-        <span class="jt-alert-icon">⚠️</span>
+        {% render 'icon', name: 'alert', class: 'jt-alert-icon' %}
         <span class="jt-alert-text">Extended delivery time in your area. Manila Express, STEM Priority & Lab Orders operating normally.</span>
       </div>
       <button type="button" class="jt-alert-dismiss" aria-label="Dismiss alert" onclick="this.closest('.jt-alert-strip').style.display='none';">Dismiss</button>
@@ -37,7 +37,7 @@
     <div class="jt-brand-spotlight-card">
       <div class="jt-brand-spotlight-inner">
         <div class="jt-brand-spotlight-badge">
-          <span class="jt-brand-logo-mark">⚡</span>
+          {% render 'icon', name: 'zap', class: 'jt-brand-logo-mark' %}
           <span class="jt-brand-name">JONTECH LAB</span>
         </div>
         <div class="jt-brand-spotlight-details">
@@ -93,12 +93,12 @@
       <aside class="jt-sidebar" id="jtSidebar" aria-label="Search Refinements">
         <div class="jt-sidebar-mobile-header medium-hide large-up-hide">
           <h3>Filters & Refinements</h3>
-          <button type="button" class="jt-sidebar-close-btn" id="jtSidebarCloseBtn" aria-label="Close filters">✕</button>
+          <button type="button" class="jt-sidebar-close-btn" id="jtSidebarCloseBtn" aria-label="Close filters">{% render 'icon', name: 'close' %}</button>
         </div>
 
         <!-- Fast Delivery Area Card -->
         <div class="jt-sidebar-banner">
-          <span class="jt-sb-banner-icon">⚡</span>
+          {% render 'icon', name: 'zap', class: 'jt-sb-banner-icon' %}
           <div>
             <strong>Fast Delivery in your area</strong>
             <p>Order today for next-day dispatch across Metro Manila.</p>
@@ -128,7 +128,7 @@
           <label class="jt-sb-checkbox-label">
             <input type="checkbox" id="filterExpress" class="jt-sb-checkbox" checked>
             <span class="jt-sb-custom-check"></span>
-            <span>⚡ Express Next-Day Delivery</span>
+            <span>{% render 'icon', name: 'truck', class: 'jt-inline-icon' %} Express Next-Day Delivery</span>
           </label>
         </div>
 
@@ -225,7 +225,7 @@
                 <span class="jt-card-save-text">Save ₱40.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (45 available)</div>
@@ -273,7 +273,7 @@
                 <span class="jt-card-save-text">Save ₱49.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (32 available)</div>
@@ -321,7 +321,7 @@
                 <span class="jt-card-save-text">Save ₱400.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (12 available)</div>
@@ -368,7 +368,7 @@
                 <span class="jt-card-save-text">Save ₱40.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (28 available)</div>
@@ -415,7 +415,7 @@
                 <span class="jt-card-save-text">Save ₱45.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (50 available)</div>
@@ -462,7 +462,7 @@
                 <span class="jt-card-save-text">Save ₱25.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (60 available)</div>
@@ -510,7 +510,7 @@
                 <span class="jt-card-save-text">Save ₱35.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (35 available)</div>
@@ -557,7 +557,7 @@
                 <span class="jt-card-save-text">Save ₱250.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (15 available)</div>
@@ -604,7 +604,7 @@
                 <span class="jt-card-save-text">Save ₱45.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (22 available)</div>
@@ -651,7 +651,7 @@
                 <span class="jt-card-save-text">Save ₱40.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (30 available)</div>
@@ -698,7 +698,7 @@
                 <span class="jt-card-save-text">Save ₱30.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (40 available)</div>
@@ -745,7 +745,7 @@
                 <span class="jt-card-save-text">Save ₱45.00</span>
               </div>
               <div class="jt-card-delivery">
-                <span class="jt-delivery-icon">⚡</span>
+                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (55 available)</div>
