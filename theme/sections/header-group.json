@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -5,38 +14,22 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-0": {
+        "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "⚡ Same-Day Courier Dispatch across Metro Manila | Orders before 2:00 PM",
-            "link": ""
-          }
-        },
-        "announcement-1": {
-          "type": "announcement",
-          "settings": {
-            "text": "🛡️ 2-Year Direct Swap Warranty on All Microcontrollers & Sensors",
-            "link": ""
-          }
-        },
-        "announcement-2": {
-          "type": "announcement",
-          "settings": {
-            "text": "🚚 Free Nationwide Express Shipping on Hardware Orders Over ₱1,500",
-            "link": ""
+            "text": "⚡ SAME-DAY DISPATCH: Order before 2 PM PHT for Express Delivery | 🛡️ 2-Year Hardware Warranty | 🚚 Free shipping over ₱1,500",
+            "link": "shopify://collections"
           }
         }
       },
       "block_order": [
-        "announcement-0",
-        "announcement-1",
-        "announcement-2"
+        "announcement-bar-0"
       ],
       "settings": {
-        "auto_rotate": true,
-        "change_slides_speed": 4,
-        "color_scheme": "scheme-3",
-        "show_line_separator": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-1",
+        "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false
@@ -53,11 +46,11 @@
         "show_line_separator": true,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
-        "enable_country_selector": false,
-        "enable_language_selector": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
         "margin_bottom": 0,
-        "padding_top": 16,
-        "padding_bottom": 16
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },

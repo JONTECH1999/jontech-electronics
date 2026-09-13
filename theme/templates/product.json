@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -5,9 +14,9 @@
       "blocks": {
         "vendor": {
           "type": "text",
-          "disabled": false,
+          "disabled": true,
           "settings": {
-            "text": "JonTech Electronics Verified Hardware",
+            "text": "{{ product.vendor }}",
             "text_style": "uppercase"
           }
         },
@@ -82,27 +91,27 @@
         "collapsible-row-0": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Technical Specifications & Voltage Matching",
-            "icon": "none",
-            "row_content": "<p>Calibrated for 3.3V / 5.0V microcontroller operation. Verified 2.54mm breadboard pitch, pull-up resistors on I2C lines, and isolated flyback protection for inductive relay/motor circuits.</p>",
+            "heading": "Technical Specifications & Voltage Logic",
+            "icon": "clipboard",
+            "row_content": "<p><strong>Voltage Rails:</strong> Standard 3.3V / 5.0V tolerance depending on peripheral pins.<br><strong>Bus Protocols:</strong> I2C, SPI, UART, PWM, and ADC compatibility verified in hardware bench tests.<br><strong>Pinout Integrity:</strong> Gold-flashed header pins pre-soldered and tested for 0-resistance continuity.</p>",
             "page": ""
           }
         },
         "collapsible-row-1": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "2-Year Direct Swap Warranty",
-            "icon": "none",
-            "row_content": "<p>Every board and module is bench-tested before dispatch at our Manila engineering facility. Covered under our 2-Year Direct Replacement Warranty with local technical support.</p>",
+            "heading": "Zero Pinout Conflict Guarantee",
+            "icon": "check_mark",
+            "row_content": "<p>All JonTech sensors, microcontrollers, and actuator drivers are mapped in our automated KitFlow compatibility engine. We test all shared I2C address spaces (e.g., 0x3C, 0x68, 0x76) so you never encounter bus lockup or address collisions in your embedded code.</p>",
             "page": ""
           }
         },
         "collapsible-row-2": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Courier Dispatch & Delivery Times",
-            "icon": "none",
-            "row_content": "<p>Same-day courier dispatch across Metro Manila for orders confirmed before 2:00 PM. Luzon door-to-door delivery in 1-2 days; Visayas and Mindanao within 3-4 business days.</p>",
+            "heading": "2-Year Hardware Warranty & Manila Dispatch",
+            "icon": "truck",
+            "row_content": "<p>Every unit is inspected and ESD-bagged at our Manila engineering facility. Includes 24-month manufacturer replacement warranty and same-day dispatch for orders placed before 2:00 PM PHT.</p>",
             "page": ""
           }
         }
@@ -113,13 +122,12 @@
         "collapsible-row-2"
       ],
       "settings": {
-        "caption": "Lab Standards",
-        "heading": "Engineering Bench Notes & Specifications",
-        "heading_size": "h2",
+        "caption": "",
+        "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "section",
         "color_scheme": "scheme-1",
-        "container_color_scheme": "scheme-2",
+        "container_color_scheme": "scheme-1",
         "open_first_collapsible_row": true,
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
@@ -130,7 +138,6 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "Frequently Built Together",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
@@ -144,10 +151,18 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "disclosures": {
+      "type": "disclosures",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "main",
+    "disclosures",
     "collapsible-content",
     "related-products"
   ]

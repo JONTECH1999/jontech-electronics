@@ -37,30 +37,6 @@
       </a>
     </div>
 
-    {%- if cart != empty -%}
-      {%- assign free_shipping_threshold = 150000 -%}
-      {%- assign current_subtotal = cart.total_price -%}
-      <div class="free-shipping-bar-card">
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9375rem; font-weight: 700; color: var(--color-heading);">
-          {%- if current_subtotal >= free_shipping_threshold -%}
-            <span style="color: var(--color-sale); display: flex; align-items: center; gap: 0.5rem;">
-              ✓ You have unlocked FREE Express Delivery Nationwide!
-            </span>
-          {%- else -%}
-            {%- assign remaining_cents = free_shipping_threshold | minus: current_subtotal -%}
-            {%- assign remaining_str = remaining_cents | money_without_currency -%}
-            <span>Add ₱{{ remaining_str }} more to unlock FREE Delivery Nationwide</span>
-          {%- endif -%}
-          <span style="color: var(--color-text-dim); font-size: 0.8125rem;">Free Shipping at ₱1,500</span>
-        </div>
-        <div class="shipping-progress-track">
-          {%- assign progress_pct = current_subtotal | times: 100.0 | divided_by: free_shipping_threshold -%}
-          {%- if progress_pct > 100 -%}{%- assign progress_pct = 100 -%}{%- endif -%}
-          <div class="shipping-progress-fill" style="width: {{ progress_pct }}%;"></div>
-        </div>
-      </div>
-    {%- endif -%}
-
     <div class="cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
       <a href="{{ routes.all_products_collection_url }}" class="button">
@@ -74,6 +50,32 @@
         </p>
       {%- endif -%}
     </div>
+
+    {%- if cart != empty -%}
+      {%- assign free_shipping_threshold = 150000 -%}
+      {%- assign current_subtotal = cart.total_price -%}
+      <div class="free-shipping-bar-card" style="margin-bottom: 2rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e7e5e4); border-radius: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9375rem; font-weight: 700; color: #1c1917; margin-bottom: 0.75rem;">
+          {%- if current_subtotal >= free_shipping_threshold -%}
+            <span style="color: #059669; display: flex; align-items: center; gap: 0.5rem;">
+              ✓ You have unlocked FREE Express Delivery Nationwide!
+            </span>
+          {%- else -%}
+            {%- assign remaining_cents = free_shipping_threshold | minus: current_subtotal -%}
+            {%- assign remaining_pesos = remaining_cents | divided_by: 100 -%}
+            <span>
+              Add <strong style="color: #b45309;">₱{{ remaining_pesos }}.00</strong> more to unlock <strong>FREE Express Delivery</strong>!
+            </span>
+          {%- endif -%}
+          {%- assign percent = current_subtotal | times: 100 | divided_by: free_shipping_threshold -%}
+          {%- if percent > 100 -%}{%- assign percent = 100 -%}{%- endif -%}
+          <span>{{ percent }}%</span>
+        </div>
+        <div class="free-shipping-progress-track" style="width: 100%; height: 8px; background: #e7e5e4; border-radius: 9999px; overflow: hidden;">
+          <div class="free-shipping-progress-fill" style="width: {{ percent }}%; height: 100%; background: linear-gradient(90deg, #b45309, #d97706); transition: width 0.4s ease;"></div>
+        </div>
+      </div>
+    {%- endif -%}
 
     <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
       <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
