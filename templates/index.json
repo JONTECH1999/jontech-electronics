@@ -18,8 +18,8 @@
     },
     "category-showcase": {
       "type": "category-showcase",
-      "blocks": [
-        {
+      "blocks": {
+        "block_1": {
           "type": "category",
           "settings": {
             "tag": "4 Models",
@@ -30,7 +30,7 @@
             "link_url": "#featured-hardware"
           }
         },
-        {
+        "block_2": {
           "type": "category",
           "settings": {
             "tag": "4 Sensors",
@@ -41,7 +41,7 @@
             "link_url": "#featured-hardware"
           }
         },
-        {
+        "block_3": {
           "type": "category",
           "settings": {
             "tag": "3 Modules",
@@ -52,7 +52,7 @@
             "link_url": "#featured-hardware"
           }
         },
-        {
+        "block_4": {
           "type": "category",
           "settings": {
             "tag": "Lab Gear",
@@ -63,7 +63,7 @@
             "link_url": "#featured-hardware"
           }
         }
-      ],
+      },
       "settings": {
         "title": "Curated Electronics & Prototyping Departments",
         "subtitle": "Select high-grade electronics tested for STEM universities, IoT telemetry, and industrial automation."
@@ -71,8 +71,8 @@
     },
     "lab-configurator": {
       "type": "interactive-bundle-builder",
-      "blocks": [
-        {
+      "blocks": {
+        "block_1": {
           "type": "option",
           "settings": {
             "group": "step-1",
@@ -87,7 +87,7 @@
             "spec_2": "30-Pin USB-C"
           }
         },
-        {
+        "block_2": {
           "type": "option",
           "settings": {
             "group": "step-1",
@@ -101,7 +101,7 @@
             "spec_2": "14 Digital I/O"
           }
         },
-        {
+        "block_3": {
           "type": "option",
           "settings": {
             "group": "step-1",
@@ -115,7 +115,7 @@
             "spec_2": "Dual 4K HDMI"
           }
         },
-        {
+        "block_4": {
           "type": "option",
           "settings": {
             "group": "step-1",
@@ -129,7 +129,7 @@
             "spec_2": "Type-C Native"
           }
         },
-        {
+        "block_5": {
           "type": "option",
           "settings": {
             "group": "step-2",
@@ -143,7 +143,7 @@
             "spec_2": "Calibrated"
           }
         },
-        {
+        "block_6": {
           "type": "option",
           "settings": {
             "group": "step-2",
@@ -157,7 +157,7 @@
             "spec_2": "Self-Emitting"
           }
         },
-        {
+        "block_7": {
           "type": "option",
           "settings": {
             "group": "step-2",
@@ -170,7 +170,7 @@
             "spec_2": "Obstacle Sonar"
           }
         },
-        {
+        "block_8": {
           "type": "option",
           "settings": {
             "group": "step-2",
@@ -183,7 +183,7 @@
             "spec_2": "UART & I2C"
           }
         },
-        {
+        "block_9": {
           "type": "option",
           "settings": {
             "group": "step-3",
@@ -197,7 +197,7 @@
             "spec_2": "65 Jumpers"
           }
         },
-        {
+        "block_10": {
           "type": "option",
           "settings": {
             "group": "step-3",
@@ -210,7 +210,7 @@
             "spec_2": "Opto-Isolated"
           }
         },
-        {
+        "block_11": {
           "type": "option",
           "settings": {
             "group": "step-3",
@@ -223,7 +223,7 @@
             "spec_2": "PWM Speed"
           }
         },
-        {
+        "block_12": {
           "type": "option",
           "settings": {
             "group": "step-3",
@@ -236,7 +236,7 @@
             "spec_2": "1.6 kg-cm"
           }
         }
-      ],
+      },
       "settings": {
         "title": "Interactive Hardware Lab & Kit Configurator",
         "subtitle": "Design your custom maker setup. Pick a microcontroller, attach telemetry sensors, configure motor or relay switching, and watch voltage logic safety and bundle savings calculate in real time."
