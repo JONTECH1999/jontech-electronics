@@ -27,7 +27,11 @@
   }
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="footer jt-amazon-footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <!-- Amazon-Style Back to Top Strip -->
+  <a href="#top" class="jt-back-to-top-btn" id="jtBackToTop" aria-label="Back to top">
+    Back to top
+  </a>
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -297,25 +301,61 @@
         {%- endif -%}
       </div>
     </div>
-    <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-      <div class="footer__copyright caption">
-        <small class="copyright__content"
-          >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-        </small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
-        {%- if section.settings.show_policy -%}
-          <ul class="policies list-unstyled">
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
-                <li>
-                  <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                  >
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
+    <!-- Amazon-Style Detailed Sub-Footer Directory Links -->
+    <div class="jt-amazon-subfooter">
+      <div class="page-width jt-amazon-subfooter__grid">
+        <div class="jt-subfooter-col">
+          <span class="jt-subfooter-title">Get to Know Us</span>
+          <ul class="jt-subfooter-list">
+            <li><a href="/pages/about">About JonTech Lab</a></li>
+            <li><a href="/pages/careers">STEM Research & Careers</a></li>
+            <li><a href="/blogs/news">Engineering Blog</a></li>
+            <li><a href="/pages/verified-hardware">Component Verification Standards</a></li>
           </ul>
-        {%- endif -%}
+        </div>
+        <div class="jt-subfooter-col">
+          <span class="jt-subfooter-title">Make Money with Us</span>
+          <ul class="jt-subfooter-list">
+            <li><a href="/pages/affiliate">Affiliate Partner Program</a></li>
+            <li><a href="/pages/schools">STEM School Bulk Supply</a></li>
+            <li><a href="/pages/vendor-inquiries">Sell Hardware on JonTech</a></li>
+            <li><a href="/pages/creator-hub">Maker & Creator Sponsorships</a></li>
+          </ul>
+        </div>
+        <div class="jt-subfooter-col">
+          <span class="jt-subfooter-title">Payment & Security</span>
+          <ul class="jt-subfooter-list">
+            <li><a href="/pages/payment-methods">Cash on Delivery (COD)</a></li>
+            <li><a href="/pages/payment-methods">GCash, Maya & Bank QR</a></li>
+            <li><a href="/pages/warranty">2-Year Warranty Claim</a></li>
+            <li><a href="/pages/security">Zero-Fraud Protection</a></li>
+          </ul>
+        </div>
+        <div class="jt-subfooter-col">
+          <span class="jt-subfooter-title">Let Us Help You</span>
+          <ul class="jt-subfooter-list">
+            <li><a href="/account">Your Account & Order Status</a></li>
+            <li><a href="/pages/shipping">Metro Manila Express Rates</a></li>
+            <li><a href="/pages/returns">Replacement & Return Policies</a></li>
+            <li><a href="/pages/contact">Contact STEM Engineering Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Amazon-Style Bottom Line Sub-Bar -->
+      <div class="jt-amazon-subfooter__bar page-width">
+        <div class="jt-subfooter-brand-row">
+          <span class="jt-subfooter-logo">⚡ JONTECH</span>
+          <span class="jt-subfooter-country-badge">🇵🇭 Philippines (PHP ₱)</span>
+          <span class="jt-subfooter-lang-badge">🌐 English</span>
+        </div>
+        <div class="jt-subfooter-legal">
+          <span>Conditions of Use</span>
+          <span>Privacy Notice</span>
+          <span>Consumer Health Data Notice</span>
+          <span>Your Ads Privacy Choices</span>
+          <span class="jt-copyright-sub">&copy; 2026, JonTech Electronics, Inc. or its affiliates. All rights reserved.</span>
+        </div>
       </div>
     </div>
   </div>
