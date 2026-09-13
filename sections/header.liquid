@@ -363,6 +363,31 @@
       </a>
     </div>
   </header>
+
+  {%- comment -%} Amazon Mobile Full-Width Search Row {%- endcomment -%}
+  <div class="header__amazon-search-mobile medium-hide large-up-hide page-width">
+    <form action="{{ routes.search_url }}" method="get" role="search" class="amazon-search-form amazon-search-form--mobile">
+      <div class="amazon-search-input-wrap">
+        <input
+          type="search"
+          name="q"
+          id="AmazonSearchInputMobile"
+          value="{{ search.terms | escape }}"
+          placeholder="Search JonTech: ESP32, Arduino, Pi, Sensors..."
+          class="amazon-search-input"
+          autocomplete="off"
+          aria-label="Search electronics"
+        >
+        <input type="hidden" name="options[prefix]" value="last">
+      </div>
+      <button type="submit" class="amazon-search-submit" aria-label="Search">
+        <svg class="icon icon-search" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </form>
+  </div>
 </{{ header_tag }}>
 
 {%- if settings.cart_type == 'notification' -%}

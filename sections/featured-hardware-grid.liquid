@@ -1,35 +1,102 @@
 {% comment %}
-  JonTech Electronics - Amazon-Style Featured Deals & Best Sellers Grid
+  JonTech Electronics - Amazon Search Results Landing Layout
+  Modeled after Amazon USA Search Pattern adapted to Warm Linen/Beige Palette
 {% endcomment %}
 
-<section id="featured-hardware" class="jt-catalog-section" role="region" aria-label="Featured Hardware Catalog">
-  <div class="container">
-    <div class="section-header section-header--center">
-      <div style="margin-bottom: 0.5rem;">
-        <span class="jt-badge jt-badge--deal">🔥 AMAZON-GRADE SHOPPING EXPERIENCE</span>
-      </div>
-      <h2 class="section-title">
-        {{ section.settings.title | default: 'Best Sellers & Verified STEM Electronics' }}
-      </h2>
-      <p class="section-subtitle">
-        {{ section.settings.subtitle | default: 'Bench-tested microcontrollers, calibrated sensors, and robotics modules. Gold-flashed pinouts, zero logic conflict, and 2-year replacement warranty.' }}
-      </p>
+<section id="featured-hardware" class="jt-amazon-search-page" role="region" aria-label="Amazon Hardware Search Results">
+  <div class="jt-amazon-container">
 
-      <!-- Category Filter Pills -->
-      <div class="jt-filter-nav" role="tablist">
-        <button type="button" class="jt-filter-btn active" data-filter="all">⭐ All Hardware (12)</button>
-        <button type="button" class="jt-filter-btn" data-filter="mcu">⚡ Microcontrollers (4)</button>
-        <button type="button" class="jt-filter-btn" data-filter="sensors">📡 Sensors & Displays (4)</button>
-        <button type="button" class="jt-filter-btn" data-filter="robotics">🤖 Robotics & Drivers (3)</button>
-        <button type="button" class="jt-filter-btn" data-filter="prototyping">🔌 Prototyping (1)</button>
+    <!-- Top Alert Strip (Amazon area delivery advisories) -->
+    <div class="jt-alert-strip" role="alert">
+      <div class="jt-alert-content">
+        <span class="jt-alert-icon">⚠️</span>
+        <span class="jt-alert-text">Extended delivery time in your area. Manila Express, STEM Priority & Lab Orders operating normally.</span>
+      </div>
+      <button type="button" class="jt-alert-dismiss" aria-label="Dismiss alert" onclick="this.closest('.jt-alert-strip').style.display='none';">Dismiss</button>
+    </div>
+
+    <!-- Top Query Counter & Sort Bar -->
+    <div class="jt-results-query-bar">
+      <div class="jt-query-counter">
+        <span>1-12 of 12 results for</span>
+        <strong class="jt-query-term">"jontech electronics"</strong>
+      </div>
+      <div class="jt-sort-control small-hide">
+        <label for="jtSortSelect" class="jt-sort-label">Sort by:</label>
+        <select id="jtSortSelect" class="jt-sort-select" aria-label="Sort search results">
+          <option value="featured" selected>Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Avg. Customer Review</option>
+          <option value="newest">Newest Arrivals</option>
+        </select>
       </div>
     </div>
 
-    <!-- Amazon-Style Two-Column Shopping Layout (Fixed Sidebar + Product Stream) -->
+    <!-- Amazon Brand Spotlight Banner (JonTech Essentials / Certified Lab) -->
+    <div class="jt-brand-spotlight-card">
+      <div class="jt-brand-spotlight-inner">
+        <div class="jt-brand-spotlight-badge">
+          <span class="jt-brand-logo-mark">⚡</span>
+          <span class="jt-brand-name">JONTECH LAB</span>
+        </div>
+        <div class="jt-brand-spotlight-details">
+          <span class="jt-brand-pill">Featured Hardware Brand</span>
+          <h3 class="jt-brand-spotlight-title">You're shopping JonTech Certified STEM & IoT Electronics</h3>
+          <p class="jt-brand-spotlight-desc">Gold-flashed pinouts, automated 3.3V/5V logic isolation test, and official 2-year warranty replacement across the Philippines.</p>
+        </div>
+        <div class="jt-brand-spotlight-action">
+          <a href="#lab-configurator" class="jt-brand-spotlight-link">Explore Lab Builder →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Subheader -->
+    <div class="jt-results-heading-row">
+      <h2 class="jt-results-title">Results</h2>
+      <p class="jt-results-notice">Check each product page for other buying options. Price and other details may vary based on product size, pin configuration, and bundle package.</p>
+    </div>
+
+    <!-- Mobile Filter & Sort Bar (<990px) -->
+    <div class="jt-mobile-filter-bar medium-hide large-up-hide">
+      <button type="button" class="jt-mobile-filter-btn" id="jtMobileFilterToggle" aria-label="Open filter menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="4" y1="21" x2="4" y2="14"></line>
+          <line x1="4" y1="10" x2="4" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="3"></line>
+          <line x1="20" y1="21" x2="20" y2="16"></line>
+          <line x1="20" y1="12" x2="20" y2="3"></line>
+          <line x1="1" y1="14" x2="7" y2="14"></line>
+          <line x1="9" y1="8" x2="15" y2="8"></line>
+          <line x1="17" y1="16" x2="23" y2="16"></line>
+        </svg>
+        <span>Filters (<span id="jtActiveFilterCountMobile">12</span>)</span>
+      </button>
+      <div class="jt-mobile-sort-wrap">
+        <select id="jtMobileSortSelect" class="jt-sort-select" aria-label="Sort results mobile">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="rating">Avg. Review</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="jt-sidebar-overlay" id="jtSidebarOverlay"></div>
+
+    <!-- Two-Column Shopping Stream (Sticky Sidebar + Product Cards) -->
     <div class="jt-amazon-layout">
-      <!-- Amazon-Style Left Sidebar -->
-      <aside class="jt-sidebar" aria-label="Product Filters and Departments">
-        <!-- Delivery Banner / Area Notice -->
+
+      <!-- Amazon Sticky Refinement Sidebar -->
+      <aside class="jt-sidebar" id="jtSidebar" aria-label="Search Refinements">
+        <div class="jt-sidebar-mobile-header medium-hide large-up-hide">
+          <h3>Filters & Refinements</h3>
+          <button type="button" class="jt-sidebar-close-btn" id="jtSidebarCloseBtn" aria-label="Close filters">✕</button>
+        </div>
+
+        <!-- Fast Delivery Area Card -->
         <div class="jt-sidebar-banner">
           <span class="jt-sb-banner-icon">⚡</span>
           <div>
@@ -38,7 +105,7 @@
           </div>
         </div>
 
-        <!-- Popular Shopping Ideas / Categories -->
+        <!-- Popular Departments -->
         <div class="jt-sidebar-group">
           <h4 class="jt-sidebar-heading">Popular Departments</h4>
           <ul class="jt-sidebar-list">
@@ -50,7 +117,7 @@
           </ul>
         </div>
 
-        <!-- Free Shipping Filter -->
+        <!-- Delivery & Shipping -->
         <div class="jt-sidebar-group">
           <h4 class="jt-sidebar-heading">Delivery & Shipping</h4>
           <label class="jt-sb-checkbox-label">
@@ -65,578 +132,634 @@
           </label>
         </div>
 
-        <!-- Brands Filter -->
-        <div class="jt-sidebar-group">
-          <h4 class="jt-sidebar-heading">Verified Brands</h4>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>Espressif Systems</span></label>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>Arduino Official / Clone</span></label>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>Raspberry Pi Foundation</span></label>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>STMicroelectronics</span></label>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>JonTech Certified Lab</span></label>
-        </div>
-
         <!-- Customer Reviews -->
         <div class="jt-sidebar-group">
           <h4 class="jt-sidebar-heading">Customer Reviews</h4>
           <div class="jt-sb-stars-list">
-            <a href="javascript:void(0)" class="jt-sb-star-row">
+            <a href="javascript:void(0)" class="jt-sb-star-row active" data-sb-rating="4">
               <span class="jt-stars">★★★★☆</span>
               <span class="jt-sb-star-text">& Up (4.0+)</span>
             </a>
-            <a href="javascript:void(0)" class="jt-sb-star-row">
+            <a href="javascript:void(0)" class="jt-sb-star-row" data-sb-rating="4.8">
               <span class="jt-stars">★★★★★</span>
               <span class="jt-sb-star-text">(4.8+ Top Rated)</span>
             </a>
           </div>
         </div>
 
-        <!-- Price Range -->
+        <!-- Verified Brands -->
+        <div class="jt-sidebar-group">
+          <h4 class="jt-sidebar-heading">Verified Brands</h4>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>Espressif Systems</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>Arduino Official / Clone</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>Raspberry Pi Foundation</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>STMicroelectronics</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>JonTech Certified Lab</span></label>
+        </div>
+
+        <!-- Price Range (₱) -->
         <div class="jt-sidebar-group">
           <h4 class="jt-sidebar-heading">Price Range (₱)</h4>
           <ul class="jt-sidebar-list">
+            <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="all">All Prices</a></li>
             <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="under-200">Under ₱200.00</a></li>
             <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="200-500">₱200.00 to ₱500.00</a></li>
             <li><a href="javascript:void(0)" class="jt-sb-filter-link" data-sb-price="over-500">Over ₱500.00</a></li>
           </ul>
         </div>
 
-        <!-- Condition & Warranty -->
+        <!-- Hardware Condition -->
         <div class="jt-sidebar-group">
           <h4 class="jt-sidebar-heading">Hardware Condition</h4>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>New (Factory Fresh)</span></label>
-          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span class="jt-sb-custom-check"></span><span>2-Year Full Replacement</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>New (Factory Fresh)</span></label>
+          <label class="jt-sb-checkbox-label"><input type="checkbox" class="jt-sb-checkbox" checked><span>2-Year Full Replacement</span></label>
+        </div>
+
+        <div class="jt-sidebar-mobile-footer medium-hide large-up-hide">
+          <button type="button" class="btn btn--amazon" id="jtApplyFiltersBtn">Apply Filters</button>
         </div>
       </aside>
 
-      <!-- Main Results Area -->
-      <div class="jt-main-results">
-        <!-- Results Bar: Count and Sorting -->
-        <div class="jt-results-bar">
-          <div class="jt-results-count">
-            Showing <strong id="jtResultCount">12</strong> verified electronic components for <span class="jt-results-query">"all hardware"</span>
-          </div>
-          <div class="jt-results-sort">
-            <label for="jtSortSelect" class="jt-sort-label">Sort by:</label>
-            <select id="jtSortSelect" class="jt-sort-select">
-              <option value="featured" selected>Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Avg. Customer Review</option>
-            </select>
-          </div>
-        </div>
+      <!-- Main Results Column -->
+      <main class="jt-main-results">
 
         <!-- Product Cards Grid -->
         <div class="jt-product-grid">
 
-      <!-- Product 1: ESP32 -->
-      <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-ESP32-30P">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--best">#1 BEST SELLER</span>
-          <span class="jt-badge jt-badge--save">-13%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=500&auto=format&fit=crop&q=80" 
-            alt="ESP32 NodeMCU DevKit v1" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">3.3V Logic · WiFi + BLE</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">Espressif / JonTech</span>
-          <h3 class="jt-card-title">
-            <a href="/products/esp32-nodemcu-devkit-v1">ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.9</span>
-            <span class="jt-rating-reviews">(312)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱280.00</span>
-              <span class="jt-card-compare">₱320.00</span>
+          <!-- Product 1: ESP32 -->
+          <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-ESP32-30P" data-price="280" data-rating="4.9">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--overall">Overall Pick</span>
+              <span class="jt-badge jt-badge--save">-13%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱40.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=500&auto=format&fit=crop&q=80" 
+                alt="ESP32 NodeMCU DevKit v1" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">3.3V Logic · WiFi + BLE</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#1c1917;" title="Matte Black PCB"></span>
+              <span class="jt-swatch" style="background:#1e3a8a;" title="Classic Navy Blue"></span>
+              <span class="jt-swatch" style="background:#d97706;" title="Gold-Flashed Headers"></span>
+              <span class="jt-swatch-count">+2 options</span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">Espressif Systems</span>
+              <h3 class="jt-card-title">
+                <a href="/products/esp32-nodemcu-devkit-v1">ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE Microcontroller)</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.9</span>
+                <span class="jt-rating-reviews">(312)</span>
+              </div>
+              <div class="jt-card-bought">1K+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">280</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱320.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱40.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (45 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="ESP32 NodeMCU DevKit v1" data-price="280">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (45 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="ESP32 NodeMCU DevKit v1" data-price="280">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 2: Arduino Uno R3 -->
-      <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-UNO-R3">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--deal">POPULAR IN STEM</span>
-          <span class="jt-badge jt-badge--save">-12%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg" 
-            alt="Arduino Uno R3" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">5V Safe · 16MHz DIP</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">Arduino / JonTech</span>
-          <h3 class="jt-card-title">
-            <a href="/products/arduino-uno-r3">Arduino Uno R3 (ATmega328P + CH340G)</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.8</span>
-            <span class="jt-rating-reviews">(215)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱350.00</span>
-              <span class="jt-card-compare">₱399.00</span>
+          <!-- Product 2: Arduino Uno R3 -->
+          <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-UNO-R3" data-price="350" data-rating="4.8">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--deal">Popular in STEM</span>
+              <span class="jt-badge jt-badge--save">-12%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱49.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg" 
+                alt="Arduino Uno R3" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">5V Safe · 16MHz DIP</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#0284c7;" title="Arduino Teal/Blue"></span>
+              <span class="jt-swatch" style="background:#1c1917;" title="Black Edition"></span>
+              <span class="jt-swatch-count">+1 option</span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">Arduino Official / JonTech</span>
+              <h3 class="jt-card-title">
+                <a href="/products/arduino-uno-r3">Arduino Uno R3 (ATmega328P + CH340G Development Board)</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.8</span>
+                <span class="jt-rating-reviews">(215)</span>
+              </div>
+              <div class="jt-card-bought">800+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">350</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱399.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱49.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (32 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Arduino Uno R3" data-price="350">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (32 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Arduino Uno R3" data-price="350">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 3: Raspberry Pi 4 Model B -->
-      <div class="jt-card" data-cat="mcu" data-sku="JT-SBC-RPI4-4GB">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--prime">HIGH COMPUTE</span>
-          <span class="jt-badge jt-badge--save">-9%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg" 
-            alt="Raspberry Pi 4 Model B" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">4GB RAM · Dual 4K HDMI</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">Raspberry Pi Foundation</span>
-          <h3 class="jt-card-title">
-            <a href="/products/raspberry-pi-4-model-b-4gb">Raspberry Pi 4 Model B (4GB RAM)</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">5.0</span>
-            <span class="jt-rating-reviews">(184)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱3,899.00</span>
-              <span class="jt-card-compare">₱4,299.00</span>
+          <!-- Product 3: Raspberry Pi 4 Model B -->
+          <div class="jt-card" data-cat="mcu" data-sku="JT-SBC-RPI4-4GB" data-price="3899" data-rating="5.0">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--overall">Overall Pick</span>
+              <span class="jt-badge jt-badge--best">High Compute</span>
             </div>
-            <span class="jt-card-save-text">Save ₱400.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg" 
+                alt="Raspberry Pi 4 Model B" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">4GB RAM · Dual 4K HDMI</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#15803d;" title="Original Green PCB"></span>
+              <span class="jt-swatch" style="background:#dc2626;" title="Red Official Case"></span>
+              <span class="jt-swatch-count">+2 options</span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">Raspberry Pi Foundation</span>
+              <h3 class="jt-card-title">
+                <a href="/products/raspberry-pi-4-model-b-4gb">Raspberry Pi 4 Model B (4GB RAM Quad-Core 1.5GHz)</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">5.0</span>
+                <span class="jt-rating-reviews">(184)</span>
+              </div>
+              <div class="jt-card-bought">500+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">3,899</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱4,299.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱400.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (12 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Raspberry Pi 4 Model B" data-price="3899">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (12 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Raspberry Pi 4 Model B" data-price="3899">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 4: STM32 Black Pill -->
-      <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-STM32-F401">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--deal">INDUSTRIAL GRADE</span>
-          <span class="jt-badge jt-badge--save">-14%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=500&auto=format&fit=crop&q=80" 
-            alt="STM32F401 Black Pill" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">84MHz M4 · Type-C</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">STMicroelectronics</span>
-          <h3 class="jt-card-title">
-            <a href="/products/stm32f401-black-pill">STM32F401 "Black Pill" ARM Cortex-M4</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.7</span>
-            <span class="jt-rating-reviews">(88)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱240.00</span>
-              <span class="jt-card-compare">₱280.00</span>
+          <!-- Product 4: STM32 Black Pill -->
+          <div class="jt-card" data-cat="mcu" data-sku="JT-MCU-STM32-F401" data-price="240" data-rating="4.7">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--deal">Industrial Grade</span>
+              <span class="jt-badge jt-badge--save">-14%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱40.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=500&auto=format&fit=crop&q=80" 
+                alt="STM32F401 Black Pill" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">84MHz M4 · Type-C</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#1c1917;" title="Black PCB"></span>
+              <span class="jt-swatch" style="background:#4b5563;" title="Pre-soldered Pins"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">STMicroelectronics</span>
+              <h3 class="jt-card-title">
+                <a href="/products/stm32f401-black-pill">STM32F401 "Black Pill" ARM Cortex-M4 Microcontroller</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.7</span>
+                <span class="jt-rating-reviews">(88)</span>
+              </div>
+              <div class="jt-card-bought">300+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">240</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱280.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱40.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (28 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="STM32F401 Black Pill" data-price="240">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (28 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="STM32F401 Black Pill" data-price="240">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 5: DHT22 Sensor -->
-      <div class="jt-card" data-cat="sensors" data-sku="JT-SEN-DHT22-MOD">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--best">HIGH ACCURACY</span>
-          <span class="jt-badge jt-badge--save">-19%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/5/5b/DHT22_digital_temperature_and_humidity_sensor_module_pcb.jpg" 
-            alt="DHT22 Digital Temperature & Humidity Sensor" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">0-100% RH · -40 to 80°C</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">JonTech Sensors</span>
-          <h3 class="jt-card-title">
-            <a href="/products/dht22-digital-temperature-humidity-sensor">DHT22 Digital Temperature & Humidity Sensor</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.9</span>
-            <span class="jt-rating-reviews">(176)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱195.00</span>
-              <span class="jt-card-compare">₱240.00</span>
+          <!-- Product 5: DHT22 Sensor -->
+          <div class="jt-card" data-cat="sensors" data-sku="JT-SEN-DHT22-MOD" data-price="195" data-rating="4.9">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--overall">Overall Pick</span>
+              <span class="jt-badge jt-badge--save">-19%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱45.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5b/DHT22_digital_temperature_and_humidity_sensor_module_pcb.jpg" 
+                alt="DHT22 Digital Temperature & Humidity Sensor" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">0-100% RH · -40 to 80°C</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#ffffff; border:1px solid #d1d5db;" title="White Housing"></span>
+              <span class="jt-swatch" style="background:#0284c7;" title="PCB Module"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">JonTech Sensors</span>
+              <h3 class="jt-card-title">
+                <a href="/products/dht22-digital-temperature-humidity-sensor">DHT22 Digital Temperature & Humidity Sensor Module</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.9</span>
+                <span class="jt-rating-reviews">(176)</span>
+              </div>
+              <div class="jt-card-bought">600+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">195</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱240.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱45.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (50 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="DHT22 Sensor" data-price="195">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (50 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="DHT22 Sensor" data-price="195">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 6: HC-SR04 Ultrasonic Sensor -->
-      <div class="jt-card" data-cat="sensors" data-sku="JT-SEN-HCSR04-5V">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--deal">STEM CLASSIC</span>
-          <span class="jt-badge jt-badge--save">-23%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80" 
-            alt="HC-SR04 Ultrasonic Distance Sensor" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">2cm - 400cm · 3mm Accuracy</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">JonTech Sensors</span>
-          <h3 class="jt-card-title">
-            <a href="/products/hc-sr04-ultrasonic-distance-sensor">HC-SR04 Ultrasonic Distance Sensor Module</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.8</span>
-            <span class="jt-rating-reviews">(294)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱85.00</span>
-              <span class="jt-card-compare">₱110.00</span>
+          <!-- Product 6: HC-SR04 Ultrasonic Sensor -->
+          <div class="jt-card" data-cat="sensors" data-sku="JT-SEN-HCSR04-5V" data-price="85" data-rating="4.8">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--deal">STEM Classic</span>
+              <span class="jt-badge jt-badge--save">-23%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱25.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&auto=format&fit=crop&q=80" 
+                alt="HC-SR04 Ultrasonic Distance Sensor" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">2cm - 400cm · 3mm Precision</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#0284c7;" title="Standard Blue"></span>
+              <span class="jt-swatch" style="background:#dc2626;" title="Red 3.3V Version"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">JonTech Sensors</span>
+              <h3 class="jt-card-title">
+                <a href="/products/hc-sr04-ultrasonic-distance-sensor">HC-SR04 Ultrasonic Distance Sensor Module</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.8</span>
+                <span class="jt-rating-reviews">(294)</span>
+              </div>
+              <div class="jt-card-bought">1K+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">85</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱110.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱25.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (60 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="HC-SR04 Ultrasonic Sensor" data-price="85">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (60 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="HC-SR04 Ultrasonic Sensor" data-price="85">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 7: 0.96 inch OLED Display -->
-      <div class="jt-card" data-cat="sensors" data-sku="JT-DSP-OLED096-I2C">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--best">CRISP OLED</span>
-          <span class="jt-badge jt-badge--save">-19%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=80" 
-            alt="0.96 inch I2C OLED Display" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">128x64 · I2C (0x3C)</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">JonTech Displays</span>
-          <h3 class="jt-card-title">
-            <a href="/products/096-inch-i2c-oled-display">0.96 inch I2C OLED Display Module (128x64)</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.9</span>
-            <span class="jt-rating-reviews">(145)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱145.00</span>
-              <span class="jt-card-compare">₱180.00</span>
+          <!-- Product 7: 0.96 inch OLED Display -->
+          <div class="jt-card" data-cat="sensors" data-sku="JT-DSP-OLED096-I2C" data-price="145" data-rating="4.9">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--best">Crisp OLED</span>
+              <span class="jt-badge jt-badge--save">-19%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱35.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=80" 
+                alt="0.96 inch I2C OLED Display" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">128x64 · I2C (0x3C)</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#0284c7;" title="Blue Pixel"></span>
+              <span class="jt-swatch" style="background:#ffffff; border:1px solid #d1d5db;" title="White Pixel"></span>
+              <span class="jt-swatch" style="background:#eab308;" title="Yellow-Blue Dual"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">JonTech Displays</span>
+              <h3 class="jt-card-title">
+                <a href="/products/096-inch-i2c-oled-display">0.96 inch I2C OLED Display Module (128x64 Resolution)</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.9</span>
+                <span class="jt-rating-reviews">(145)</span>
+              </div>
+              <div class="jt-card-bought">400+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">145</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱180.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱35.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (35 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="0.96 inch OLED Display" data-price="145">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (35 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="0.96 inch OLED Display" data-price="145">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 8: TFmini-S Micro LiDAR -->
-      <div class="jt-card" data-cat="sensors" data-sku="JT-SEN-TFMINIS-12M">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--prime">SOLID-STATE ToF</span>
-          <span class="jt-badge jt-badge--save">-12%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=500&auto=format&fit=crop&q=80" 
-            alt="TFmini-S Micro Solid-State LiDAR Sensor" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">12m Range · 1000Hz ToF</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">Benewake / JonTech</span>
-          <h3 class="jt-card-title">
-            <a href="/products/tfmini-s-micro-solid-state-lidar-sensor">TFmini-S Micro Solid-State LiDAR Sensor (12m)</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.9</span>
-            <span class="jt-rating-reviews">(62)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱1,850.00</span>
-              <span class="jt-card-compare">₱2,100.00</span>
+          <!-- Product 8: TFmini-S Micro LiDAR -->
+          <div class="jt-card" data-cat="sensors" data-sku="JT-SEN-TFMINIS-12M" data-price="1850" data-rating="4.9">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--prime">Solid-State ToF</span>
+              <span class="jt-badge jt-badge--save">-12%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱250.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=500&auto=format&fit=crop&q=80" 
+                alt="TFmini-S Micro Solid-State LiDAR Sensor" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">12m Range · 1000Hz ToF</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#1c1917;" title="UART Interface"></span>
+              <span class="jt-swatch" style="background:#4b5563;" title="I2C Interface"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">Benewake / JonTech</span>
+              <h3 class="jt-card-title">
+                <a href="/products/tfmini-s-micro-solid-state-lidar-sensor">TFmini-S Micro Solid-State LiDAR Sensor (12m Range)</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.9</span>
+                <span class="jt-rating-reviews">(62)</span>
+              </div>
+              <div class="jt-card-bought">100+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">1,850</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱2,100.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱250.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (15 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="TFmini-S Micro LiDAR" data-price="1850">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (15 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="TFmini-S Micro LiDAR" data-price="1850">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 9: 4-Channel 5V Relay -->
-      <div class="jt-card" data-cat="robotics" data-sku="JT-MOD-RELAY4-5V">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--deal">OPTO-ISOLATED</span>
-          <span class="jt-badge jt-badge--save">-21%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80" 
-            alt="4-Channel 5V Relay Module" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">250VAC 10A · Active Low</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">JonTech Power</span>
-          <h3 class="jt-card-title">
-            <a href="/products/4-channel-5v-relay-module">4-Channel 5V Relay Module with Optocoupler</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.8</span>
-            <span class="jt-rating-reviews">(118)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱165.00</span>
-              <span class="jt-card-compare">₱210.00</span>
+          <!-- Product 9: 4-Channel 5V Relay -->
+          <div class="jt-card" data-cat="robotics" data-sku="JT-MOD-RELAY4-5V" data-price="165" data-rating="4.8">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--deal">Opto-Isolated</span>
+              <span class="jt-badge jt-badge--save">-21%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱45.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=500&auto=format&fit=crop&q=80" 
+                alt="4-Channel 5V Relay Module" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">250VAC 10A · Active Low</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#1e3a8a;" title="Blue Songle Relays"></span>
+              <span class="jt-swatch" style="background:#1c1917;" title="Industrial Black"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">JonTech Power</span>
+              <h3 class="jt-card-title">
+                <a href="/products/4-channel-5v-relay-module">4-Channel 5V Relay Module with Optocoupler Isolation</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.8</span>
+                <span class="jt-rating-reviews">(118)</span>
+              </div>
+              <div class="jt-card-bought">300+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">165</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱210.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱45.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (22 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="4-Channel 5V Relay" data-price="165">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (22 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="4-Channel 5V Relay" data-price="165">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 10: L298N Motor Driver -->
-      <div class="jt-card" data-cat="robotics" data-sku="JT-MOD-L298N-2A">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--deal">DUAL H-BRIDGE</span>
-          <span class="jt-badge jt-badge--save">-25%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&auto=format&fit=crop&q=80" 
-            alt="L298N Dual H-Bridge Motor Driver" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">2A Peak · Dual DC / Stepper</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">JonTech Robotics</span>
-          <h3 class="jt-card-title">
-            <a href="/products/l298n-dual-h-bridge-dc-motor-driver">L298N Dual H-Bridge DC Motor Driver Board</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.7</span>
-            <span class="jt-rating-reviews">(132)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱120.00</span>
-              <span class="jt-card-compare">₱160.00</span>
+          <!-- Product 10: L298N Motor Driver -->
+          <div class="jt-card" data-cat="robotics" data-sku="JT-MOD-L298N-2A" data-price="120" data-rating="4.7">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--deal">Dual H-Bridge</span>
+              <span class="jt-badge jt-badge--save">-25%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱40.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&auto=format&fit=crop&q=80" 
+                alt="L298N Dual H-Bridge Motor Driver" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">2A Peak · Dual DC / Stepper</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#dc2626;" title="Red PCB Standard"></span>
+              <span class="jt-swatch" style="background:#1c1917;" title="Black Heatsink"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">JonTech Robotics</span>
+              <h3 class="jt-card-title">
+                <a href="/products/l298n-dual-h-bridge-dc-motor-driver">L298N Dual H-Bridge DC & Stepper Motor Driver Board</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.7</span>
+                <span class="jt-rating-reviews">(132)</span>
+              </div>
+              <div class="jt-card-bought">500+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">120</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱160.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱40.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (30 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="L298N Motor Driver" data-price="120">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (30 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="L298N Motor Driver" data-price="120">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 11: SG90 Micro Servo -->
-      <div class="jt-card" data-cat="robotics" data-sku="JT-ACT-SG90-9G">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--deal">PRECISION SERVO</span>
-          <span class="jt-badge jt-badge--save">-24%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=500&auto=format&fit=crop&q=80" 
-            alt="SG90 9g Micro Servo Motor" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">180° Sweep · 1.6kg-cm</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">TowerPro / JonTech</span>
-          <h3 class="jt-card-title">
-            <a href="/products/sg90-9g-micro-servo-motor">SG90 9g Micro Servo Motor with Horns</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.8</span>
-            <span class="jt-rating-reviews">(210)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱95.00</span>
-              <span class="jt-card-compare">₱125.00</span>
+          <!-- Product 11: SG90 Micro Servo -->
+          <div class="jt-card" data-cat="robotics" data-sku="JT-ACT-SG90-9G" data-price="95" data-rating="4.8">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--deal">Precision Servo</span>
+              <span class="jt-badge jt-badge--save">-24%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱30.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=500&auto=format&fit=crop&q=80" 
+                alt="SG90 9g Micro Servo Motor" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">180° Sweep · 1.6kg-cm</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#0284c7;" title="Translucent Blue"></span>
+              <span class="jt-swatch" style="background:#1c1917;" title="MG90S Metal Gear"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">TowerPro / JonTech</span>
+              <h3 class="jt-card-title">
+                <a href="/products/sg90-9g-micro-servo-motor">SG90 9g Micro Servo Motor with Horns & Hardware</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.8</span>
+                <span class="jt-rating-reviews">(210)</span>
+              </div>
+              <div class="jt-card-bought">700+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">95</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱125.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱30.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (40 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="SG90 Micro Servo" data-price="95">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (40 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="SG90 Micro Servo" data-price="95">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
-      <!-- Product 12: Breadboard & Wires -->
-      <div class="jt-card" data-cat="prototyping" data-sku="JT-ACC-BB830-65J">
-        <div class="jt-card-badge-row">
-          <span class="jt-badge jt-badge--best">MAKER ESSENTIAL</span>
-          <span class="jt-badge jt-badge--save">-20%</span>
-        </div>
-        <div class="jt-card-media">
-          <img 
-            src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=500&auto=format&fit=crop&q=80" 
-            alt="Master Solderless Breadboard & 65-pc Jumper Wires" 
-            class="jt-card-img" width="500" height="500" loading="lazy"
-          >
-          <span class="jt-card-quick-spec">830-Point · 65 Jumpers</span>
-        </div>
-        <div class="jt-card-body">
-          <span class="jt-card-vendor">JonTech Lab</span>
-          <h3 class="jt-card-title">
-            <a href="/products/master-solderless-breadboard-65-jumper-wires">Master Solderless Breadboard & 65-pc Jumper Wires</a>
-          </h3>
-          <div class="jt-card-rating">
-            <span class="jt-stars">★★★★★</span>
-            <span class="jt-rating-val">4.9</span>
-            <span class="jt-rating-reviews">(380)</span>
-          </div>
-          <div class="jt-card-price-box">
-            <div class="jt-card-prices">
-              <span class="jt-card-price">₱175.00</span>
-              <span class="jt-card-compare">₱220.00</span>
+          <!-- Product 12: Breadboard & Wires -->
+          <div class="jt-card" data-cat="prototyping" data-sku="JT-ACC-BB830-65J" data-price="175" data-rating="4.9">
+            <div class="jt-card-badge-row">
+              <span class="jt-badge jt-badge--overall">Overall Pick</span>
+              <span class="jt-badge jt-badge--save">-20%</span>
             </div>
-            <span class="jt-card-save-text">Save ₱45.00</span>
+            <div class="jt-card-media">
+              <img 
+                src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=500&auto=format&fit=crop&q=80" 
+                alt="Master Solderless Breadboard & 65-pc Jumper Wires" 
+                class="jt-card-img" width="500" height="500" loading="lazy"
+              >
+              <span class="jt-card-quick-spec">830-Point · 65 Jumpers</span>
+            </div>
+            <div class="jt-card-swatches">
+              <span class="jt-swatch jt-swatch--active" style="background:#ffffff; border:1px solid #d1d5db;" title="White 830-Point"></span>
+              <span class="jt-swatch" style="background:#1c1917;" title="Clear Transparent"></span>
+            </div>
+            <div class="jt-card-body">
+              <span class="jt-card-vendor">JonTech Lab Prototyping</span>
+              <h3 class="jt-card-title">
+                <a href="/products/master-solderless-breadboard-65-jumper-wires">Master Solderless Breadboard & 65-pc Flexible Jumpers</a>
+              </h3>
+              <div class="jt-card-rating">
+                <span class="jt-stars">★★★★★</span>
+                <span class="jt-rating-val">4.9</span>
+                <span class="jt-rating-reviews">(380)</span>
+              </div>
+              <div class="jt-card-bought">1K+ bought in past month</div>
+              <div class="jt-card-price-box">
+                <div class="jt-card-prices">
+                  <span class="jt-card-currency">₱</span><span class="jt-card-price-main">175</span><span class="jt-card-price-fraction">00</span>
+                  <span class="jt-card-compare">₱220.00</span>
+                </div>
+                <span class="jt-card-save-text">Save ₱45.00</span>
+              </div>
+              <div class="jt-card-delivery">
+                <span class="jt-delivery-icon">⚡</span>
+                <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
+              </div>
+              <div class="jt-card-stock">✓ In Stock (55 available)</div>
+              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Breadboard & Wires" data-price="175">
+                Add to Cart
+              </button>
+            </div>
           </div>
-          <div class="jt-card-delivery">
-            <span class="jt-delivery-icon">⚡</span>
-            <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
-          </div>
-          <div class="jt-card-stock">✓ In Stock (55 available)</div>
-          <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Breadboard & Wires" data-price="175">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
 
         </div><!-- /.jt-product-grid -->
-      </div><!-- /.jt-main-results -->
+      </main><!-- /.jt-main-results -->
+
     </div><!-- /.jt-amazon-layout -->
-  </div>
+  </div><!-- /.jt-amazon-container -->
 </section>
 
 <!-- Cart Added Notification Toast -->
@@ -647,35 +770,36 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.jt-filter-btn');
-    const sbFilterLinks = document.querySelectorAll('.jt-sb-filter-link');
+    const sbFilterLinks = document.querySelectorAll('.jt-sb-filter-link[data-sb-filter]');
+    const sbPriceLinks = document.querySelectorAll('.jt-sb-filter-link[data-sb-price]');
     const cards = Array.from(document.querySelectorAll('.jt-card'));
-    const resultCountEl = document.getElementById('jtResultCount');
     const sortSelect = document.getElementById('jtSortSelect');
+    const mobileSortSelect = document.getElementById('jtMobileSortSelect');
     const gridEl = document.querySelector('.jt-product-grid');
+    const mobileFilterToggle = document.getElementById('jtMobileFilterToggle');
+    const sidebarCloseBtn = document.getElementById('jtSidebarCloseBtn');
+    const sidebarOverlay = document.getElementById('jtSidebarOverlay');
+    const sidebar = document.getElementById('jtSidebar');
+    const applyFiltersBtn = document.getElementById('jtApplyFiltersBtn');
+    const mobileCountEl = document.getElementById('jtActiveFilterCountMobile');
+    const queryTermEl = document.querySelector('.jt-query-term');
 
-    function applyFilter(filter) {
-      // sync pill buttons
-      filterBtns.forEach(b => {
-        if (b.getAttribute('data-filter') === filter) {
-          b.classList.add('active');
-        } else {
-          b.classList.remove('active');
-        }
-      });
+    let currentDept = 'all';
+    let currentPrice = 'all';
 
-      // sync sidebar links
-      sbFilterLinks.forEach(l => {
-        if (l.getAttribute('data-sb-filter') === filter) {
-          l.classList.add('active');
-        } else {
-          l.classList.remove('active');
-        }
-      });
-
+    function updateCardVisibility() {
       let visibleCount = 0;
       cards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+        const cat = card.getAttribute('data-cat');
+        const price = parseFloat(card.getAttribute('data-price') || '0');
+
+        let matchDept = (currentDept === 'all' || cat === currentDept);
+        let matchPrice = true;
+        if (currentPrice === 'under-200') matchPrice = (price < 200);
+        else if (currentPrice === '200-500') matchPrice = (price >= 200 && price <= 500);
+        else if (currentPrice === 'over-500') matchPrice = (price > 500);
+
+        if (matchDept && matchPrice) {
           card.style.display = 'flex';
           visibleCount++;
         } else {
@@ -683,49 +807,107 @@
         }
       });
 
-      if (resultCountEl) {
-        resultCountEl.textContent = visibleCount;
+      if (mobileCountEl) mobileCountEl.textContent = visibleCount;
+      const counterSpan = document.querySelector('.jt-query-counter span');
+      if (counterSpan) {
+        counterSpan.textContent = `1-${visibleCount} of ${visibleCount} results for`;
       }
     }
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const filter = this.getAttribute('data-filter');
-        applyFilter(filter);
-      });
-    });
-
+    // Department Sidebar filtering
     sbFilterLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        const filter = this.getAttribute('data-sb-filter');
-        if (filter) {
-          applyFilter(filter);
+        sbFilterLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        currentDept = this.getAttribute('data-sb-filter') || 'all';
+        if (queryTermEl) {
+          const names = {
+            'all': '"jontech electronics"',
+            'mcu': '"microcontrollers & SBCs"',
+            'sensors': '"sensors & displays"',
+            'robotics': '"robotics & motor drivers"',
+            'prototyping': '"breadboards & wiring"'
+          };
+          queryTermEl.textContent = names[currentDept] || '"jontech electronics"';
+        }
+        updateCardVisibility();
+      });
+    });
+
+    // Price Filtering
+    sbPriceLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        sbPriceLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        currentPrice = this.getAttribute('data-sb-price') || 'all';
+        updateCardVisibility();
+      });
+    });
+
+    // Mobile Filter Drawer Toggle
+    function openSidebar() {
+      if (sidebar) sidebar.classList.add('jt-sidebar--open');
+      if (sidebarOverlay) sidebarOverlay.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar() {
+      if (sidebar) sidebar.classList.remove('jt-sidebar--open');
+      if (sidebarOverlay) sidebarOverlay.classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileFilterToggle) mobileFilterToggle.addEventListener('click', openSidebar);
+    if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+    if (applyFiltersBtn) applyFiltersBtn.addEventListener('click', closeSidebar);
+
+    // Sorting Logic
+    function applySort(val) {
+      const sorted = [...cards].sort((a, b) => {
+        const priceA = parseFloat(a.getAttribute('data-price') || '0');
+        const priceB = parseFloat(b.getAttribute('data-price') || '0');
+        const ratingA = parseFloat(a.getAttribute('data-rating') || '0');
+        const ratingB = parseFloat(b.getAttribute('data-rating') || '0');
+
+        if (val === 'price-low') return priceA - priceB;
+        if (val === 'price-high') return priceB - priceA;
+        if (val === 'rating') return ratingB - ratingA;
+        return 0; // featured/default
+      });
+
+      if (gridEl) {
+        sorted.forEach(card => gridEl.appendChild(card));
+      }
+    }
+
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function() {
+        if (mobileSortSelect) mobileSortSelect.value = this.value;
+        applySort(this.value);
+      });
+    }
+    if (mobileSortSelect) {
+      mobileSortSelect.addEventListener('change', function() {
+        if (sortSelect) sortSelect.value = this.value;
+        applySort(this.value);
+      });
+    }
+
+    // Swatches Interactive State
+    const swatches = document.querySelectorAll('.jt-swatch');
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', function() {
+        const parent = this.closest('.jt-card-swatches');
+        if (parent) {
+          parent.querySelectorAll('.jt-swatch').forEach(s => s.classList.remove('jt-swatch--active'));
+          this.classList.add('jt-swatch--active');
         }
       });
     });
 
-    // Sorting Logic
-    if (sortSelect && gridEl) {
-      sortSelect.addEventListener('change', function() {
-        const val = this.value;
-        const sorted = [...cards].sort((a, b) => {
-          const priceA = parseFloat(a.querySelector('.jt-add-cart-btn')?.getAttribute('data-price') || '0');
-          const priceB = parseFloat(b.querySelector('.jt-add-cart-btn')?.getAttribute('data-price') || '0');
-          const ratingA = parseFloat(a.querySelector('.jt-rating-val')?.textContent || '0');
-          const ratingB = parseFloat(b.querySelector('.jt-rating-val')?.textContent || '0');
-
-          if (val === 'price-low') return priceA - priceB;
-          if (val === 'price-high') return priceB - priceA;
-          if (val === 'rating') return ratingB - ratingA;
-          return 0; // featured/default
-        });
-
-        sorted.forEach(card => gridEl.appendChild(card));
-      });
-    }
-
-    // Instant Add-to-Cart with toast notification
+    // Instant Add-to-Cart with toast notification & cart counter update
     const addBtns = document.querySelectorAll('.jt-add-cart-btn');
     const toast = document.getElementById('jt-toast');
     const toastMsg = document.getElementById('jt-toast-msg');
@@ -734,9 +916,16 @@
       btn.addEventListener('click', function() {
         const title = this.getAttribute('data-product-title') || 'Hardware Item';
         const origText = this.innerHTML;
-        this.innerHTML = '✓ Added!';
+        this.innerHTML = '✓ Added to Cart';
         this.style.background = '#059669';
-        this.style.color = '#fff';
+        this.style.color = '#ffffff';
+
+        // Update cart bubbles if present
+        const bubbles = document.querySelectorAll('.cart-count-bubble span');
+        bubbles.forEach(bubble => {
+          const cur = parseInt(bubble.textContent.trim()) || 0;
+          bubble.textContent = cur + 1;
+        });
 
         // Show toast
         if (toast && toastMsg) {
@@ -751,7 +940,7 @@
           this.innerHTML = origText;
           this.style.background = '';
           this.style.color = '';
-        }, 1800);
+        }, 2000);
       });
     });
   });
@@ -781,4 +970,3 @@
   ]
 }
 {% endschema %}
-
