@@ -1,24 +1,50 @@
 {
   "sections": {
-    "hero_banner": {
-      "type": "hero-banner",
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Prototyping Technology Engineered for Real Labs & Universities",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Curated microcontrollers (ESP32, Arduino, Raspberry Pi, STM32), calibrated precision sensors (DHT22, Sonar, LiDAR), motor drivers, and verified STEM kits with zero pinout conflicts.",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Explore Hardware Catalog",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "Build My Custom Kit",
+            "button_link_2": "#lab-configurator",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "buttons"
+      ],
       "settings": {
-        "badge_text": "BENCH-TESTED EMBEDDED HARDWARE 2026",
-        "headline": "Prototyping technology engineered for real labs & universities.",
-        "subtext": "Curated microcontrollers (ESP32, Arduino, Raspberry Pi, STM32), calibrated precision sensors (DHT22, Sonar, LiDAR), motor drivers, and verified STEM kits with zero pinout conflicts.",
-        "primary_cta_text": "Explore Hardware Catalog",
-        "primary_cta_url": "/collections/all",
-        "secondary_cta_text": "Build My Custom Kit",
-        "secondary_cta_url": "#lab-configurator",
-        "alignment": "left"
-      }
-    },
-    "featured_products": {
-      "type": "featured-products",
-      "settings": {
-        "title": "Featured Technology & Engineering Packs",
-        "subtitle": "Carefully selected and bench-tested setups ready for immediate project deployment.",
-        "products_to_show": 8
+        "image_overlay_opacity": 30,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
       }
     },
     "lab_configurator": {
@@ -28,11 +54,32 @@
         "subtitle": "Design your custom maker setup. Pick a microcontroller, attach telemetry sensors, configure motor or relay switching, and watch voltage logic safety and bundle savings calculate in real time."
       }
     },
-    "category_showcase": {
-      "type": "category-showcase",
+    "featured_products": {
+      "type": "featured-collection",
       "settings": {
-        "title": "Curated Electronics & Prototyping Categories",
-        "subtitle": "Engineering development boards, precision sensors, robotics modules, and academic prototyping kits."
+        "title": "Featured Technology & Engineering Packs",
+        "heading_size": "h2",
+        "show_description": true,
+        "description": "Carefully selected and bench-tested setups ready for immediate project deployment.",
+        "description_style": "subtitle",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "spec_comparison": {
@@ -51,10 +98,9 @@
     }
   },
   "order": [
-    "hero_banner",
-    "featured_products",
+    "image_banner",
     "lab_configurator",
-    "category_showcase",
+    "featured_products",
     "spec_comparison",
     "why_jontech"
   ]
