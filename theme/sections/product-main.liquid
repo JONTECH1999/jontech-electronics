@@ -1,5 +1,6 @@
 {% comment %}
   JonTech Electronics - Product Main Section
+  Warm Linen & Beige Aesthetic with Technical Specifications Tabs
 {% endcomment %}
 
 {%- liquid
@@ -24,8 +25,8 @@
             >
           {%- else -%}
             <div class="product-card__placeholder" style="height: 100%; min-height: 480px;">
-              {% render 'icon', name: 'cpu', class: 'placeholder-icon' %}
-              <span style="font-size: 1.125rem;">JonTech Precision Hardware</span>
+              <span style="color: var(--color-primary);">{% render 'icon', name: 'cpu', class: 'placeholder-icon' %}</span>
+              <span style="font-size: 1.125rem; font-weight: 700; color: var(--color-heading);">JonTech Precision Hardware</span>
             </div>
           {%- endif -%}
         </div>
@@ -47,16 +48,16 @@
         <div class="stock-indicator">
           {%- if is_available -%}
             <span class="stock-dot"></span>
-            <span style="color: var(--color-sale);">
+            <span style="color: var(--color-sale); font-weight: 700;">
               {%- if current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= 5 -%}
-                Only {{ current_variant.inventory_quantity }} units left in stock
+                Only {{ current_variant.inventory_quantity }} units left in stock · Manila Warehouse Dispatch
               {%- else -%}
-                In Stock & Ready for Immediate Dispatch
+                In Stock & Bench-Tested · Ready for Courier Dispatch
               {%- endif -%}
             </span>
           {%- else -%}
             <span class="stock-dot stock-dot--warning"></span>
-            <span style="color: var(--color-warning);">Temporarily Out of Stock</span>
+            <span style="color: var(--color-warning); font-weight: 700;">Temporarily Out of Stock</span>
           {%- endif -%}
         </div>
 
@@ -65,14 +66,14 @@
           <!-- Variant Selector if multiple variants exist -->
           {%- if product.variants.size > 1 -%}
             <div class="variant-select-wrapper" style="margin-bottom: 1.5rem;">
-              <label for="ProductSelect-{{ section.id }}" style="display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text-muted);">
-                Select Configuration / Variant
+              <label for="ProductSelect-{{ section.id }}" style="display: block; font-size: 0.875rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-heading);">
+                Select Hardware Configuration / Edition
               </label>
               <select
                 name="id"
                 id="ProductSelect-{{ section.id }}"
                 class="sort-select"
-                style="width: 100%; padding: 0.75rem 1rem;"
+                style="width: 100%; padding: 0.85rem 1rem;"
               >
                 {%- for variant in product.variants -%}
                   {%- assign opt_money = variant.price | money -%}
@@ -98,7 +99,7 @@
 
           <!-- Quantity Selector -->
           <div class="quantity-wrapper" data-qty-wrapper>
-            <span style="font-size: 0.875rem; font-weight: 600; color: var(--color-text-muted);">Quantity:</span>
+            <span style="font-size: 0.875rem; font-weight: 700; color: var(--color-heading);">Quantity:</span>
             <div class="quantity-selector">
               <button type="button" class="quantity-btn" data-qty-btn="minus" aria-label="Decrease quantity">-</button>
               <input
@@ -129,26 +130,42 @@
         </form>
 
         <!-- Curated Setup / Bundle Value Prop Box -->
-        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem;">
+        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
           <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-            {% render 'icon', name: 'zap', class: 'text-primary' %}
-            <span style="font-weight: 700; color: #fff; font-size: 0.9375rem;">KitFlow Bundle Compatibility Guarantee</span>
+            <span style="color: var(--color-primary);">{% render 'icon', name: 'zap' %}</span>
+            <span style="font-weight: 800; color: var(--color-heading); font-size: 0.9375rem;">KitFlow Hardware Synergy Guarantee</span>
           </div>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.5;">
-            Verified for seamless integration with our JonTech ecosystem. All items pass our 4-factor scoring protocol: 35% Sales Validation, 25% Hardware Compatibility, 20% Inventory Health, and 20% Bundle Discount Efficiency.
+          <p style="font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.55;">
+            Verified for seamless integration into maker circuits. Every component passes our 4-factor scoring protocol: 35% Sales Validation, 25% Hardware Voltage Synergy, 20% Inventory Health, and 20% Bundle Discount Efficiency.
           </p>
         </div>
 
+        <!-- Technical Specifications Accordion -->
+        <div class="product-specs-accordion">
+          <div class="specs-tab-header">
+            <span>Hardware Specifications & Pinouts</span>
+            <span style="color: var(--color-primary);">▾</span>
+          </div>
+          <div class="specs-tab-content">
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>Operating Logic Voltage:</strong> 3.3V / 5V DC (Bench-verified with level shifters)</li>
+              <li><strong>Breadboard Compatibility:</strong> Standard 2.54mm (0.1") pitch male header pins</li>
+              <li><strong>Communication Interfaces:</strong> I2C (SDA/SCL), SPI (MISO/MOSI/SCK), UART (TX/RX), PWM</li>
+              <li><strong>Firmware Support:</strong> Arduino IDE, MicroPython, CircuitPython, Espressif ESP-IDF, ROS 2</li>
+            </ul>
+          </div>
+        </div>
+
         <!-- Description -->
-        <div class="product-description">
-          <h3 style="font-size: 1.125rem; margin-bottom: 0.75rem; color: #fff;">Product Specifications & Details</h3>
+        <div class="product-description" style="margin-top: 2rem;">
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.85rem; color: var(--color-heading); font-weight: 700;">Product Description & Lab Notes</h3>
           {%- if product.description != blank -%}
             <div class="rte">
               {{ product.description }}
             </div>
           {%- else -%}
             <p>
-              Engineered with aviation-grade durability, precision low-latency components, and calibrated tactile feedback. Designed to integrate directly into multi-device workstation environments without messy drivers or software bloat.
+              Pre-tested electronic prototyping hardware curated by JonTech Engineering. Each board is tested on our physical test jig before packaging to guarantee undamaged GPIO lines, factory firmware boot, and clean voltage regulation.
             </p>
           {%- endif -%}
         </div>

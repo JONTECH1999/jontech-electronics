@@ -4,77 +4,83 @@
     "theme_name": "JonTech Modern",
     "theme_version": "1.0.0",
     "theme_author": "JonTech Engineering",
-    "theme_documentation_url": "https://github.com/jontech/kitflow",
-    "theme_support_url": "https://jontech.example.com/support"
+    "theme_documentation_url": "https://github.com/JONTECH1999/jontech-electronics",
+    "theme_support_url": "https://jontech-electronics-xs08gbw3.myshopify.com"
   },
   {
-    "name": "Brand Colors",
+    "name": "Brand Colors (Warm Linen & Beige)",
     "settings": [
       {
         "type": "color",
         "id": "color_background",
-        "label": "Background",
-        "default": "#0B0F17"
+        "label": "Background (Warm Linen)",
+        "default": "#f8f6f0"
       },
       {
         "type": "color",
         "id": "color_surface",
         "label": "Card & Surface Background",
-        "default": "#131B2A"
+        "default": "#ffffff"
       },
       {
         "type": "color",
         "id": "color_surface_hover",
-        "label": "Surface Hover",
-        "default": "#1C273C"
+        "label": "Surface Hover (Warm Sand)",
+        "default": "#f2ede4"
       },
       {
         "type": "color",
         "id": "color_border",
-        "label": "Subtle Border",
-        "default": "#22304A"
+        "label": "Subtle Oat Border",
+        "default": "#e3dcd1"
       },
       {
         "type": "color",
         "id": "color_primary",
-        "label": "Primary Accent (Tech Cyan)",
-        "default": "#00E5FF"
+        "label": "Primary Accent (Warm Amber Bronze)",
+        "default": "#b45309"
       },
       {
         "type": "color",
         "id": "color_primary_hover",
-        "label": "Primary Hover",
-        "default": "#33ECFF"
+        "label": "Primary Hover (Deep Amber)",
+        "default": "#92400e"
       },
       {
         "type": "color",
         "id": "color_accent",
-        "label": "Secondary Accent (Cobalt Blue)",
-        "default": "#3B82F6"
+        "label": "Secondary Accent (Ocean Blue)",
+        "default": "#0369a1"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "Headings (Espresso)",
+        "default": "#1c1917"
       },
       {
         "type": "color",
         "id": "color_text",
-        "label": "Main Text",
-        "default": "#F3F4F6"
+        "label": "Main Text (Dark Slate)",
+        "default": "#292524"
       },
       {
         "type": "color",
         "id": "color_text_muted",
-        "label": "Muted Text",
-        "default": "#94A3B8"
+        "label": "Muted Text (Taupe)",
+        "default": "#686056"
       },
       {
         "type": "color",
         "id": "color_sale",
-        "label": "Sale / Discount Accent",
-        "default": "#10B981"
+        "label": "Sale / Discount Accent (Emerald)",
+        "default": "#15803d"
       },
       {
         "type": "color",
         "id": "color_warning",
         "label": "Warning / Low Stock Accent",
-        "default": "#F59E0B"
+        "default": "#b45309"
       }
     ]
   },
@@ -99,7 +105,7 @@
         "step": 2,
         "unit": "px",
         "label": "Base Border Radius",
-        "default": 8
+        "default": 10
       }
     ]
   },

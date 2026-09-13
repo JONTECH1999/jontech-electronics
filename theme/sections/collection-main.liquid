@@ -1,15 +1,16 @@
 {% comment %}
   JonTech Electronics - Collection Main Section
+  Warm Linen & Beige Aesthetic with Filter Pills & Grid
 {% endcomment %}
 
 <section class="collection-page" role="region" aria-label="Collection Products">
   <div class="container">
     <div class="collection-header-banner">
       <div style="margin-bottom: 0.5rem;">
-        <a href="/" style="font-size: 0.8125rem; color: var(--color-text-dim);">← Back to Storefront</a>
+        <a href="/" style="font-size: 0.8125rem; color: var(--color-text-dim); font-weight: 600;">← Back to Storefront</a>
       </div>
       <h1 class="section-title">
-        {{ collection.title | default: 'All Hardware & Curated Setups' }}
+        {{ collection.title | default: 'Hardware Catalog & Prototyping Kits' }}
       </h1>
       {%- if collection.description != blank -%}
         <p class="section-subtitle">
@@ -17,19 +18,19 @@
         </p>
       {%- else -%}
         <p class="section-subtitle">
-          Explore our complete catalog of performance gear, ergonomic accessories, and scored bundle packages.
+          Explore our complete catalog of bench-tested microcontrollers, precision telemetry sensors, motor drivers, and curated academic kits.
         </p>
       {%- endif -%}
     </div>
 
     <!-- Toolbar: Sorting & Count -->
     <div class="collection-toolbar">
-      <div style="font-size: 0.875rem; color: var(--color-text-muted);">
+      <div style="font-size: 0.875rem; color: var(--color-text-muted); font-weight: 600;">
         Showing {{ collection.products_count | default: 8 }} products
       </div>
 
       <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <label for="SortBy" style="font-size: 0.875rem; color: var(--color-text-muted);">Sort by:</label>
+        <label for="SortBy" style="font-size: 0.875rem; color: var(--color-heading); font-weight: 700;">Sort by:</label>
         <select id="SortBy" class="sort-select" onchange="location = this.value;">
           <option value="{{ collection.url }}?sort_by=best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
           <option value="{{ collection.url }}?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
@@ -54,16 +55,16 @@
         {%- endif -%}
       {%- else -%}
         <!-- Empty State -->
-        <div style="text-align: center; padding: 5rem 1rem; background: var(--color-surface); border-radius: var(--radius-xl); border: 1px solid var(--color-border);">
-          <div style="color: var(--color-text-dim); margin-bottom: 1rem;">
+        <div style="text-align: center; padding: 5rem 1rem; background: var(--color-surface); border-radius: var(--radius-xl); border: 1px solid var(--color-border); box-shadow: var(--shadow-sm);">
+          <div style="color: var(--color-primary); margin-bottom: 1rem;">
             {% render 'icon', name: 'search' %}
           </div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">No Products Found</h3>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-heading); font-weight: 700;">No Products Found</h3>
           <p style="color: var(--color-text-muted); margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto;">
-            There are currently no products matching this collection. Explore our featured setups or use our interactive setup matcher.
+            There are currently no products matching this collection. Explore our featured setups or use our interactive hardware configurator.
           </p>
-          <a href="/#build-my-setup" class="btn btn--primary">
-            Build My Setup
+          <a href="/#lab-configurator" class="btn btn--primary">
+            Build My Custom Kit
           </a>
         </div>
       {%- endif -%}

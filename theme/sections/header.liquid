@@ -1,5 +1,6 @@
 {% comment %}
   JonTech Electronics - Header Section
+  Warm Linen & Beige Aesthetic with Mobile Drawer Navigation
 {% endcomment %}
 
 <header class="site-header" role="banner">
@@ -17,13 +18,13 @@
         Home
       </a>
       <a href="/collections/all" class="site-nav__link {% if request.path contains '/collections' %}site-nav__link--active{% endif %}">
-        All Gear
+        Hardware Catalog
       </a>
-      <a href="#build-my-setup" class="site-nav__link">
-        Build My Setup
+      <a href="/#lab-configurator" class="site-nav__link">
+        Lab Configurator
       </a>
       <a href="/#categories" class="site-nav__link">
-        Curated Kits
+        Components
       </a>
       <a href="/#why-jontech" class="site-nav__link">
         Why JonTech
@@ -31,7 +32,7 @@
     </nav>
 
     <div class="site-header__tools">
-      <a href="/cart" class="cart-trigger" aria-label="{{ 'header.cart' | t }}">
+      <a href="/cart" class="cart-trigger" aria-label="Shopping Cart">
         {% render 'icon', name: 'cart' %}
         <span class="cart-count-badge" data-cart-count>{{ cart.item_count | default: 0 }}</span>
       </a>
@@ -41,7 +42,7 @@
         class="mobile-nav-toggle"
         data-mobile-menu-toggle
         aria-expanded="false"
-        aria-label="{{ 'accessibility.nav_toggle' | t }}"
+        aria-label="Toggle Navigation Menu"
       >
         {% render 'icon', name: 'menu' %}
       </button>
