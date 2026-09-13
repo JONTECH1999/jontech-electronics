@@ -38,7 +38,19 @@ export class ShopifyGraphQLClient {
         throw new Error(`Shopify GraphQL HTTP error: ${response.status} ${response.statusText}`);
       }
 
-      return (await response.json()) as GraphQLResponse<T>;
+      const payload = (await response.json()) as GraphQLResponse<T>;
+
+      // Shopify can return HTTP 200 with GraphQL errors, such as a missing
+      // read_customers scope. Do not let the UI mistake that for no records.
+      if (payload.errors?.length) {
+        const error = new Error(payload.errors.map(({ message }) => message).join('; '));
+        (error as Error & { statusCode?: number }).statusCode = payload.errors.some(({ message }) =>
+          /access denied|not authorized|permission/i.test(message)
+        ) ? 403 : 502;
+        throw error;
+      }
+
+      return payload;
     } catch (error: any) {
       console.error(`Shopify API (${this.apiVersion}) call failed for ${this.domain}:`, error.message);
       throw error;

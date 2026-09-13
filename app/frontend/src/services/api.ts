@@ -20,6 +20,16 @@ async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
   const headers = new Headers(options.headers || {});
 
   headers.set('x-shopify-shop-domain', shopDomain);
+
+  // Fetch a fresh, short-lived ID token for each embedded-admin request.
+  // Local storefront/demo testing works without App Bridge.
+  if (window.shopify?.idToken) {
+    try {
+      headers.set('Authorization', `Bearer ${await window.shopify.idToken()}`);
+    } catch {
+      // The backend returns an actionable error when a live session is needed.
+    }
+  }
   if (!headers.has('Content-Type') && options.body) {
     headers.set('Content-Type', 'application/json');
   }
@@ -119,5 +129,20 @@ export const api = {
     request<{ success: boolean; settings: any }>('/api/settings', {
       method: 'PUT',
       body: JSON.stringify(payload)
+    }),
+
+  // Customers & Buyers
+  getCustomers: (q?: string) => {
+    const qs = q ? `?q=${encodeURIComponent(q)}` : '';
+    return request<import('../types').CustomersResponseDto>(`/api/customers${qs}`);
+  },
+
+  getCustomer: (id: string) =>
+    request<import('../types').CustomerDto>(`/api/customers/${id}`),
+
+  syncCustomers: () =>
+    request<import('../types').CustomersResponseDto & { success: boolean; message: string }>('/api/customers/sync', {
+      method: 'POST'
     })
 };
+

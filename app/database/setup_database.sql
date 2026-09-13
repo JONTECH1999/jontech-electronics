@@ -26,7 +26,33 @@ CREATE TABLE IF NOT EXISTS `shops` (
   UNIQUE KEY `shops_shopify_domain_unique` (`shopify_domain`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 3. Create Table: bundles (Merchant Bundles & Setups)
+-- 3. Create Table: customers (Shopify Buyer / Customer Records)
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` VARCHAR(36) NOT NULL,
+  `shop_id` VARCHAR(36) NOT NULL,
+  `shopify_customer_id` VARCHAR(255) NOT NULL,
+  `first_name` VARCHAR(255) NULL,
+  `last_name` VARCHAR(255) NULL,
+  `display_name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NULL,
+  `phone` VARCHAR(50) NULL,
+  `orders_count` INT NOT NULL DEFAULT 0,
+  `total_spent` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
+  `currency` VARCHAR(10) NOT NULL DEFAULT 'PHP',
+  `status` VARCHAR(50) NOT NULL DEFAULT 'ENABLED',
+  `tags` JSON NULL,
+  `city` VARCHAR(255) NULL,
+  `province` VARCHAR(255) NULL,
+  `country` VARCHAR(255) NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `customers_shopify_customer_id_unique` (`shop_id`, `shopify_customer_id`),
+  KEY `customers_shop_id_idx` (`shop_id`),
+  CONSTRAINT `fk_customers_shop` FOREIGN KEY (`shop_id`) REFERENCES `shops` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 4. Create Table: bundles (Merchant Bundles & Setups)
 CREATE TABLE IF NOT EXISTS `bundles` (
   `id` VARCHAR(36) NOT NULL,
   `shop_id` VARCHAR(36) NOT NULL,
@@ -142,7 +168,48 @@ VALUES (
   TRUE
 ) ON DUPLICATE KEY UPDATE `shopify_domain` = VALUES(`shopify_domain`), `updated_at` = CURRENT_TIMESTAMP;
 
--- Seed 2: Create Core Curated Bundles (Electronics & Prototyping)
+-- Seed 2: Create Demo Customers
+INSERT INTO `customers` (`id`, `shop_id`, `shopify_customer_id`, `first_name`, `last_name`, `display_name`, `email`, `phone`, `orders_count`, `total_spent`, `currency`, `status`, `tags`, `city`, `province`, `country`)
+VALUES
+  (
+    'customer_demo_01',
+    'shop_demo_01',
+    'gid://shopify/Customer/8912450123',
+    'Aljon',
+    'Reyes',
+    'Aljon Reyes (Verified Lab Buyer)',
+    'aljon.maker@gmail.com',
+    '+63 917 555 0192',
+    4,
+    4850.00,
+    'PHP',
+    'ENABLED',
+    JSON_ARRAY('VIP Maker', 'ESP32 Builder', 'Repeat Buyer'),
+    'Quezon City',
+    'Metro Manila',
+    'Philippines'
+  ),
+  (
+    'customer_demo_02',
+    'shop_demo_01',
+    'gid://shopify/Customer/8912450124',
+    'Maria',
+    'Santos',
+    'Maria Santos',
+    'maria.santos.iot@gmail.com',
+    '+63 920 888 3411',
+    2,
+    2150.00,
+    'PHP',
+    'ENABLED',
+    JSON_ARRAY('STEM Educator', 'Robotics'),
+    'Makati City',
+    'Metro Manila',
+    'Philippines'
+  )
+ON DUPLICATE KEY UPDATE `updated_at` = CURRENT_TIMESTAMP;
+
+-- Seed 3: Create Core Curated Bundles (Electronics & Prototyping)
 INSERT INTO `bundles` (`id`, `shop_id`, `name`, `description`, `status`, `discount_percent`, `target_category`)
 VALUES
   (

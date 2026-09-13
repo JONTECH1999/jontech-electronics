@@ -1,0 +1,58 @@
+<section class="jt-storefront-bundles">
+  <div class="page-width">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Bundles</h2>
+    <div id="bundle-list" style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));"></div>
+  </div>
+</section>
+
+<script>
+  async function loadBundles() {
+    const bundleList = document.getElementById('bundle-list');
+
+    try {
+      const response = await fetch('https://grandmotherly-mitchel-eternal.ngrok-free.dev/api/bundles');
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch bundles');
+      }
+
+      const data = await response.json();
+      const bundles = data.bundles || [];
+
+      if (!bundleList) {
+        return;
+      }
+
+      if (!bundles.length) {
+        bundleList.innerHTML = '<p>No bundles available right now.</p>';
+        return;
+      }
+
+      bundleList.innerHTML = bundles.map(bundle => `
+        <div style="
+          border: 1px solid #ddd;
+          border-radius: 12px;
+          padding: 1rem;
+          background: #fff;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        ">
+          <h3 style="margin: 0 0 0.5rem;">${bundle.name}</h3>
+          <p style="margin: 0 0 0.5rem; color: #555;">${bundle.description || 'No description'}</p>
+          <p style="margin: 0; font-weight: 700;">
+            Discount: ${bundle.discountPercent}%
+          </p>
+          <p style="margin: 0.35rem 0 0; color: #666;">
+            Items: ${bundle.items ? bundle.items.length : 0}
+          </p>
+        </div>
+      `).join('');
+    } catch (error) {
+      console.error(error);
+      if (bundleList) {
+        bundleList.innerHTML = '<p>Unable to load bundles right now.</p>';
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadBundles);
+</script>

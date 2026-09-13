@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { dbRepository } from '../db';
 import { env } from '../config/env';
 import { ShopSession } from '../types';
@@ -26,6 +27,26 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
 
     if (authHeader && authHeader.startsWith('Bearer ')) {
       const token = authHeader.substring(7);
+      if (env.NODE_ENV === 'production') {
+        try {
+          const payload = jwt.verify(token, env.SHOPIFY_API_SECRET, {
+            algorithms: ['HS256'],
+            audience: env.SHOPIFY_API_KEY
+          }) as JwtPayload;
+          const destination = typeof payload.dest === 'string' ? new URL(payload.dest) : null;
+          const tokenShopDomain = destination?.protocol === 'https:' ? destination.hostname.toLowerCase() : '';
+
+          if (!tokenShopDomain || !isValidShopDomain(tokenShopDomain) || payload.iss !== `https://${tokenShopDomain}/admin`) {
+            throw new Error('Invalid Shopify ID token claims.');
+          }
+          if (domainHeader && domainHeader.toLowerCase() !== tokenShopDomain) {
+            return res.status(403).json({ success: false, error: 'Shop context does not match the authenticated Shopify session.' });
+          }
+          shopDomain = tokenShopDomain;
+        } catch {
+          return res.status(401).json({ success: false, error: 'Invalid or expired Shopify ID token.' });
+        }
+      }
       // In production, verify Shopify session token JWT payload (iss, dest)
       // dest is e.g. "https://store-name.myshopify.com"
       try {
@@ -36,6 +57,9 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
       } catch (e) {
         // Fall back to domain header
       }
+    }
+    if (env.NODE_ENV === 'production' && !authHeader?.startsWith('Bearer ')) {
+      return res.status(401).json({ success: false, error: 'A Shopify ID token is required for production API requests.' });
     }
 
     // Default to demo domain if none provided and running in development
@@ -71,7 +95,7 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
           error: `Shop ${shopDomain} has not completed KitFlow OAuth installation.`
         });
       }
-    } else if (configuredToken !== 'shpat_demo_access_token_kitflow_secure' && shop.accessToken !== configuredToken) {
+    } else if (env.NODE_ENV !== 'production' && configuredToken !== 'shpat_demo_access_token_kitflow_secure' && shop.accessToken !== configuredToken) {
       // Automatically synchronize updated Shopify Admin API access token from environment
       shop = await dbRepository.upsertShop({
         shopifyDomain: shopDomain,
@@ -96,4 +120,8 @@ export async function requireShopAuth(req: Request, res: Response, next: NextFun
       error: 'Authentication verification failed.'
     });
   }
+}
+
+function isValidShopDomain(shop: string): boolean {
+  return /^[a-zA-Z0-9][a-zA-Z0-9-]*\.myshopify\.com$/.test(shop);
 }

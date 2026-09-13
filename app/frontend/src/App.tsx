@@ -8,6 +8,7 @@ import { BundleFormPage } from './pages/BundleFormPage';
 import { ActivityPage } from './pages/ActivityPage';
 import { AlertsPage } from './pages/AlertsPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { CustomersPage } from './pages/CustomersPage';
 
 export const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ export const App: React.FC = () => {
               <Route path="/app/bundles/:id/edit" element={<BundleFormPage />} />
               <Route path="/app/activity" element={<ActivityPage />} />
               <Route path="/app/alerts" element={<AlertsPage />} />
+              <Route path="/app/customers" element={<CustomersPage />} />
               <Route path="/app/settings" element={<SettingsPage />} />
               <Route path="*" element={<Navigate to="/app" replace />} />
             </Routes>

@@ -6,6 +6,7 @@ import {
   PlusCircle,
   History,
   AlertTriangle,
+  Users,
   Settings,
   ExternalLink,
   Cpu,
@@ -41,6 +42,7 @@ export const AppNavigation: React.FC = () => {
     { to: '/app/bundles', label: 'All Bundles', icon: Layers, end: false },
     { to: '/app/bundles/new', label: 'Create Bundle', icon: PlusCircle, end: false },
     { to: '/app/alerts', label: 'Alerts & Risks', icon: AlertTriangle, end: false },
+    { to: '/app/customers', label: 'Customers', icon: Users, end: false },
     { to: '/app/activity', label: 'Activity Log', icon: History, end: false },
     { to: '/app/settings', label: 'Engine Settings', icon: Settings, end: false }
   ];

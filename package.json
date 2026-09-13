@@ -12,6 +12,7 @@
     "dev:frontend": "npm --prefix app/frontend run dev",
     "dev": "concurrently -k -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "build": "npm --prefix app run build",
+    "start": "npm --prefix app/backend run start",
     "test": "npm --prefix app test",
     "lint": "npm --prefix app run lint",
     "typecheck": "npm --prefix app run typecheck",

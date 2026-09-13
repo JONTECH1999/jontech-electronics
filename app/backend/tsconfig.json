@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "node16",
+    "rootDir": "..",
     "lib": ["ES2022"],
     "outDir": "./dist",
     "strict": true,
@@ -11,6 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "../database/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "../tests"]
 }

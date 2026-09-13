@@ -143,3 +143,34 @@ export interface ActivityLogDto {
   metadata?: any;
   createdAt: string;
 }
+
+export interface CustomerDto {
+  id: string;
+  shopifyId: string;
+  numericId: string;
+  displayName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string | null;
+  ordersCount: number;
+  totalSpent: number;
+  currency: string;
+  state: string; // 'ENABLED' | 'INVITED' | 'DISABLED' | 'DECLINED'
+  tags: string[];
+  city?: string;
+  province?: string;
+  country?: string;
+  createdAt: string;
+  updatedAt: string;
+  lastOrderId?: string;
+}
+
+export interface CustomersResponseDto {
+  customers: CustomerDto[];
+  totalCount: number;
+  source: 'shopify' | 'simulation';
+  shopDomain: string;
+  requiresPermissionNotice?: boolean;
+}
+

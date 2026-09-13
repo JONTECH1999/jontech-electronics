@@ -72,7 +72,7 @@ cp .env.example .env
 | `SHOPIFY_API_SECRET`| Shopify Client Secret | `shpss_xxxxxxxxxxxx` |
 | `SHOPIFY_APP_URL` | Public tunnel URL (e.g. ngrok / cloudflare) | `https://xxxx.ngrok-free.app` |
 | `SHOPIFY_API_VERSION` | Supported Shopify Admin GraphQL API version | `2026-07` |
-| `SHOPIFY_SCOPES` | Required Admin API scopes | `read_products,write_products,read_orders,read_inventory` |
+| `SHOPIFY_SCOPES` | Required Admin API scopes | `read_products,write_products,read_orders,read_inventory,read_customers` |
 | `DATABASE_URL` | MySQL connection string | `mysql://root:password@127.0.0.1:3306/kitflow_db` |
 | `ANTHROPIC_API_KEY` | Anthropic Claude API key (server-side only) | `sk-ant-api03-...` |
 | `ANTHROPIC_MODEL` | Claude model identifier | `claude-3-7-sonnet-latest` |
@@ -81,6 +81,9 @@ cp .env.example .env
 
 > [!IMPORTANT]
 > Never commit `.env` to version control. The Anthropic API key and Shopify secrets are strictly server-side and never exposed to the Vite frontend.
+
+> [!NOTE]
+> Customer accounts created on the storefront are read from Shopify Admin through the embedded app's Customers page. The Shopify app must be reinstalled or reauthorized after adding `read_customers`, and a custom Admin API token must be regenerated with that scope. Open `/app/customers` and use **Sync Shopify** to verify the live customer list.
 
 ---
 

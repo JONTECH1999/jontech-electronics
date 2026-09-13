@@ -4,9 +4,19 @@ import * as path from 'path';
 import * as fs from 'fs';
 import apiRouter from './routes';
 import { errorHandler } from './middleware/error.middleware';
+import { env } from './config/env';
 
 export function createApp() {
   const app = express();
+
+  if (env.NODE_ENV === 'production') {
+    app.use((req, res, next) => {
+      res.setHeader('Content-Security-Policy', 'frame-ancestors https://admin.shopify.com https://*.myshopify.com;');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+      next();
+    });
+  }
 
   // Cross-Origin Resource Sharing
   app.use(cors({

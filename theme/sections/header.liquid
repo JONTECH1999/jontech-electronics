@@ -181,6 +181,7 @@
         echo '</div>'
       endif
     -%}
+    
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
@@ -208,7 +209,7 @@
           </div>
         {%- else -%}
           <span class="h2 jt-header-logo">
-            <span class="jt-logo-bolt">⚡</span>
+            {% render 'icon', name: 'cpu', class: 'jt-logo-mark' %}
             <span class="jt-logo-main">{{ shop.name | split: '-' | first | default: 'JONTECH' | upcase }}</span>
             <span class="jt-logo-sub">{{ shop.name | split: '-' | last | default: 'ELECTRONICS' | upcase }}</span>
           </span>
@@ -255,7 +256,7 @@
           </div>
         {%- else -%}
           <span class="h2 jt-header-logo">
-            <span class="jt-logo-bolt">⚡</span>
+            {% render 'icon', name: 'cpu', class: 'jt-logo-mark' %}
             <span class="jt-logo-main">{{ shop.name | split: '-' | first | default: 'JONTECH' | upcase }}</span>
             <span class="jt-logo-sub">{{ shop.name | split: '-' | last | default: 'ELECTRONICS' | upcase }}</span>
           </span>

@@ -16,7 +16,7 @@ const envSchema = z.object({
   SHOPIFY_API_SECRET: z.string().default('demo_shopify_api_secret'),
   SHOPIFY_ADMIN_ACCESS_TOKEN: z.string().optional().default(''),
   SHOPIFY_APP_URL: z.string().default('http://localhost:3000'),
-  SHOPIFY_SCOPES: z.string().default('read_products,write_products,read_orders,read_inventory'),
+  SHOPIFY_SCOPES: z.string().default('read_products,write_products,read_orders,read_inventory,read_customers'),
   SHOPIFY_API_VERSION: z.string().default('2026-07'),
 
   // Database Configuration
