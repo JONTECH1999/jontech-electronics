@@ -9,12 +9,6 @@
  */
 {
   "sections": {
-    "jontech-hero": {
-      "type": "jontech-hero",
-      "settings": {
-        "title": "The Philippines' Trusted Hub for Makers, Labs & STEM"
-      }
-    },
     "featured-hardware": {
       "type": "featured-hardware-grid",
       "settings": {
@@ -52,7 +46,6 @@
     }
   },
   "order": [
-    "jontech-hero",
     "featured-hardware",
     "category-showcase",
     "lab-configurator",
