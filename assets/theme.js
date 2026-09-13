@@ -84,11 +84,27 @@
     });
   }
 
+  // Accordion Toggles
+  function initAccordions() {
+    document.addEventListener('click', function (e) {
+      const header = e.target.closest('.specs-tab-header');
+      if (!header) return;
+      const content = header.nextElementSibling;
+      if (content && content.classList.contains('specs-tab-content')) {
+        const isHidden = content.style.display === 'none';
+        content.style.display = isHidden ? 'block' : 'none';
+        const arrow = header.querySelector('span:last-child');
+        if (arrow) arrow.textContent = isHidden ? '▾' : '▸';
+      }
+    });
+  }
+
   // Initialize all theme handlers on DOMContentLoaded
   document.addEventListener('DOMContentLoaded', function () {
     initMobileNav();
     initCartForms();
     initQuantitySelectors();
+    initAccordions();
     enforcePesoCurrency();
 
     // Re-verify currency if DOM dynamically mutates (e.g. cart adjustments)

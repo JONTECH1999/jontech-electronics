@@ -1,0 +1,69 @@
+{% comment %}
+  JonTech Electronics - Live Announcement Bar Section (Custom Section #1)
+  Displays real-time shipping guarantees, warranty status, and store highlights
+{% endcomment %}
+
+{%- if section.settings.show_announcement -%}
+  <div class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="container announcement-bar__inner">
+      <div class="announcement-bar__ticker">
+        <div class="announcement-item">
+          <span class="announcement-badge">{{ section.settings.badge_text | default: 'LIVE DISPATCH' }}</span>
+          <span>{{ section.settings.message_1 | default: '⚡ Manila & Provincial Courier Orders Placed Before 2 PM Ship Today' }}</span>
+        </div>
+        <div class="announcement-item">
+          <span class="dot"></span>
+          <span>{{ section.settings.message_2 | default: '🛡️ 2-Year JonTech Precision Warranty & 100% Bench Voltage Tested' }}</span>
+        </div>
+        <div class="announcement-item">
+          <span class="dot"></span>
+          <span>{{ section.settings.message_3 | default: '📦 Free Express Delivery Nationwide On Orders Over ₱1,500' }}</span>
+        </div>
+      </div>
+
+      <div style="font-size: 0.75rem; color: var(--color-text-muted); display: flex; align-items: center; gap: 0.5rem;">
+        <span>🇵🇭 Manila Warehouse Hub</span>
+        <span>·</span>
+        <span style="color: var(--color-sale); font-weight: 700;">All Systems Normal</span>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "LIVE DISPATCH"
+    },
+    {
+      "type": "text",
+      "id": "message_1",
+      "label": "Message 1 (Shipping)",
+      "default": "⚡ Manila & Provincial Courier Orders Placed Before 2 PM Ship Today"
+    },
+    {
+      "type": "text",
+      "id": "message_2",
+      "label": "Message 2 (Warranty)",
+      "default": "🛡️ 2-Year JonTech Precision Warranty & 100% Bench Voltage Tested"
+    },
+    {
+      "type": "text",
+      "id": "message_3",
+      "label": "Message 3 (Free Shipping)",
+      "default": "📦 Free Express Delivery Nationwide On Orders Over ₱1,500"
+    }
+  ]
+}
+{% endschema %}

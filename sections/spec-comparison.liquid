@@ -1,0 +1,138 @@
+{% comment %}
+  JonTech Electronics - Hardware Lab Bench Comparison Matrix (Custom Section #2)
+  Highlights engineering rigor, logic-level testing, and why JonTech kits avoid blown MCUs
+{% endcomment %}
+
+<section class="spec-comparison-section" role="region" aria-label="Hardware Quality Comparison">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div style="margin-bottom: 0.75rem;">
+        {% render 'badge', type: 'bundle', text: 'ENGINEERING BENCH TESTING' %}
+      </div>
+      <h2 class="section-title">
+        {{ section.settings.title | default: 'Why JonTech Verified Hardware Outperforms Generic Clones' }}
+      </h2>
+      <p class="section-subtitle">
+        {{ section.settings.subtitle | default: 'Every electronic component in our lab undergoes automated pinout validation, 3.3V/5V voltage verification, and bus synergy tests before leaving our Manila facility.' }}
+      </p>
+    </div>
+
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="width: 35%;">Engineering Feature</th>
+            <th class="col-jontech" style="width: 35%;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                {% render 'icon', name: 'cpu', class: 'text-primary' %}
+                <span>JonTech Lab-Verified Kits</span>
+              </div>
+            </th>
+            <th style="width: 30%; color: var(--color-text-dim);">Unverified Generic Clones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Logic Voltage Level Matching</strong>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Protects delicate 3.3V MCU GPIOs from 5V over-voltage</div>
+            </td>
+            <td class="col-jontech">
+              <span style="color: var(--color-sale); font-weight: 700;">✓ Guaranteed Safe</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Tested with integrated optocouplers & logic dividers</div>
+            </td>
+            <td>
+              <span style="color: var(--color-danger); font-weight: 600;">✗ High Risk</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-dim);">Frequent GPIO burnouts on 3.3V boards</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>Header Pin Solder Inspection</strong>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Ensures clean breadboard contact without bending</div>
+            </td>
+            <td class="col-jontech">
+              <span style="color: var(--color-sale); font-weight: 700;">✓ 100% Precision Alignment</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Gold/Tin plated 2.54mm pitch machine-tested pins</div>
+            </td>
+            <td>
+              <span style="color: var(--color-danger); font-weight: 600;">✗ Cold / Crooked Solder</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-dim);">Intermittent electrical contact and breadboard damage</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>Bus Decoupling & Resistor Pull-Ups</strong>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Prevents I2C and 1-Wire lockups (OLED, DHT22, LiDAR)</div>
+            </td>
+            <td class="col-jontech">
+              <span style="color: var(--color-sale); font-weight: 700;">✓ Calibrated Onboard 4.7kΩ / 10kΩ</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Zero bus lockups during high-frequency sampling</div>
+            </td>
+            <td>
+              <span style="color: var(--color-danger); font-weight: 600;">✗ Missing Resistors</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-dim);">Requires manual oscilloscope debugging & breadboard clutter</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>Curated Code Examples & Libraries</strong>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Arduino C++, MicroPython, ROS 2, and CircuitPython</div>
+            </td>
+            <td class="col-jontech">
+              <span style="color: var(--color-sale); font-weight: 700;">✓ Plug-and-Play Repository</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Tested GitHub sample sketches for every bundle</div>
+            </td>
+            <td>
+              <span style="color: var(--color-danger); font-weight: 600;">✗ Outdated Chinese Datasheets</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-dim);">Incomplete registers and broken community libraries</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>Philippine Warranty & Tech Support</strong>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Local engineering swap warranty without overseas returns</div>
+            </td>
+            <td class="col-jontech">
+              <span style="color: var(--color-sale); font-weight: 700;">✓ 2-Year Direct Swap Warranty</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-muted);">Immediate replacement dispatched from Manila hub</div>
+            </td>
+            <td>
+              <span style="color: var(--color-danger); font-weight: 600;">✗ 0 to 7-Day Window</span>
+              <div style="font-size: 0.8125rem; color: var(--color-text-dim);">High return shipping costs exceed hardware price</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Spec Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why JonTech Verified Hardware Outperforms Generic Clones"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Every electronic component in our lab undergoes automated pinout validation, 3.3V/5V voltage verification, and bus synergy tests before leaving our Manila facility."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spec Comparison"
+    }
+  ]
+}
+{% endschema %}

@@ -1,15 +1,19 @@
 {% comment %}
   JonTech Electronics - Why JonTech Section
+  Warm Linen & Beige Aesthetic with Electronics & Engineering Focus
 {% endcomment %}
 
 <section id="why-jontech" class="why-jontech-section" style="padding: 5rem 0; border-top: 1px solid var(--color-border);" role="region" aria-label="Why JonTech">
   <div class="container">
     <div class="section-header section-header--center">
+      <div style="margin-bottom: 0.75rem;">
+        {% render 'badge', type: 'sale', text: 'ENGINEERING EXCELLENCE' %}
+      </div>
       <h2 class="section-title">
-        {{ section.settings.title | default: 'Why Choose JonTech?' }}
+        {{ section.settings.title | default: 'Why Choose JonTech Electronics?' }}
       </h2>
       <p class="section-subtitle">
-        {{ section.settings.subtitle | default: 'Engineered hardware standards backed by rigorous compatibility and reliability testing.' }}
+        {{ section.settings.subtitle | default: 'Hardware standards backed by automated voltage verification, pinout synergy, and Filipino engineering support.' }}
       </p>
     </div>
 
@@ -19,8 +23,8 @@
         <div class="why-icon-box">
           {% render 'icon', name: 'shield' %}
         </div>
-        <h3 class="why-title">{{ section.settings.item1_title | default: 'Curated Products' }}</h3>
-        <p class="why-desc">{{ section.settings.item1_desc | default: 'Every mouse sensor, switch type, and cable is hand-tested in our hardware lab. No white-labeled junk.' }}</p>
+        <h3 class="why-title">{{ section.settings.item1_title | default: 'Lab-Bench Verified' }}</h3>
+        <p class="why-desc">{{ section.settings.item1_desc | default: 'Every microcontroller, sensor, and relay is bench-tested for 3.3V/5V voltage logic, pin alignment, and pull-up resistor integrity. Zero defective boards.' }}</p>
       </div>
 
       <!-- Item 2 -->
@@ -28,8 +32,8 @@
         <div class="why-icon-box">
           {% render 'icon', name: 'zap' %}
         </div>
-        <h3 class="why-title">{{ section.settings.item2_title | default: 'Practical Bundles' }}</h3>
-        <p class="why-desc">{{ section.settings.item2_desc | default: 'Cohesive setups that work together straight out of the box with built-in bundle savings up to 15%.' }}</p>
+        <h3 class="why-title">{{ section.settings.item2_title | default: 'Verified Hardware Kits' }}</h3>
+        <p class="why-desc">{{ section.settings.item2_desc | default: 'Cohesive STEM and university packs configured with zero GPIO collisions, working sample code, and built-in bundle savings up to 15%.' }}</p>
       </div>
 
       <!-- Item 3 -->
@@ -37,8 +41,8 @@
         <div class="why-icon-box">
           {% render 'icon', name: 'truck' %}
         </div>
-        <h3 class="why-title">{{ section.settings.item3_title | default: 'Fast Express Support' }}</h3>
-        <p class="why-desc">{{ section.settings.item3_desc | default: 'Direct support from engineers who actually understand polling rates, firmware, and ergonomic angles.' }}</p>
+        <h3 class="why-title">{{ section.settings.item3_title | default: 'Local Engineering Support' }}</h3>
+        <p class="why-desc">{{ section.settings.item3_desc | default: 'Direct assistance from Manila engineers who actually understand I2C addressing, ADC attenuation, PWM frequencies, and CircuitPython.' }}</p>
       </div>
 
       <!-- Item 4 -->
@@ -46,8 +50,8 @@
         <div class="why-icon-box">
           {% render 'icon', name: 'cpu' %}
         </div>
-        <h3 class="why-title">{{ section.settings.item4_title | default: 'Reliable Technology' }}</h3>
-        <p class="why-desc">{{ section.settings.item4_desc | default: '2-year comprehensive hardware warranty on all setups with zero-hassle immediate replacements.' }}</p>
+        <h3 class="why-title">{{ section.settings.item4_title | default: '2-Year Direct Warranty' }}</h3>
+        <p class="why-desc">{{ section.settings.item4_desc | default: 'Comprehensive replacement warranty on all kits and dev boards with express courier swap dispatch across the Philippines.' }}</p>
       </div>
     </div>
   </div>
@@ -61,13 +65,13 @@
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Why Choose JonTech?"
+      "default": "Why Choose JonTech Electronics?"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Engineered hardware standards backed by rigorous compatibility and reliability testing."
+      "default": "Hardware standards backed by automated voltage verification, pinout synergy, and Filipino engineering support."
     },
     {
       "type": "header",
@@ -77,13 +81,13 @@
       "type": "text",
       "id": "item1_title",
       "label": "Item 1 Title",
-      "default": "Curated Products"
+      "default": "Lab-Bench Verified"
     },
     {
       "type": "textarea",
       "id": "item1_desc",
       "label": "Item 1 Description",
-      "default": "Every mouse sensor, switch type, and cable is hand-tested in our hardware lab. No white-labeled junk."
+      "default": "Every microcontroller, sensor, and relay is bench-tested for 3.3V/5V voltage logic, pin alignment, and pull-up resistor integrity. Zero defective boards."
     },
     {
       "type": "header",
@@ -93,13 +97,13 @@
       "type": "text",
       "id": "item2_title",
       "label": "Item 2 Title",
-      "default": "Practical Bundles"
+      "default": "Verified Hardware Kits"
     },
     {
       "type": "textarea",
       "id": "item2_desc",
       "label": "Item 2 Description",
-      "default": "Cohesive setups that work together straight out of the box with built-in bundle savings up to 15%."
+      "default": "Cohesive STEM and university packs configured with zero GPIO collisions, working sample code, and built-in bundle savings up to 15%."
     },
     {
       "type": "header",
@@ -109,13 +113,13 @@
       "type": "text",
       "id": "item3_title",
       "label": "Item 3 Title",
-      "default": "Fast Express Support"
+      "default": "Local Engineering Support"
     },
     {
       "type": "textarea",
       "id": "item3_desc",
       "label": "Item 3 Description",
-      "default": "Direct support from engineers who actually understand polling rates, firmware, and ergonomic angles."
+      "default": "Direct assistance from Manila engineers who actually understand I2C addressing, ADC attenuation, PWM frequencies, and CircuitPython."
     },
     {
       "type": "header",
@@ -125,13 +129,13 @@
       "type": "text",
       "id": "item4_title",
       "label": "Item 4 Title",
-      "default": "Reliable Technology"
+      "default": "2-Year Direct Warranty"
     },
     {
       "type": "textarea",
       "id": "item4_desc",
       "label": "Item 4 Description",
-      "default": "2-year comprehensive hardware warranty on all setups with zero-hassle immediate replacements."
+      "default": "Comprehensive replacement warranty on all kits and dev boards with express courier swap dispatch across the Philippines."
     }
   ],
   "presets": [
