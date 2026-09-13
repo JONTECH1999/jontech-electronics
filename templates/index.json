@@ -30,6 +30,9 @@
         "subtitle": "Design your custom maker setup. Pick a microcontroller, attach telemetry sensors, configure motor or relay switching, and watch voltage logic safety and bundle savings calculate in real time."
       }
     },
+    "storefront-bundles": {
+      "type": "storefront-bundles"
+    },
     "spec-comparison": {
       "type": "spec-comparison",
       "settings": {
@@ -49,6 +52,7 @@
     "featured-hardware",
     "category-showcase",
     "lab-configurator",
+    "storefront-bundles",
     "spec-comparison",
     "why-jontech"
   ]
