@@ -77,8 +77,11 @@ a:hover { color: var(--color-primary); }
   background: var(--color-surface-hover);
 }
 .delivery-pin-icon {
-  font-size: 1.25rem;
-  line-height: 1;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
 }
 .delivery-text {
   display: flex;
@@ -187,18 +190,20 @@ a:hover { color: var(--color-primary); }
 
 /* Amazon-Style Sub-Header Department Navigation Bar ----------------------- */
 .jontech-trust-strip {
-  background: #232f3e;
-  border-bottom: 1px solid #131921;
+  background: #f2ede4;
+  border-bottom: 1px solid #e3dcd1;
   padding: .5rem 1.25rem;
 }
 .jontech-trust-strip__inner {
   max-width: 1400px; margin: 0 auto;
+  padding-left: max(1.25rem, 0.5in);
+  padding-right: max(1.25rem, 0.5in);
   display: flex; justify-content: flex-start; flex-wrap: wrap;
   gap: .5rem 1.5rem; align-items: center;
 }
 .jontech-trust-item {
   display: inline-flex; align-items: center; gap: .4rem;
-  font-size: .8125rem; font-weight: 500; color: #ffffff;
+  font-size: .8125rem; font-weight: 600; color: #1c1917;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
   border: 1px solid transparent;
@@ -206,12 +211,20 @@ a:hover { color: var(--color-primary); }
   transition: border-color 0.2s ease;
 }
 .jontech-trust-item:hover {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: #d6c7b2;
+  color: #92400e;
 }
-.jontech-trust-item strong { color: #ffffff; }
+.jontech-trust-item strong { color: #1c1917; }
 
 /* SECTION HELPERS --------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-left: max(1.25rem, 0.5in);
+  padding-right: max(1.25rem, 0.5in);
+}
+
 .section-header--center { text-align: center; max-width: 760px; margin: 0 auto 3rem; }
 .section-title { font-size: 2rem; font-weight: 800; color: var(--color-heading); letter-spacing: -.02em; line-height: 1.25; margin: .5rem 0 .75rem; }
 .section-subtitle { font-size: 1rem; color: var(--color-text-muted); line-height: 1.65; }
@@ -337,7 +350,14 @@ a:hover { color: var(--color-primary); }
 
 /* FOOTER ------------------------------------------------------------------ */
 .footer { background: #1c1917 !important; color: #d6cfc5 !important; border-top: 3px solid var(--color-primary) !important; }
-.footer__heading { color: #f8f6f0 !important; font-weight: 800 !important; }
+.footer-block__heading { color: #f8f6f0 !important; font-weight: 800 !important; }
+.jt-newsletter-description {
+  max-width: 36rem;
+  margin: -1rem auto 1.5rem;
+  color: #d6cfc5;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
 .footer a { color: #b5aca2 !important; }
 .footer a:hover { color: var(--color-primary) !important; }
 
@@ -775,12 +795,21 @@ a:hover { color: var(--color-primary); }
 .jt-amazon-container {
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding-left: max(1.25rem, 0.5in);
+  padding-right: max(1.25rem, 0.5in);
 }
 
 @media (max-width: 768px) {
   .jt-amazon-container {
-    padding: 0 0.75rem;
+    padding-left: 0.5in;
+    padding-right: 0.5in;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .page-width {
+    padding-left: 0.5in !important;
+    padding-right: 0.5in !important;
   }
 }
 
@@ -809,7 +838,8 @@ a:hover { color: var(--color-primary); }
 }
 
 .jt-alert-icon {
-  font-size: 1.15rem;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
 }
 
@@ -891,6 +921,8 @@ a:hover { color: var(--color-primary); }
 
 .jt-brand-logo-mark {
   color: #f59e0b;
+  width: 18px;
+  height: 18px;
 }
 
 .jt-brand-spotlight-details {
@@ -1049,8 +1081,16 @@ a:hover { color: var(--color-primary); }
   margin-bottom: 1.5rem;
 }
 .jt-sb-banner-icon {
-  font-size: 1.25rem;
+  width: 20px;
+  height: 20px;
   line-height: 1;
+  flex-shrink: 0;
+}
+
+.jt-inline-icon {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
 }
 .jt-sidebar-banner strong {
   display: block;
@@ -1309,8 +1349,7 @@ a:hover { color: var(--color-primary); }
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 .jt-badge--overall::before {
-  content: '⚡ ';
-  color: #f59e0b;
+  content: none;
 }
 
 .jt-card-media {
@@ -1501,6 +1540,9 @@ a:hover { color: var(--color-primary); }
 
 .jt-delivery-icon {
   color: #b45309;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 .jt-card-stock {
