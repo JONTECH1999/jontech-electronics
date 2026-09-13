@@ -1,0 +1,130 @@
+{% comment %}
+  JonTech Electronics - High-Converting Amazon/Shopping Hero Banner
+{% endcomment %}
+
+<section class="jt-hero-section">
+  <div class="container">
+    <div class="jt-hero-grid">
+      <!-- Left Column: Value Proposition -->
+      <div class="jt-hero-content">
+        <div class="jt-hero-badges">
+          <span class="jt-badge jt-badge--deal">⚡ TODAY'S MEGA HARDWARE SALE</span>
+          <span class="jt-badge jt-badge--verified">🛡️ 100% Bench-Tested</span>
+        </div>
+        <h1 class="jt-hero-title">
+          The Philippines' Trusted Hub for <span class="jt-text-accent">Makers, Labs & STEM</span>
+        </h1>
+        <p class="jt-hero-desc">
+          High-performance microcontrollers (ESP32, Arduino, Raspberry Pi 4, STM32), precision sensors, and robotics modules. Fully tested with zero pinout conflict and same-day Manila dispatch.
+        </p>
+
+        <!-- Search / Quick Filter Tags -->
+        <div class="jt-hero-quick-tags">
+          <span class="jt-quick-label">Trending Searches:</span>
+          <a href="#featured-hardware" class="jt-tag">ESP32 WiFi+BLE</a>
+          <a href="#featured-hardware" class="jt-tag">Raspberry Pi 4</a>
+          <a href="#featured-hardware" class="jt-tag">TFmini-S LiDAR</a>
+          <a href="#featured-hardware" class="jt-tag">OLED 128x64</a>
+        </div>
+
+        <div class="jt-hero-cta">
+          <a href="#featured-hardware" class="btn btn--primary btn--lg">
+            🛒 Shop Best Sellers
+          </a>
+          <a href="#lab-configurator" class="btn btn--outline btn--lg">
+            🛠️ Build Custom Lab Kit (Save 15%)
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Deal of the Day Card -->
+      <div class="jt-hero-spotlight">
+        <div class="jt-deal-card">
+          <div class="jt-deal-header">
+            <span class="jt-deal-badge">🔥 DEAL OF THE DAY</span>
+            <span class="jt-deal-timer">⏱️ Ends in 08h : 42m</span>
+          </div>
+          <div class="jt-deal-img-wrap">
+            <img 
+              src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=600&auto=format&fit=crop&q=80" 
+              alt="ESP32 IoT Prototyping Board" 
+              class="jt-deal-img"
+              width="600"
+              height="400"
+              loading="eager"
+            >
+            <span class="jt-deal-save-pill">SAVE 15%</span>
+          </div>
+          <div class="jt-deal-body">
+            <div class="jt-deal-rating">
+              <span class="jt-stars">★★★★★</span>
+              <span class="jt-rating-count">4.9 (248 reviews)</span>
+            </div>
+            <h3 class="jt-deal-product-title">ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)</h3>
+            <p class="jt-deal-meta">240MHz Dual-Core Tensilica LX6 · Bluetooth 4.2 · USB-C Native</p>
+            <div class="jt-deal-price-row">
+              <div class="jt-deal-prices">
+                <span class="jt-deal-current-price">₱280.00</span>
+                <span class="jt-deal-compare-price">₱320.00</span>
+              </div>
+              <a href="#lab-configurator" class="btn btn--primary btn--sm jt-deal-btn">
+                Configure Kit
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amazon-Style Trust Bar -->
+    <div class="jt-trust-bar">
+      <div class="jt-trust-item">
+        <div class="jt-trust-icon">🚚</div>
+        <div class="jt-trust-info">
+          <strong>Free Express Shipping</strong>
+          <span>Nationwide on all orders ₱1,500+</span>
+        </div>
+      </div>
+      <div class="jt-trust-item">
+        <div class="jt-trust-icon">⚡</div>
+        <div class="jt-trust-info">
+          <strong>Same-Day Dispatch</strong>
+          <span>Orders placed before 2:00 PM PHT</span>
+        </div>
+      </div>
+      <div class="jt-trust-item">
+        <div class="jt-trust-icon">🛡️</div>
+        <div class="jt-trust-info">
+          <strong>2-Year Hardware Warranty</strong>
+          <span>100% Tested & Verified Logic</span>
+        </div>
+      </div>
+      <div class="jt-trust-item">
+        <div class="jt-trust-icon">💳</div>
+        <div class="jt-trust-info">
+          <strong>COD & Online Payments</strong>
+          <span>GCash, Maya, Cards, & Cash on Delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JonTech Shopping Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Philippines' Trusted Hub for Makers, Labs & STEM"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JonTech Shopping Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -9,51 +9,24 @@
  */
 {
   "sections": {
-    "image-banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Prototyping Technology Engineered for Real Labs & Universities",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Curated microcontrollers (ESP32, Arduino, Raspberry Pi, STM32), calibrated precision sensors (DHT22, Sonar, LiDAR), motor drivers, and verified STEM kits with zero pinout conflicts.",
-            "text_style": "body"
-          }
-        },
-        "buttons": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Explore Hardware Catalog",
-            "button_link_1": "shopify://collections",
-            "button_style_secondary_1": false,
-            "button_label_2": "Build My Custom Kit",
-            "button_link_2": "#lab-configurator",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "buttons"
-      ],
+    "jontech-hero": {
+      "type": "jontech-hero",
       "settings": {
-        "image_overlay_opacity": 30,
-        "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": false
+        "title": "The Philippines' Trusted Hub for Makers, Labs & STEM"
+      }
+    },
+    "featured-hardware": {
+      "type": "featured-hardware-grid",
+      "settings": {
+        "title": "Best Sellers & Verified STEM Electronics",
+        "subtitle": "Bench-tested microcontrollers, calibrated sensors, and robotics modules. Gold-flashed pinouts, zero logic conflict, and 2-year replacement warranty."
+      }
+    },
+    "category-showcase": {
+      "type": "category-showcase",
+      "settings": {
+        "title": "Curated Electronics & Prototyping Departments",
+        "subtitle": "Select high-grade electronics tested for STEM universities, IoT telemetry, and industrial automation."
       }
     },
     "lab-configurator": {
@@ -61,39 +34,6 @@
       "settings": {
         "title": "Interactive Hardware Lab & Kit Configurator",
         "subtitle": "Design your custom maker setup. Pick a microcontroller, attach telemetry sensors, configure motor or relay switching, and watch voltage logic safety and bundle savings calculate in real time."
-      }
-    },
-    "category-showcase": {
-      "type": "category-showcase",
-      "settings": {
-        "title": "Hardware Prototyping Categories",
-        "subtitle": "Select components precision-tested for STEM education, industrial control, and autonomous robotics."
-      }
-    },
-    "all-products": {
-      "type": "featured-collection",
-      "settings": {
-        "heading_size": "h2",
-        "show_description": true,
-        "description_style": "subtitle",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "spec-comparison": {
@@ -112,10 +52,10 @@
     }
   },
   "order": [
-    "image-banner",
-    "lab-configurator",
+    "jontech-hero",
+    "featured-hardware",
     "category-showcase",
-    "all-products",
+    "lab-configurator",
     "spec-comparison",
     "why-jontech"
   ]
