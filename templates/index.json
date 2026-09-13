@@ -71,6 +71,172 @@
     },
     "lab-configurator": {
       "type": "interactive-bundle-builder",
+      "blocks": [
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "default_selected": true,
+            "badge": "WiFi + BLE",
+            "title": "ESP32 NodeMCU DevKit v1",
+            "price": 280,
+            "voltage": "3.3V",
+            "sku": "JT-MCU-ESP32-30P",
+            "description": "240MHz dual-core Tensilica with built-in 802.11 b/g/n Wi-Fi and Bluetooth v4.2 BLE. Ideal for cloud IoT.",
+            "spec_1": "3.3V Logic",
+            "spec_2": "30-Pin USB-C"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "badge": "5V Safe",
+            "title": "Arduino Uno R3 ATmega328P",
+            "price": 350,
+            "voltage": "5V",
+            "sku": "JT-MCU-UNO-R3",
+            "description": "Standard academic platform for electronics education, school prototyping, robotics, and beginner STEM.",
+            "spec_1": "16MHz Crystal",
+            "spec_2": "14 Digital I/O"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "badge": "64-bit Linux",
+            "title": "Raspberry Pi 4 (4GB RAM)",
+            "price": 3899,
+            "voltage": "3.3V",
+            "sku": "JT-SBC-RPI4-4GB",
+            "description": "High-compute 64-bit quad-core Linux computer. Exceptional for local OpenCV AI and LiDAR SLAM navigation.",
+            "spec_1": "4GB LPDDR4",
+            "spec_2": "Dual 4K HDMI"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "badge": "84MHz M4",
+            "title": "STM32F401 \"Black Pill\"",
+            "price": 240,
+            "voltage": "3.3V",
+            "sku": "JT-MCU-STM32-F401",
+            "description": "84MHz 32-bit ARM Cortex-M4 with hardware FPU. Built for high-speed industrial feedback loops and signal filters.",
+            "spec_1": "256KB Flash",
+            "spec_2": "Type-C Native"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "default_selected": true,
+            "badge": "±0.5°C",
+            "title": "DHT22 Temp & Humidity",
+            "price": 195,
+            "sku": "JT-SEN-DHT22-MOD",
+            "description": "Calibrated digital 1-wire output. Relative humidity 0-100% and temp -40 to 80°C.",
+            "spec_1": "1-Wire Digital",
+            "spec_2": "Calibrated"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "default_selected": true,
+            "badge": "I2C 0x3C",
+            "title": "0.96\" I2C OLED Display",
+            "price": 145,
+            "sku": "JT-DSP-OLED096-I2C",
+            "description": "High contrast 128x64 graphical readout. Standard 4-pin I2C interface.",
+            "spec_1": "128x64",
+            "spec_2": "Self-Emitting"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "badge": "2-400cm",
+            "title": "HC-SR04 Rangefinder",
+            "price": 85,
+            "sku": "JT-SEN-HCSR04-5V",
+            "description": "Non-contact 2cm to 400cm sonar transducer with 3mm resolution.",
+            "spec_1": "5V Echo",
+            "spec_2": "Obstacle Sonar"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "badge": "12m Laser",
+            "title": "TFmini-S ToF LiDAR",
+            "price": 1850,
+            "sku": "JT-SEN-TFMINIS-12M",
+            "description": "Single-point Time-of-Flight laser rangefinder measuring up to 12 meters with 1000Hz frame rate.",
+            "spec_1": "12m Range",
+            "spec_2": "UART & I2C"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "default_selected": true,
+            "badge": "830-Point",
+            "title": "Breadboard & 65-pc Wires",
+            "price": 175,
+            "sku": "JT-ACC-BB830-65J",
+            "description": "Standard 830-point MB-102 solderless breadboard with dual power rails and 65 flexible jumpers.",
+            "spec_1": "MB-102 Board",
+            "spec_2": "65 Jumpers"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "badge": "250V 10A",
+            "title": "4-Channel 5V Isolated Relay",
+            "price": 165,
+            "sku": "JT-MOD-RELAY4-5V",
+            "description": "Optocoupler-isolated relay module capable of safely switching 250VAC/10A appliances.",
+            "spec_1": "250VAC 10A",
+            "spec_2": "Opto-Isolated"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "badge": "2A Dual",
+            "title": "L298N Dual Motor Driver",
+            "price": 120,
+            "sku": "JT-MOD-L298N-2A",
+            "description": "Drives two DC motors bidirectionally with PWM speed control or one stepper motor.",
+            "spec_1": "Dual 2A Peak",
+            "spec_2": "PWM Speed"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "badge": "180° Sweep",
+            "title": "SG90 9g Micro Servo",
+            "price": 95,
+            "sku": "JT-ACT-SG90-9G",
+            "description": "Lightweight 180° rotation actuator with 1.6 kg-cm stall torque for sensor steering sweeps.",
+            "spec_1": "180° Range",
+            "spec_2": "1.6 kg-cm"
+          }
+        }
+      ],
       "settings": {
         "title": "Interactive Hardware Lab & Kit Configurator",
         "subtitle": "Design your custom maker setup. Pick a microcontroller, attach telemetry sensors, configure motor or relay switching, and watch voltage logic safety and bundle savings calculate in real time."
