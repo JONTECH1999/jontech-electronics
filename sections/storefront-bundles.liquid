@@ -79,7 +79,11 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', loadBundles);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadBundles);
+  } else {
+    loadBundles();
+  }
 </script>
 
 {% schema %}
