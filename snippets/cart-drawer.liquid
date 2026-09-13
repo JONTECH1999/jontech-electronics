@@ -74,29 +74,6 @@
           </span>
         </button>
       </div>
-      {%- if cart != empty -%}
-        {%- assign free_shipping_threshold = 150000 -%}
-        {%- assign current_subtotal = cart.total_price -%}
-        <div class="free-shipping-bar-card" style="margin: 0.5rem 1.5rem 1rem 1.5rem; padding: 1rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8125rem; font-weight: 700; color: var(--color-heading);">
-            {%- if current_subtotal >= free_shipping_threshold -%}
-              <span style="color: var(--color-sale); display: flex; align-items: center; gap: 0.35rem;">
-                ✓ You unlocked FREE Express Delivery!
-              </span>
-            {%- else -%}
-              {%- assign remaining_cents = free_shipping_threshold | minus: current_subtotal -%}
-              {%- assign remaining_str = remaining_cents | money_without_currency -%}
-              <span>Add ₱{{ remaining_str }} more for FREE Delivery</span>
-            {%- endif -%}
-            <span style="color: var(--color-text-dim); font-size: 0.75rem;">Target: ₱1,500</span>
-          </div>
-          <div class="shipping-progress-track" style="margin-top: 0.5rem; height: 6px;">
-            {%- assign progress_pct = current_subtotal | times: 100.0 | divided_by: free_shipping_threshold -%}
-            {%- if progress_pct > 100 -%}{%- assign progress_pct = 100 -%}{%- endif -%}
-            <div class="shipping-progress-fill" style="width: {{ progress_pct }}%;"></div>
-          </div>
-        </div>
-      {%- endif -%}
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"
