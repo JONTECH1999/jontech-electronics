@@ -1,69 +1,112 @@
 {% comment %}
-  JonTech Electronics - Category Showcase Section
+  JonTech Electronics - Amazon-Style Category Showcase Section with Rich Photography
 {% endcomment %}
 
-<section id="categories" class="category-showcase-section" style="padding: 5rem 0;" role="region" aria-label="Curated Categories">
+<section id="categories" class="category-showcase-section" style="padding: 4rem 0;" role="region" aria-label="Curated Categories">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header section-header--center">
+      <div style="margin-bottom: 0.5rem;">
+        <span class="jt-badge jt-badge--deal">SHOP BY DEPARTMENT</span>
+      </div>
       <h2 class="section-title">
-        {{ section.settings.title | default: 'Curated Electronics & Prototyping Categories' }}
+        {{ section.settings.title | default: 'Curated Electronics & Prototyping Departments' }}
       </h2>
       <p class="section-subtitle">
-        {{ section.settings.subtitle | default: 'Engineering development boards, precision sensors, robotics modules, and academic prototyping kits.' }}
+        {{ section.settings.subtitle | default: 'Select high-grade electronics tested for STEM universities, IoT telemetry, and industrial automation.' }}
       </p>
     </div>
 
-    <div class="category-grid">
+    <div class="jt-cat-grid">
       <!-- Category 1: Microcontrollers -->
-      <a href="{{ section.settings.cat1_url | default: '/collections/microcontrollers' }}" class="category-card">
-        <div class="category-card__icon">
-          {% render 'icon', name: 'cpu' %}
+      <a href="#featured-hardware" class="jt-cat-card">
+        <div class="jt-cat-media">
+          <img 
+            src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=600&auto=format&fit=crop&q=80" 
+            alt="Microcontrollers and Dev Boards" 
+            class="jt-cat-img"
+            width="600"
+            height="400"
+            loading="lazy"
+          >
+          <span class="jt-cat-tag">4 Models</span>
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat1_title | default: 'Microcontrollers & Dev Boards' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat1_desc | default: 'ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM Cortex-M4, and Raspberry Pi 4 SBCs.' }}</p>
-        <span class="category-card__link">
-          Explore Microcontrollers
-          {% render 'icon', name: 'chevron-right' %}
-        </span>
+        <div class="jt-cat-body">
+          <h3 class="jt-cat-title">Microcontrollers & Compute</h3>
+          <p class="jt-cat-desc">ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM M4, & Raspberry Pi 4.</p>
+          <div class="jt-cat-footer">
+            <span class="jt-cat-price">From ₱240.00</span>
+            <span class="jt-cat-link">Shop Now →</span>
+          </div>
+        </div>
       </a>
 
       <!-- Category 2: Sensors -->
-      <a href="{{ section.settings.cat2_url | default: '/collections/sensors' }}" class="category-card">
-        <div class="category-card__icon">
-          {% render 'icon', name: 'zap' %}
+      <a href="#featured-hardware" class="jt-cat-card">
+        <div class="jt-cat-media">
+          <img 
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80" 
+            alt="Sensors and Telemetry" 
+            class="jt-cat-img"
+            width="600"
+            height="400"
+            loading="lazy"
+          >
+          <span class="jt-cat-tag">4 Sensors</span>
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat2_title | default: 'Sensors & Environmental' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat2_desc | default: 'DHT22 temp & humidity, HC-SR04 ultrasonic ranging, TFmini-S ToF LiDAR, and analog transducers.' }}</p>
-        <span class="category-card__link">
-          Explore Sensors
-          {% render 'icon', name: 'chevron-right' %}
-        </span>
+        <div class="jt-cat-body">
+          <h3 class="jt-cat-title">Sensors & Telemetry</h3>
+          <p class="jt-cat-desc">DHT22 digital temp/humidity, HC-SR04 ultrasonic, and TFmini-S ToF LiDAR.</p>
+          <div class="jt-cat-footer">
+            <span class="jt-cat-price">From ₱85.00</span>
+            <span class="jt-cat-link">Shop Now →</span>
+          </div>
+        </div>
       </a>
 
       <!-- Category 3: Robotics -->
-      <a href="{{ section.settings.cat3_url | default: '/collections/robotics' }}" class="category-card">
-        <div class="category-card__icon">
-          {% render 'icon', name: 'shield' %}
+      <a href="#featured-hardware" class="jt-cat-card">
+        <div class="jt-cat-media">
+          <img 
+            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80" 
+            alt="Robotics & Motor Drivers" 
+            class="jt-cat-img"
+            width="600"
+            height="400"
+            loading="lazy"
+          >
+          <span class="jt-cat-tag">3 Modules</span>
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat3_title | default: 'Robotics & Motor Drivers' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat3_desc | default: 'L298N dual H-bridge motor drivers, SG90 micro servos, 4-channel relays, and robot chassis gear.' }}</p>
-        <span class="category-card__link">
-          Explore Robotics
-          {% render 'icon', name: 'chevron-right' %}
-        </span>
+        <div class="jt-cat-body">
+          <h3 class="jt-cat-title">Robotics & Motor Control</h3>
+          <p class="jt-cat-desc">L298N dual H-bridge motor drivers, SG90 micro servos, and opto-isolated relays.</p>
+          <div class="jt-cat-footer">
+            <span class="jt-cat-price">From ₱95.00</span>
+            <span class="jt-cat-link">Shop Now →</span>
+          </div>
+        </div>
       </a>
 
       <!-- Category 4: Prototyping -->
-      <a href="{{ section.settings.cat4_url | default: '/collections/prototyping' }}" class="category-card">
-        <div class="category-card__icon">
-          {% render 'icon', name: 'truck' %}
+      <a href="#featured-hardware" class="jt-cat-card">
+        <div class="jt-cat-media">
+          <img 
+            src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&auto=format&fit=crop&q=80" 
+            alt="Prototyping & Displays" 
+            class="jt-cat-img"
+            width="600"
+            height="400"
+            loading="lazy"
+          >
+          <span class="jt-cat-tag">Lab Gear</span>
         </div>
-        <h3 class="category-card__title">{{ section.settings.cat4_title | default: 'Prototyping & Displays' }}</h3>
-        <p class="category-card__desc">{{ section.settings.cat4_desc | default: '0.96 inch I2C OLED displays, 830-point solderless breadboards, jumper wire kits, and power modules.' }}</p>
-        <span class="category-card__link">
-          Explore Prototyping
-          {% render 'icon', name: 'chevron-right' %}
-        </span>
+        <div class="jt-cat-body">
+          <h3 class="jt-cat-title">Prototyping & Displays</h3>
+          <p class="jt-cat-desc">0.96" I2C OLED displays, 830-point breadboards, and flexible jumper wire kits.</p>
+          <div class="jt-cat-footer">
+            <span class="jt-cat-price">From ₱145.00</span>
+            <span class="jt-cat-link">Shop Now →</span>
+          </div>
+        </div>
       </a>
     </div>
   </div>
@@ -77,97 +120,13 @@
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Curated Electronics & Prototyping Categories"
+      "default": "Curated Electronics & Prototyping Departments"
     },
     {
       "type": "textarea",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Engineering development boards, precision sensors, robotics modules, and academic prototyping kits."
-    },
-    {
-      "type": "header",
-      "content": "Category 1: Microcontrollers"
-    },
-    {
-      "type": "text",
-      "id": "cat1_title",
-      "label": "Category 1 Title",
-      "default": "Microcontrollers & Dev Boards"
-    },
-    {
-      "type": "textarea",
-      "id": "cat1_desc",
-      "label": "Category 1 Description",
-      "default": "ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM Cortex-M4, and Raspberry Pi 4 SBCs."
-    },
-    {
-      "type": "url",
-      "id": "cat1_url",
-      "label": "Category 1 Link"
-    },
-    {
-      "type": "header",
-      "content": "Category 2: Sensors"
-    },
-    {
-      "type": "text",
-      "id": "cat2_title",
-      "label": "Category 2 Title",
-      "default": "Sensors & Environmental"
-    },
-    {
-      "type": "textarea",
-      "id": "cat2_desc",
-      "label": "Category 2 Description",
-      "default": "DHT22 temp & humidity, HC-SR04 ultrasonic ranging, TFmini-S ToF LiDAR, and analog transducers."
-    },
-    {
-      "type": "url",
-      "id": "cat2_url",
-      "label": "Category 2 Link"
-    },
-    {
-      "type": "header",
-      "content": "Category 3: Robotics"
-    },
-    {
-      "type": "text",
-      "id": "cat3_title",
-      "label": "Category 3 Title",
-      "default": "Robotics & Motor Drivers"
-    },
-    {
-      "type": "textarea",
-      "id": "cat3_desc",
-      "label": "Category 3 Description",
-      "default": "L298N dual H-bridge motor drivers, SG90 micro servos, 4-channel relays, and robot chassis gear."
-    },
-    {
-      "type": "url",
-      "id": "cat3_url",
-      "label": "Category 3 Link"
-    },
-    {
-      "type": "header",
-      "content": "Category 4: Prototyping"
-    },
-    {
-      "type": "text",
-      "id": "cat4_title",
-      "label": "Category 4 Title",
-      "default": "Prototyping & Displays"
-    },
-    {
-      "type": "textarea",
-      "id": "cat4_desc",
-      "label": "Category 4 Description",
-      "default": "0.96 inch I2C OLED displays, 830-point solderless breadboards, jumper wire kits, and power modules."
-    },
-    {
-      "type": "url",
-      "id": "cat4_url",
-      "label": "Category 4 Link"
+      "default": "Select high-grade electronics tested for STEM universities, IoT telemetry, and industrial automation."
     }
   ],
   "presets": [

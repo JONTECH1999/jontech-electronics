@@ -333,6 +333,17 @@
 
     {% sections 'header-group' %}
 
+    {%- comment -%} JonTech Trust Strip {%- endcomment -%}
+    <div class="jontech-trust-strip">
+      <div class="jontech-trust-strip__inner">
+        <span class="jontech-trust-item">⚡ <strong>Same-day dispatch</strong> before 2 PM PHT</span>
+        <span class="jontech-trust-item">🛡️ <strong>2-Year</strong> hardware warranty</span>
+        <span class="jontech-trust-item">🚚 <strong>Free shipping</strong> over ₱1,500</span>
+        <span class="jontech-trust-item">🔒 <strong>Secure</strong> checkout</span>
+        <span class="jontech-trust-item">🇵🇭 <strong>Manila-based</strong> STEM store</span>
+      </div>
+    </div>
+
     <main
       id="MainContent"
       class="content-for-layout focus-none"
@@ -402,5 +413,33 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    {%- comment -%} JonTech – Scroll-to-Top + Fade-up Observer {%- endcomment -%}
+    <button class="jontech-scroll-top" id="jt-scroll-top" aria-label="Back to top">&#8593;</button>
+    <script>
+      (function () {
+        var btn = document.getElementById('jt-scroll-top');
+        if (!btn) return;
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 320) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+        }, { passive: true });
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // Fade-up observer
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+            });
+          }, { threshold: 0.1 });
+          document.querySelectorAll('.fade-up').forEach(function (el) { io.observe(el); });
+        }
+      })();
+    </script>
   </body>
 </html>
