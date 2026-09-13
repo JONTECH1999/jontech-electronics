@@ -21,7 +21,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Explore Hardware Catalog",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "/collections/all",
             "button_style_secondary_1": false,
             "button_label_2": "Build My Custom Kit",
             "button_link_2": "#lab-configurator",
@@ -62,7 +62,7 @@
         "show_description": true,
         "description": "Carefully selected and bench-tested setups ready for immediate project deployment.",
         "description_style": "subtitle",
-        "collection": "all",
+        "collection": "",
         "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
