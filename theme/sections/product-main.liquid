@@ -62,7 +62,7 @@
         </div>
 
         <!-- Add to Cart Form -->
-        <form method="post" action="/cart/add" class="product-form" data-product-form>
+        <form method="post" action="{{ routes.cart_add_url }}" class="product-form" data-product-form>
           <!-- Variant Selector if multiple variants exist -->
           {%- if product.variants.size > 1 -%}
             <div class="variant-select-wrapper" style="margin-bottom: 1.5rem;">
@@ -78,7 +78,8 @@
                 {%- for variant in product.variants -%}
                   {%- assign opt_money = variant.price | money -%}
                   {%- if opt_money contains '$' or cart.currency.iso_code == 'PHP' or settings.currency_symbol == '₱' or settings.currency_symbol == blank -%}
-                    {%- assign opt_price_str = '₱' | append: (variant.price | money_without_currency) -%}
+                    {%- assign raw_price = variant.price | money_without_currency -%}
+                    {%- assign opt_price_str = '₱' | append: raw_price -%}
                   {%- else -%}
                     {%- assign opt_price_str = opt_money -%}
                   {%- endif -%}

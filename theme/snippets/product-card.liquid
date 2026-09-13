@@ -61,7 +61,7 @@
 
     <div class="product-card__actions">
       {%- if is_available -%}
-        <form method="post" action="/cart/add" class="product-card__form" data-product-form>
+        <form method="post" action="{{ routes.cart_add_url }}" class="product-card__form" data-product-form>
           <input type="hidden" name="id" value="{{ current_variant.id }}">
           <input type="hidden" name="quantity" value="1">
           <button

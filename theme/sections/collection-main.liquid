@@ -7,7 +7,7 @@
   <div class="container">
     <div class="collection-header-banner">
       <div style="margin-bottom: 0.5rem;">
-        <a href="/" style="font-size: 0.8125rem; color: var(--color-text-dim); font-weight: 600;">← Back to Storefront</a>
+        <a href="{{ routes.root_url }}" style="font-size: 0.8125rem; color: var(--color-text-dim); font-weight: 600;">← Back to Storefront</a>
       </div>
       <h1 class="section-title">
         {{ collection.title | default: 'Hardware Catalog & Prototyping Kits' }}
@@ -40,7 +40,8 @@
       </div>
     </div>
 
-    {%- paginate collection.products by section.settings.products_per_page | default: 12 -%}
+    {%- assign page_limit = section.settings.products_per_page | default: 12 -%}
+    {%- paginate collection.products by page_limit -%}
       {%- if collection.products.size > 0 -%}
         <div class="product-grid">
           {%- for product in collection.products -%}
