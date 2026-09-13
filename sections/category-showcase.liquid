@@ -17,97 +17,48 @@
     </div>
 
     <div class="jt-cat-grid">
-      <!-- Category 1: Microcontrollers -->
-      <a href="#featured-hardware" class="jt-cat-card">
-        <div class="jt-cat-media">
-          <img 
-            src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=600&auto=format&fit=crop&q=80" 
-            alt="Microcontrollers and Dev Boards" 
-            class="jt-cat-img"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <span class="jt-cat-tag">4 Models</span>
-        </div>
-        <div class="jt-cat-body">
-          <h3 class="jt-cat-title">Microcontrollers & Compute</h3>
-          <p class="jt-cat-desc">ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM M4, & Raspberry Pi 4.</p>
-          <div class="jt-cat-footer">
-            <span class="jt-cat-price">From ₱240.00</span>
-            <span class="jt-cat-link">Shop Now →</span>
-          </div>
-        </div>
-      </a>
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link_url | default: '#featured-hardware' }}" class="jt-cat-card" {{ block.shopify_attributes }}>
+          <div class="jt-cat-media">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 1200 }}"
+                alt="{{ block.settings.title | escape }}"
+                class="jt-cat-img"
+                width="600"
+                height="400"
+                loading="lazy"
+              >
+            {% else %}
+              <img
+                src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=600&auto=format&fit=crop&q=80"
+                alt="Category image"
+                class="jt-cat-img"
+                width="600"
+                height="400"
+                loading="lazy"
+              >
+            {% endif %}
 
-      <!-- Category 2: Sensors -->
-      <a href="#featured-hardware" class="jt-cat-card">
-        <div class="jt-cat-media">
-          <img 
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80" 
-            alt="Sensors and Telemetry" 
-            class="jt-cat-img"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <span class="jt-cat-tag">4 Sensors</span>
-        </div>
-        <div class="jt-cat-body">
-          <h3 class="jt-cat-title">Sensors & Telemetry</h3>
-          <p class="jt-cat-desc">DHT22 digital temp/humidity, HC-SR04 ultrasonic, and TFmini-S ToF LiDAR.</p>
-          <div class="jt-cat-footer">
-            <span class="jt-cat-price">From ₱85.00</span>
-            <span class="jt-cat-link">Shop Now →</span>
+            {% if block.settings.tag != blank %}
+              <span class="jt-cat-tag">{{ block.settings.tag }}</span>
+            {% endif %}
           </div>
-        </div>
-      </a>
 
-      <!-- Category 3: Robotics -->
-      <a href="#featured-hardware" class="jt-cat-card">
-        <div class="jt-cat-media">
-          <img 
-            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop&q=80" 
-            alt="Robotics & Motor Drivers" 
-            class="jt-cat-img"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <span class="jt-cat-tag">3 Modules</span>
-        </div>
-        <div class="jt-cat-body">
-          <h3 class="jt-cat-title">Robotics & Motor Control</h3>
-          <p class="jt-cat-desc">L298N dual H-bridge motor drivers, SG90 micro servos, and opto-isolated relays.</p>
-          <div class="jt-cat-footer">
-            <span class="jt-cat-price">From ₱95.00</span>
-            <span class="jt-cat-link">Shop Now →</span>
-          </div>
-        </div>
-      </a>
+          <div class="jt-cat-body">
+            <h3 class="jt-cat-title">{{ block.settings.title | default: 'Category Title' }}</h3>
+            <p class="jt-cat-desc">{{ block.settings.description | default: 'Add a description for this category.' }}</p>
 
-      <!-- Category 4: Prototyping -->
-      <a href="#featured-hardware" class="jt-cat-card">
-        <div class="jt-cat-media">
-          <img 
-            src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&auto=format&fit=crop&q=80" 
-            alt="Prototyping & Displays" 
-            class="jt-cat-img"
-            width="600"
-            height="400"
-            loading="lazy"
-          >
-          <span class="jt-cat-tag">Lab Gear</span>
-        </div>
-        <div class="jt-cat-body">
-          <h3 class="jt-cat-title">Prototyping & Displays</h3>
-          <p class="jt-cat-desc">0.96" I2C OLED displays, 830-point breadboards, and flexible jumper wire kits.</p>
-          <div class="jt-cat-footer">
-            <span class="jt-cat-price">From ₱145.00</span>
-            <span class="jt-cat-link">Shop Now →</span>
+            <div class="jt-cat-footer">
+              {% if block.settings.price != blank %}
+                <span class="jt-cat-price">{{ block.settings.price }}</span>
+              {% endif %}
+
+              <span class="jt-cat-link">{{ block.settings.link_text | default: 'Shop Now' }} →</span>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -115,6 +66,55 @@
 {% schema %}
 {
   "name": "Category Showcase",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Badge text",
+          "default": "4 Models"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Microcontrollers & Compute"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "ESP32 dual-core WiFi/BLE, Arduino Uno R3, STM32 ARM M4, and Raspberry Pi 4."
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price text",
+          "default": "From ₱240.00"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Button text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
   "settings": [
     {
       "type": "text",
