@@ -6,7 +6,7 @@
 <header class="site-header" role="banner">
   <div class="container site-header__inner">
     <div class="site-header__left">
-      <a href="/" class="site-header__logo" aria-label="{{ shop.name | default: 'JonTech Electronics' }}">
+      <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="{{ shop.name | default: 'JonTech Electronics' }}">
         {% render 'icon', name: 'cpu', class: 'site-header__logo-icon' %}
         <span>{{ section.settings.logo_text | default: 'JONTECH' }}</span>
         <span class="site-header__logo-tag">LABS</span>
@@ -14,25 +14,25 @@
     </div>
 
     <nav class="site-nav" data-site-nav role="navigation" aria-label="Main Navigation">
-      <a href="/" class="site-nav__link {% if request.path == '/' %}site-nav__link--active{% endif %}">
+      <a href="{{ routes.root_url }}" class="site-nav__link {% if request.path == routes.root_url %}site-nav__link--active{% endif %}">
         Home
       </a>
-      <a href="/collections/all" class="site-nav__link {% if request.path contains '/collections' %}site-nav__link--active{% endif %}">
+      <a href="{{ routes.all_products_collection_url }}" class="site-nav__link {% if request.path contains '/collections' %}site-nav__link--active{% endif %}">
         Hardware Catalog
       </a>
-      <a href="/#lab-configurator" class="site-nav__link">
+      <a href="{{ routes.root_url }}#lab-configurator" class="site-nav__link">
         Lab Configurator
       </a>
-      <a href="/#categories" class="site-nav__link">
+      <a href="{{ routes.root_url }}#categories" class="site-nav__link">
         Components
       </a>
-      <a href="/#why-jontech" class="site-nav__link">
+      <a href="{{ routes.root_url }}#why-jontech" class="site-nav__link">
         Why JonTech
       </a>
     </nav>
 
     <div class="site-header__tools">
-      <a href="/cart" class="cart-trigger" aria-label="Shopping Cart">
+      <a href="{{ routes.cart_url }}" class="cart-trigger" aria-label="Shopping Cart">
         {% render 'icon', name: 'cart' %}
         <span class="cart-count-badge" data-cart-count>{{ cart.item_count | default: 0 }}</span>
       </a>

@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <form action="/cart" method="post" novalidate>
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
         <div class="cart-table-wrapper">
           <table class="cart-table">
             <thead>
@@ -104,7 +104,7 @@
                   <!-- Quantity -->
                   <td>
                     <div class="quantity-selector" data-qty-wrapper style="display: inline-flex;">
-                      <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="quantity-btn" aria-label="Decrease quantity">-</a>
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="quantity-btn" aria-label="Decrease quantity">-</a>
                       <input
                         type="number"
                         name="updates[]"
@@ -114,7 +114,7 @@
                         class="quantity-input"
                         aria-label="Quantity for {{ item.title }}"
                       >
-                      <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="quantity-btn" aria-label="Increase quantity">+</a>
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="quantity-btn" aria-label="Increase quantity">+</a>
                     </div>
                   </td>
 
@@ -133,7 +133,7 @@
                   <!-- Remove -->
                   <td style="text-align: right;">
                     <a
-                      href="/cart/change?line={{ forloop.index }}&quantity=0"
+                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
                       class="cart-item-remove"
                       aria-label="Remove {{ item.title }}"
                     >
@@ -183,7 +183,7 @@
           </button>
 
           <div style="margin-top: 1.25rem; text-align: center;">
-            <a href="/collections/all" style="font-size: 0.875rem; color: var(--color-text-muted); font-weight: 600;">
+            <a href="{{ routes.all_products_collection_url }}" style="font-size: 0.875rem; color: var(--color-text-muted); font-weight: 600;">
               ← Continue Shopping in Hardware Catalog
             </a>
           </div>
@@ -200,10 +200,10 @@
           You haven't added any electronic development boards or prototyping kits yet. Use our interactive lab configurator to design your custom maker setup.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="/#lab-configurator" class="btn btn--primary btn--lg">
+          <a href="{{ routes.root_url }}#lab-configurator" class="btn btn--primary btn--lg">
             Build My Custom Kit
           </a>
-          <a href="/collections/all" class="btn btn--secondary btn--lg">
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn--secondary btn--lg">
             Browse Hardware Catalog
           </a>
         </div>

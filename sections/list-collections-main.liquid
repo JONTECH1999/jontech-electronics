@@ -1,0 +1,35 @@
+﻿{% comment %}
+  JonTech Electronics - Collections List Section
+{% endcomment %}
+
+<div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+  <div style="margin-bottom: 2.5rem; text-align: center;">
+    <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--color-heading); margin-bottom: 0.5rem;">
+      Hardware Collections
+    </h1>
+    <p style="color: var(--color-text-muted); font-size: 1.0625rem;">
+      Explore our specialized electronics lab categories.
+    </p>
+  </div>
+
+  <div class="category-grid">
+    {%- for collection in collections -%}
+      <a href="{{ collection.url }}" class="category-card" style="text-decoration: none;">
+        <h3 style="color: var(--color-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">
+          {{ collection.title }}
+        </h3>
+        <p style="color: var(--color-text-muted); font-size: 0.875rem; margin-bottom: 1rem;">
+          {{ collection.all_products_count }} Products
+        </p>
+        <span style="color: var(--color-primary); font-weight: 600; font-size: 0.875rem;">Explore &rarr;</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections List",
+  "settings": []
+}
+{% endschema %}
