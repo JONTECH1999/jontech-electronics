@@ -1,7 +1,23 @@
 {% comment %}
   JonTech Electronics - Amazon Search Results Landing Layout
   Modeled after Amazon USA Search Pattern adapted to Warm Linen/Beige Palette
+  Fully integrated with Shopify AJAX Cart API (/cart/add.js)
 {% endcomment %}
+
+{%- liquid
+  assign esp32_prod = all_products['esp32-nodemcu-devkit-v1']
+  assign uno_prod = all_products['arduino-uno-r3']
+  assign rpi_prod = all_products['raspberry-pi-4-model-b-4gb']
+  assign stm_prod = all_products['stm32f401-black-pill']
+  assign dht_prod = all_products['dht22-digital-temperature-humidity-sensor']
+  assign hcsr_prod = all_products['hc-sr04-ultrasonic-distance-sensor']
+  assign oled_prod = all_products['096-inch-i2c-oled-display']
+  assign lidar_prod = all_products['tfmini-s-micro-solid-state-lidar-sensor']
+  assign relay_prod = all_products['4-channel-5v-relay-module']
+  assign l298n_prod = all_products['l298n-dual-h-bridge-dc-motor-driver']
+  assign sg90_prod = all_products['sg90-9g-micro-servo-motor']
+  assign bb_prod = all_products['master-solderless-breadboard-65-jumper-wires']
+-%}
 
 <section id="featured-hardware" class="jt-amazon-search-page" role="region" aria-label="Amazon Hardware Search Results">
   <div class="jt-amazon-container">
@@ -9,7 +25,7 @@
     <!-- Top Alert Strip (Amazon area delivery advisories) -->
     <div class="jt-alert-strip" role="alert">
       <div class="jt-alert-content">
-        {% render 'icon', name: 'alert', class: 'jt-alert-icon' %}
+        <span class="jt-alert-icon">⚠️</span>
         <span class="jt-alert-text">Extended delivery time in your area. Manila Express, STEM Priority & Lab Orders operating normally.</span>
       </div>
       <button type="button" class="jt-alert-dismiss" aria-label="Dismiss alert" onclick="this.closest('.jt-alert-strip').style.display='none';">Dismiss</button>
@@ -37,7 +53,7 @@
     <div class="jt-brand-spotlight-card">
       <div class="jt-brand-spotlight-inner">
         <div class="jt-brand-spotlight-badge">
-          {% render 'icon', name: 'zap', class: 'jt-brand-logo-mark' %}
+          <span class="jt-brand-logo-mark">⚡</span>
           <span class="jt-brand-name">JONTECH LAB</span>
         </div>
         <div class="jt-brand-spotlight-details">
@@ -93,12 +109,12 @@
       <aside class="jt-sidebar" id="jtSidebar" aria-label="Search Refinements">
         <div class="jt-sidebar-mobile-header medium-hide large-up-hide">
           <h3>Filters & Refinements</h3>
-          <button type="button" class="jt-sidebar-close-btn" id="jtSidebarCloseBtn" aria-label="Close filters">{% render 'icon', name: 'close' %}</button>
+          <button type="button" class="jt-sidebar-close-btn" id="jtSidebarCloseBtn" aria-label="Close filters">✕</button>
         </div>
 
         <!-- Fast Delivery Area Card -->
         <div class="jt-sidebar-banner">
-          {% render 'icon', name: 'zap', class: 'jt-sb-banner-icon' %}
+          <span class="jt-sb-banner-icon">⚡</span>
           <div>
             <strong>Fast Delivery in your area</strong>
             <p>Order today for next-day dispatch across Metro Manila.</p>
@@ -128,7 +144,7 @@
           <label class="jt-sb-checkbox-label">
             <input type="checkbox" id="filterExpress" class="jt-sb-checkbox" checked>
             <span class="jt-sb-custom-check"></span>
-            <span>{% render 'icon', name: 'truck', class: 'jt-inline-icon' %} Express Next-Day Delivery</span>
+            <span>⚡ Express Next-Day Delivery</span>
           </label>
         </div>
 
@@ -225,11 +241,18 @@
                 <span class="jt-card-save-text">Save ₱40.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (45 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="ESP32 NodeMCU DevKit v1" data-price="280">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="ESP32 NodeMCU DevKit v1" 
+                data-price="280"
+                data-handle="esp32-nodemcu-devkit-v1"
+                data-variant-id="{{ esp32_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -273,11 +296,18 @@
                 <span class="jt-card-save-text">Save ₱49.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (32 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Arduino Uno R3" data-price="350">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="Arduino Uno R3" 
+                data-price="350"
+                data-handle="arduino-uno-r3"
+                data-variant-id="{{ uno_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -321,11 +351,18 @@
                 <span class="jt-card-save-text">Save ₱400.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (12 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Raspberry Pi 4 Model B" data-price="3899">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="Raspberry Pi 4 Model B" 
+                data-price="3899"
+                data-handle="raspberry-pi-4-model-b-4gb"
+                data-variant-id="{{ rpi_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -368,11 +405,18 @@
                 <span class="jt-card-save-text">Save ₱40.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (28 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="STM32F401 Black Pill" data-price="240">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="STM32F401 Black Pill" 
+                data-price="240"
+                data-handle="stm32f401-black-pill"
+                data-variant-id="{{ stm_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -415,11 +459,18 @@
                 <span class="jt-card-save-text">Save ₱45.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (50 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="DHT22 Sensor" data-price="195">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="DHT22 Sensor" 
+                data-price="195"
+                data-handle="dht22-digital-temperature-humidity-sensor"
+                data-variant-id="{{ dht_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -462,11 +513,18 @@
                 <span class="jt-card-save-text">Save ₱25.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (60 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="HC-SR04 Ultrasonic Sensor" data-price="85">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="HC-SR04 Ultrasonic Sensor" 
+                data-price="85"
+                data-handle="hc-sr04-ultrasonic-distance-sensor"
+                data-variant-id="{{ hcsr_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -510,11 +568,18 @@
                 <span class="jt-card-save-text">Save ₱35.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (35 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="0.96 inch OLED Display" data-price="145">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="0.96 inch OLED Display" 
+                data-price="145"
+                data-handle="096-inch-i2c-oled-display"
+                data-variant-id="{{ oled_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -557,11 +622,18 @@
                 <span class="jt-card-save-text">Save ₱250.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, FREE Shipping</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (15 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="TFmini-S Micro LiDAR" data-price="1850">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="TFmini-S Micro LiDAR" 
+                data-price="1850"
+                data-handle="tfmini-s-micro-solid-state-lidar-sensor"
+                data-variant-id="{{ lidar_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -604,11 +676,18 @@
                 <span class="jt-card-save-text">Save ₱45.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (22 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="4-Channel 5V Relay" data-price="165">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="4-Channel 5V Relay" 
+                data-price="165"
+                data-handle="4-channel-5v-relay-module"
+                data-variant-id="{{ relay_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -651,11 +730,18 @@
                 <span class="jt-card-save-text">Save ₱40.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (30 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="L298N Motor Driver" data-price="120">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="L298N Motor Driver" 
+                data-price="120"
+                data-handle="l298n-dual-h-bridge-dc-motor-driver"
+                data-variant-id="{{ l298n_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -698,11 +784,18 @@
                 <span class="jt-card-save-text">Save ₱30.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (40 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="SG90 Micro Servo" data-price="95">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="SG90 Micro Servo" 
+                data-price="95"
+                data-handle="sg90-9g-micro-servo-motor"
+                data-variant-id="{{ sg90_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -745,11 +838,18 @@
                 <span class="jt-card-save-text">Save ₱45.00</span>
               </div>
               <div class="jt-card-delivery">
-                {% render 'icon', name: 'truck', class: 'jt-delivery-icon' %}
+                <span class="jt-delivery-icon">⚡</span>
                 <span>Get it <strong>Tomorrow</strong>, Manila Express</span>
               </div>
               <div class="jt-card-stock">✓ In Stock (55 available)</div>
-              <button type="button" class="btn btn--amazon jt-add-cart-btn" data-product-title="Breadboard & Wires" data-price="175">
+              <button 
+                type="button" 
+                class="btn btn--amazon jt-add-cart-btn" 
+                data-product-title="Breadboard & Wires" 
+                data-price="175"
+                data-handle="master-solderless-breadboard-65-jumper-wires"
+                data-variant-id="{{ bb_prod.selected_or_first_available_variant.id }}"
+              >
                 Add to Cart
               </button>
             </div>
@@ -907,40 +1007,138 @@
       });
     });
 
-    // Instant Add-to-Cart with toast notification & cart counter update
+    // REAL Shopify AJAX Cart Integration (/cart/add.js)
     const addBtns = document.querySelectorAll('.jt-add-cart-btn');
     const toast = document.getElementById('jt-toast');
     const toastMsg = document.getElementById('jt-toast-msg');
 
+    function showToast(msg, isError = false) {
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = msg;
+      const icon = toast.querySelector('.jt-toast-icon');
+      if (icon) {
+        icon.textContent = isError ? '⚠️' : '✓';
+        icon.style.background = isError ? '#dc2626' : '#22c55e';
+      }
+      toast.classList.add('visible');
+      setTimeout(() => {
+        toast.classList.remove('visible');
+      }, isError ? 4500 : 2800);
+    }
+
     addBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', async function() {
         const title = this.getAttribute('data-product-title') || 'Hardware Item';
+        const handle = this.getAttribute('data-handle');
+        let variantId = this.getAttribute('data-variant-id');
         const origText = this.innerHTML;
-        this.innerHTML = '✓ Added to Cart';
-        this.style.background = '#059669';
-        this.style.color = '#ffffff';
 
-        // Update cart bubbles if present
-        const bubbles = document.querySelectorAll('.cart-count-bubble span');
-        bubbles.forEach(bubble => {
-          const cur = parseInt(bubble.textContent.trim()) || 0;
-          bubble.textContent = cur + 1;
-        });
+        this.disabled = true;
+        this.innerHTML = 'Adding...';
 
-        // Show toast
-        if (toast && toastMsg) {
-          toastMsg.textContent = '✓ ' + title + ' added to cart!';
-          toast.classList.add('visible');
+        try {
+          // If variantId is missing from Liquid, attempt lookup via Shopify JSON API
+          if (!variantId && handle) {
+            try {
+              const pRes = await fetch(`/products/${handle}.js`);
+              if (pRes.ok) {
+                const pData = await pRes.json();
+                if (pData.variants && pData.variants.length > 0) {
+                  variantId = pData.variants[0].id;
+                  this.setAttribute('data-variant-id', variantId);
+                }
+              }
+            } catch (e) {
+              console.warn('Could not query /products/' + handle + '.js', e);
+            }
+          }
+
+          if (!variantId) {
+            // Check if there is ANY product in the store we can fallback to
+            try {
+              const allProductsRes = await fetch('/products.json?limit=1');
+              if (allProductsRes.ok) {
+                const allPData = await allProductsRes.json();
+                if (allPData.products && allPData.products.length > 0 && allPData.products[0].variants) {
+                  variantId = allPData.products[0].variants[0].id;
+                }
+              }
+            } catch (e) {
+              console.warn('Could not query /products.json', e);
+            }
+          }
+
+          if (!variantId) {
+            throw new Error('Please import jontech_products.csv into Shopify Admin > Products first to enable live cart!');
+          }
+
+          // Real Shopify Cart API POST
+          const addRes = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              id: variantId,
+              quantity: 1
+            })
+          });
+
+          if (!addRes.ok) {
+            const errJson = await addRes.json();
+            throw new Error(errJson.description || errJson.message || 'Shopify cart error');
+          }
+
+          const addedItem = await addRes.json();
+
+          // Refresh Shopify Cart Bubbles & State across the page
+          const cartRes = await fetch('/cart.js');
+          if (cartRes.ok) {
+            const cartData = await cartRes.json();
+            const bubbles = document.querySelectorAll('.cart-count-bubble span');
+            bubbles.forEach(bubble => {
+              bubble.textContent = cartData.item_count;
+            });
+            document.querySelectorAll('.cart-count-bubble').forEach(b => b.classList.remove('hide'));
+          }
+
+          // Button feedback
+          this.innerHTML = '✓ Added to Cart';
+          this.style.background = '#059669';
+          this.style.color = '#ffffff';
+
+          // Show success toast
+          showToast('✓ ' + title + ' added to your Shopify cart!');
+
+          // If cart drawer exists in theme, open it
+          const cartDrawer = document.querySelector('cart-drawer');
+          if (cartDrawer && typeof cartDrawer.open === 'function') {
+            cartDrawer.open();
+          }
+
           setTimeout(() => {
-            toast.classList.remove('visible');
-          }, 2800);
-        }
+            this.innerHTML = origText;
+            this.style.background = '';
+            this.style.color = '';
+            this.disabled = false;
+          }, 2000);
 
-        setTimeout(() => {
-          this.innerHTML = origText;
-          this.style.background = '';
-          this.style.color = '';
-        }, 2000);
+        } catch (err) {
+          console.error('Cart add error:', err);
+          this.innerHTML = 'Error';
+          this.style.background = '#dc2626';
+          this.style.color = '#ffffff';
+
+          showToast('⚠️ ' + err.message, true);
+
+          setTimeout(() => {
+            this.innerHTML = origText;
+            this.style.background = '';
+            this.style.color = '';
+            this.disabled = false;
+          }, 3500);
+        }
       });
     });
   });
