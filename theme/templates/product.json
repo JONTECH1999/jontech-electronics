@@ -1,21 +1,154 @@
 {
   "sections": {
-    "main_product": {
-      "type": "product-main",
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "disabled": false,
+          "settings": {
+            "text": "JonTech Electronics Verified Hardware",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant-picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity-selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "product-inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "description",
+        "variant-picker",
+        "quantity-selector",
+        "buy_buttons",
+        "product-inventory"
+      ],
       "settings": {
-        "show_vendor": true
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "lab_configurator_upsell": {
-      "type": "interactive-bundle-builder",
+    "collapsible-content": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible-row-0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Technical Specifications & Voltage Matching",
+            "icon": "none",
+            "row_content": "<p>Calibrated for 3.3V / 5.0V microcontroller operation. Verified 2.54mm breadboard pitch, pull-up resistors on I2C lines, and isolated flyback protection for inductive relay/motor circuits.</p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "2-Year Direct Swap Warranty",
+            "icon": "none",
+            "row_content": "<p>Every board and module is bench-tested before dispatch at our Manila engineering facility. Covered under our 2-Year Direct Replacement Warranty with local technical support.</p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Courier Dispatch & Delivery Times",
+            "icon": "none",
+            "row_content": "<p>Same-day courier dispatch across Metro Manila for orders confirmed before 2:00 PM. Luzon door-to-door delivery in 1-2 days; Visayas and Mindanao within 3-4 business days.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible-row-0",
+        "collapsible-row-1",
+        "collapsible-row-2"
+      ],
       "settings": {
-        "title": "Need a Complete Prototyping Kit?",
-        "subtitle": "Pair this hardware with complementary verified sensors and motor drivers using our interactive lab configurator."
+        "caption": "Lab Standards",
+        "heading": "Engineering Bench Notes & Specifications",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "section",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-2",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Frequently Built Together",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
       }
     }
   },
   "order": [
-    "main_product",
-    "lab_configurator_upsell"
+    "main",
+    "collapsible-content",
+    "related-products"
   ]
 }
