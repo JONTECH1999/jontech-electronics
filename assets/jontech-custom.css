@@ -39,13 +39,211 @@ body { background-color: var(--color-bg); color: var(--color-text); }
 *, *::before, *::after { box-sizing: border-box; }
 a:hover { color: var(--color-primary); }
 
-/* HEADER ------------------------------------------------------------------ */
+/* HEADER RESPONSIVE & MOBILE/TABLET FIX ---------------------------------- */
 .header {
   background: var(--color-surface) !important;
   border-bottom: 1px solid var(--color-border) !important;
   box-shadow: 0 2px 8px rgba(28,25,23,.05) !important;
-  gap: 1rem 1.5rem !important;
   align-items: center !important;
+}
+
+/* Premium stylized branding */
+.jt-header-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  white-space: nowrap !important;
+  font-family: inherit !important;
+  text-decoration: none !important;
+  vertical-align: middle !important;
+}
+
+.jt-logo-bolt {
+  color: #f59e0b !important;
+  font-size: 1.15em !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  filter: drop-shadow(0 1px 2px rgba(245, 158, 11, 0.4));
+}
+
+.jt-logo-main {
+  color: #1c1917 !important;
+  font-weight: 900 !important;
+  font-size: clamp(1.05rem, 3.8vw, 1.45rem) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+}
+
+.jt-logo-sub {
+  color: #b45309 !important;
+  font-weight: 800 !important;
+  font-size: clamp(0.7rem, 2.2vw, 0.85rem) !important;
+  background: #fef3c7 !important;
+  padding: 0.15rem 0.45rem !important;
+  border-radius: 4px !important;
+  border: 1px solid #fde68a !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
+}
+
+/* Mobile & Tablet Header (< 990px) */
+@media screen and (max-width: 989px) {
+  .header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.5rem 0.85rem !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 52px !important;
+  }
+
+  /* 1. Left Drawer Button */
+  .header header-drawer {
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+
+  .header .header__icon--menu {
+    width: 42px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--color-heading) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 0 !important;
+  }
+
+  .header .header__icon--menu .svg-wrapper {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Hide redundant popup search icons on mobile/tablet */
+  .header > .header__search,
+  .header .header__search-modal-wrap,
+  .header menu-drawer + .header__search {
+    display: none !important;
+  }
+
+  /* 2. Heading & Logo: Strictly 1 row, no letter wrapping */
+  .header__heading {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    text-align: center !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .header--mobile-left .header__heading {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    margin-left: 0.25rem !important;
+  }
+
+  .header--mobile-center .header__heading {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .header__heading-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.2rem 0.4rem !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    text-decoration: none !important;
+    max-width: 100% !important;
+  }
+
+  .header__heading-link .h2 {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .header__heading-logo {
+    max-height: 36px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* 3. Right Icons (Account + Cart) */
+  .header__icons {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0.35rem !important;
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+    margin-left: auto !important;
+  }
+
+  .header__icons .header__icon {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--color-heading) !important;
+    position: relative !important;
+    padding: 0 !important;
+  }
+
+  .header__icons .header__icon .svg-wrapper {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .header__icons .shopify-account {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .header__icons .cart-count-bubble {
+    position: absolute !important;
+    top: 3px !important;
+    right: 3px !important;
+    background-color: #b45309 !important;
+    color: #ffffff !important;
+    height: 1.7rem !important;
+    width: 1.7rem !important;
+    border-radius: 100% !important;
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+  }
+
+  /* Mobile & Tablet Amazon Search Bar */
+  .header__amazon-search-mobile {
+    display: block !important;
+    padding: 0.35rem 0.85rem 0.65rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: var(--color-surface) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+  }
+
+  .announcement-bar__message {
+    font-size: clamp(0.6875rem, 2.4vw, 0.8125rem) !important;
+    padding: 0.45rem 0.65rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.02em !important;
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -54,6 +252,17 @@ a:hover { color: var(--color-primary); }
     justify-content: space-between !important;
     padding-top: 0.85rem !important;
     padding-bottom: 0.85rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    gap: 1.5rem !important;
+  }
+
+  .header__heading {
+    flex-shrink: 0 !important;
+  }
+
+  .header__amazon-search-mobile {
+    display: none !important;
   }
 }
 

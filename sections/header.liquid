@@ -176,7 +176,9 @@
       endif
 
       if render_search_left
+        echo '<div class="small-hide medium-hide">'
         render 'header-search', input_id: 'Search-In-Modal-1'
+        echo '</div>'
       endif
     -%}
 
@@ -205,7 +207,11 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2 jt-header-logo">
+            <span class="jt-logo-bolt">⚡</span>
+            <span class="jt-logo-main">{{ shop.name | split: '-' | first | default: 'JONTECH' | upcase }}</span>
+            <span class="jt-logo-sub">{{ shop.name | split: '-' | last | default: 'ELECTRONICS' | upcase }}</span>
+          </span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -248,7 +254,11 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2 jt-header-logo">
+            <span class="jt-logo-bolt">⚡</span>
+            <span class="jt-logo-main">{{ shop.name | split: '-' | first | default: 'JONTECH' | upcase }}</span>
+            <span class="jt-logo-sub">{{ shop.name | split: '-' | last | default: 'ELECTRONICS' | upcase }}</span>
+          </span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -266,7 +276,7 @@
     </div>
 
     {%- comment -%} Amazon-style Embedded Search Bar {%- endcomment -%}
-    <div class="header__amazon-search small-hide">
+    <div class="header__amazon-search small-hide medium-hide">
       <form action="{{ routes.search_url }}" method="get" role="search" class="amazon-search-form">
         <div class="amazon-search-select-wrap">
           <select name="type" class="amazon-search-select" aria-label="Search Category">
@@ -324,7 +334,7 @@
           </localization-form>
         {%- endif -%}
       </div>
-      <div class="header__search-modal-wrap large-up-hide">
+      <div class="header__search-modal-wrap small-hide medium-hide large-up-hide">
         {% render 'header-search', input_id: 'Search-In-Modal' %}
       </div>
 
@@ -365,7 +375,7 @@
   </header>
 
   {%- comment -%} Amazon Mobile Full-Width Search Row {%- endcomment -%}
-  <div class="header__amazon-search-mobile medium-hide large-up-hide page-width">
+  <div class="header__amazon-search-mobile large-up-hide page-width">
     <form action="{{ routes.search_url }}" method="get" role="search" class="amazon-search-form amazon-search-form--mobile">
       <div class="amazon-search-input-wrap">
         <input
