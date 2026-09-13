@@ -22,98 +22,83 @@
       <div class="configurator-nav-steps">
         <button type="button" class="cfg-step-tab active" data-cfg-tab="step-1">
           <span class="cfg-step-num">1</span>
-          <span>Core Microcontroller</span>
+          <span>{{ section.settings.step_1_tab | default: 'Core Microcontroller' }}</span>
         </button>
         <button type="button" class="cfg-step-tab" data-cfg-tab="step-2">
           <span class="cfg-step-num">2</span>
-          <span>Telemetry & Sensors</span>
+          <span>{{ section.settings.step_2_tab | default: 'Telemetry & Sensors' }}</span>
         </button>
         <button type="button" class="cfg-step-tab" data-cfg-tab="step-3">
           <span class="cfg-step-num">3</span>
-          <span>Actuation & Prototyping</span>
+          <span>{{ section.settings.step_3_tab | default: 'Actuation & Prototyping' }}</span>
         </button>
       </div>
 
       <!-- Step 1: Core MCU Selection -->
       <div class="cfg-step-content active" data-cfg-step="step-1">
         <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Step 1: Choose Your Main Compute Core</h3>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted);">Select the microcontroller or single-board computer brain for your project.</p>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">
+            {{ section.settings.step_1_title | default: 'Step 1: Choose Your Main Compute Core' }}
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted);">
+            {{ section.settings.step_1_subtitle | default: 'Select the microcontroller or single-board computer brain for your project.' }}
+          </p>
         </div>
 
         <div class="cfg-grid-options">
-          <!-- ESP32 -->
-          <div class="cfg-option-card selected" data-mcu="esp32" data-price="280" data-voltage="3.3V" data-name="ESP32 NodeMCU DevKit v1 (30-Pin WiFi+BLE)" data-sku="JT-MCU-ESP32-30P">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=400&auto=format&fit=crop&q=80" alt="ESP32 DevKit" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">WiFi + BLE</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">ESP32 NodeMCU DevKit v1</span>
-              <span class="cfg-option-price">₱280.00</span>
-            </div>
-            <p class="cfg-option-desc">240MHz dual-core Tensilica with built-in 802.11 b/g/n Wi-Fi and Bluetooth v4.2 BLE. Ideal for cloud IoT.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">3.3V Logic</span>
-              <span class="cfg-spec-pill">30-Pin USB-C</span>
-            </div>
-          </div>
+          {% for block in section.blocks %}
+            {% if block.settings.group == 'step-1' %}
+              <div
+                class="cfg-option-card {% if block.settings.default_selected %}selected{% endif %}"
+                data-mcu="{{ block.id }}"
+                data-price="{{ block.settings.price | plus: 0 }}"
+                data-voltage="{{ block.settings.voltage | escape }}"
+                data-name="{{ block.settings.title | escape }}"
+                data-sku="{{ block.settings.sku | escape }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="cfg-option-media">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 400 }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="cfg-option-img"
+                      width="400"
+                      height="300"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?w=400&auto=format&fit=crop&q=80" alt="Option image" class="cfg-option-img" width="400" height="300" loading="lazy">
+                  {% endif %}
 
-          <!-- Arduino Uno R3 -->
-          <div class="cfg-option-card" data-mcu="arduino" data-price="350" data-voltage="5V" data-name="Arduino Uno R3 (ATmega328P + CH340G)" data-sku="JT-MCU-UNO-R3">
-            <div class="cfg-option-media">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg" alt="Arduino Uno R3" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">5V Safe</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">Arduino Uno R3 ATmega328P</span>
-              <span class="cfg-option-price">₱350.00</span>
-            </div>
-            <p class="cfg-option-desc">Standard academic platform for electronics education, school prototyping, robotics, and beginner STEM.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">16MHz Crystal</span>
-              <span class="cfg-spec-pill">14 Digital I/O</span>
-            </div>
-          </div>
+                  {% if block.settings.badge != blank %}
+                    <span class="cfg-badge-mcu">{{ block.settings.badge }}</span>
+                  {% endif %}
+                </div>
 
-          <!-- Raspberry Pi 4 -->
-          <div class="cfg-option-card" data-mcu="rpi4" data-price="3899" data-voltage="3.3V" data-name="Raspberry Pi 4 Model B (4GB RAM)" data-sku="JT-SBC-RPI4-4GB">
-            <div class="cfg-option-media">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg" alt="Raspberry Pi 4 Model B" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">64-bit Linux</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">Raspberry Pi 4 (4GB RAM)</span>
-              <span class="cfg-option-price">₱3,899.00</span>
-            </div>
-            <p class="cfg-option-desc">High-compute 64-bit quad-core Linux computer. Exceptional for local OpenCV AI and LiDAR SLAM navigation.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">4GB LPDDR4</span>
-              <span class="cfg-spec-pill">Dual 4K HDMI</span>
-            </div>
-          </div>
+                <div class="cfg-option-header">
+                  <span class="cfg-option-title">{{ block.settings.title | default: 'Option Title' }}</span>
+                  <span class="cfg-option-price">{{ block.settings.price | money }}</span>
+                </div>
 
-          <!-- STM32 Black Pill -->
-          <div class="cfg-option-card" data-mcu="stm32" data-price="240" data-voltage="3.3V" data-name="STM32F401 Black Pill ARM Cortex-M4" data-sku="JT-MCU-STM32-F401">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=400&auto=format&fit=crop&q=80" alt="STM32F401 Black Pill" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">84MHz M4</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">STM32F401 "Black Pill"</span>
-              <span class="cfg-option-price">₱240.00</span>
-            </div>
-            <p class="cfg-option-desc">84MHz 32-bit ARM Cortex-M4 with hardware FPU. Built for high-speed industrial feedback loops and signal filters.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">256KB Flash</span>
-              <span class="cfg-spec-pill">Type-C Native</span>
-            </div>
-          </div>
+                <p class="cfg-option-desc">{{ block.settings.description | default: 'Add a description for this option.' }}</p>
+
+                <div class="cfg-option-specs">
+                  {% if block.settings.spec_1 != blank %}
+                    <span class="cfg-spec-pill">{{ block.settings.spec_1 }}</span>
+                  {% endif %}
+                  {% if block.settings.spec_2 != blank %}
+                    <span class="cfg-spec-pill">{{ block.settings.spec_2 }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
 
         <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
           <button type="button" class="btn btn--primary" data-cfg-next="step-2">
-            Proceed to Sensors →
+            {{ section.settings.step_1_cta | default: 'Proceed to Sensors →' }}
           </button>
         </div>
       </div>
@@ -121,86 +106,70 @@
       <!-- Step 2: Sensors & Telemetry -->
       <div class="cfg-step-content" data-cfg-step="step-2">
         <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Step 2: Add Sensing & Telemetry Modules</h3>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted);">Select the telemetry inputs for your environment (toggle any on/off).</p>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">
+            {{ section.settings.step_2_title | default: 'Step 2: Add Sensing & Telemetry Modules' }}
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted);">
+            {{ section.settings.step_2_subtitle | default: 'Select the telemetry inputs for your environment (toggle any on/off).' }}
+          </p>
         </div>
 
         <div class="cfg-grid-options">
-          <!-- DHT22 -->
-          <div class="cfg-option-card selected" data-component="sensor-dht22" data-price="195" data-name="DHT22 Digital Temperature & Humidity Sensor" data-sku="JT-SEN-DHT22-MOD">
-            <div class="cfg-option-media">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/DHT22_digital_temperature_and_humidity_sensor_module_pcb.jpg" alt="DHT22 Sensor" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">±0.5°C</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">DHT22 Temp & Humidity</span>
-              <span class="cfg-option-price">+₱195.00</span>
-            </div>
-            <p class="cfg-option-desc">Calibrated digital 1-wire output. Relative humidity 0-100% and temp -40 to 80°C.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">1-Wire Digital</span>
-              <span class="cfg-spec-pill">Calibrated</span>
-            </div>
-          </div>
+          {% for block in section.blocks %}
+            {% if block.settings.group == 'step-2' %}
+              <div
+                class="cfg-option-card {% if block.settings.default_selected %}selected{% endif %}"
+                data-component="{{ block.id }}"
+                data-price="{{ block.settings.price | plus: 0 }}"
+                data-name="{{ block.settings.title | escape }}"
+                data-sku="{{ block.settings.sku | escape }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="cfg-option-media">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 400 }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="cfg-option-img"
+                      width="400"
+                      height="300"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=80" alt="Option image" class="cfg-option-img" width="400" height="300" loading="lazy">
+                  {% endif %}
 
-          <!-- 0.96" OLED -->
-          <div class="cfg-option-card selected" data-component="sensor-oled" data-price="145" data-name="0.96 inch I2C OLED Display (128x64)" data-sku="JT-DSP-OLED096-I2C">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&auto=format&fit=crop&q=80" alt="OLED Display" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">I2C 0x3C</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">0.96" I2C OLED Display</span>
-              <span class="cfg-option-price">+₱145.00</span>
-            </div>
-            <p class="cfg-option-desc">High contrast 128x64 graphical readout. Standard 4-pin I2C interface.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">128x64</span>
-              <span class="cfg-spec-pill">Self-Emitting</span>
-            </div>
-          </div>
+                  {% if block.settings.badge != blank %}
+                    <span class="cfg-badge-mcu">{{ block.settings.badge }}</span>
+                  {% endif %}
+                </div>
 
-          <!-- HC-SR04 -->
-          <div class="cfg-option-card" data-component="sensor-ultrasonic" data-price="85" data-name="HC-SR04 Ultrasonic Distance Sensor" data-sku="JT-SEN-HCSR04-5V">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop&q=80" alt="HC-SR04 Ultrasonic" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">2-400cm</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">HC-SR04 Rangefinder</span>
-              <span class="cfg-option-price">+₱85.00</span>
-            </div>
-            <p class="cfg-option-desc">Non-contact 2cm to 400cm sonar transducer with 3mm resolution.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">5V Echo</span>
-              <span class="cfg-spec-pill">Obstacle Sonar</span>
-            </div>
-          </div>
+                <div class="cfg-option-header">
+                  <span class="cfg-option-title">{{ block.settings.title | default: 'Option Title' }}</span>
+                  <span class="cfg-option-price">+{{ block.settings.price | money }}</span>
+                </div>
 
-          <!-- TFmini-S LiDAR -->
-          <div class="cfg-option-card" data-component="sensor-lidar" data-price="1850" data-name="TFmini-S Micro Solid-State LiDAR Sensor" data-sku="JT-SEN-TFMINIS-12M">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=400&auto=format&fit=crop&q=80" alt="TFmini-S LiDAR" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">12m Laser</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">TFmini-S ToF LiDAR</span>
-              <span class="cfg-option-price">+₱1,850.00</span>
-            </div>
-            <p class="cfg-option-desc">Single-point Time-of-Flight laser rangefinder measuring up to 12 meters with 1000Hz frame rate.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">12m Range</span>
-              <span class="cfg-spec-pill">UART & I2C</span>
-            </div>
-          </div>
+                <p class="cfg-option-desc">{{ block.settings.description | default: 'Add a description for this option.' }}</p>
+
+                <div class="cfg-option-specs">
+                  {% if block.settings.spec_1 != blank %}
+                    <span class="cfg-spec-pill">{{ block.settings.spec_1 }}</span>
+                  {% endif %}
+                  {% if block.settings.spec_2 != blank %}
+                    <span class="cfg-spec-pill">{{ block.settings.spec_2 }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
 
         <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
           <button type="button" class="btn btn--outline" data-cfg-prev="step-1">
-            ← Back to MCU
+            {{ section.settings.step_2_back | default: '← Back to MCU' }}
           </button>
           <button type="button" class="btn btn--primary" data-cfg-next="step-3">
-            Proceed to Actuators →
+            {{ section.settings.step_2_cta | default: 'Proceed to Actuators →' }}
           </button>
         </div>
       </div>
@@ -208,83 +177,67 @@
       <!-- Step 3: Actuation & Prototyping -->
       <div class="cfg-step-content" data-cfg-step="step-3">
         <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Step 3: Add Actuation, Switching & Breadboard Gear</h3>
-          <p style="font-size: 0.875rem; color: var(--color-text-muted);">Choose power relays, motor controllers, servo steering, or breadboard wires.</p>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.25rem;">
+            {{ section.settings.step_3_title | default: 'Step 3: Add Actuation, Switching & Breadboard Gear' }}
+          </h3>
+          <p style="font-size: 0.875rem; color: var(--color-text-muted);">
+            {{ section.settings.step_3_subtitle | default: 'Choose power relays, motor controllers, servo steering, or breadboard wires.' }}
+          </p>
         </div>
 
         <div class="cfg-grid-options">
-          <!-- Solderless Breadboard & Wires -->
-          <div class="cfg-option-card selected" data-component="act-breadboard" data-price="175" data-name="Master Solderless Breadboard & 65-pc Jumper Wires" data-sku="JT-ACC-BB830-65J">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400&auto=format&fit=crop&q=80" alt="Breadboard Kit" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">830-Point</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">Breadboard & 65-pc Wires</span>
-              <span class="cfg-option-price">+₱175.00</span>
-            </div>
-            <p class="cfg-option-desc">Standard 830-point MB-102 solderless breadboard with dual power rails and 65 flexible jumpers.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">MB-102 Board</span>
-              <span class="cfg-spec-pill">65 Jumpers</span>
-            </div>
-          </div>
+          {% for block in section.blocks %}
+            {% if block.settings.group == 'step-3' %}
+              <div
+                class="cfg-option-card {% if block.settings.default_selected %}selected{% endif %}"
+                data-component="{{ block.id }}"
+                data-price="{{ block.settings.price | plus: 0 }}"
+                data-name="{{ block.settings.title | escape }}"
+                data-sku="{{ block.settings.sku | escape }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="cfg-option-media">
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 400 }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="cfg-option-img"
+                      width="400"
+                      height="300"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <img src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400&auto=format&fit=crop&q=80" alt="Option image" class="cfg-option-img" width="400" height="300" loading="lazy">
+                  {% endif %}
 
-          <!-- 4-Channel Relay -->
-          <div class="cfg-option-card" data-component="act-relay" data-price="165" data-name="4-Channel 5V Relay Module with Optocoupler" data-sku="JT-MOD-RELAY4-5V">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&auto=format&fit=crop&q=80" alt="4-Channel Relay" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">250V 10A</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">4-Channel 5V Isolated Relay</span>
-              <span class="cfg-option-price">+₱165.00</span>
-            </div>
-            <p class="cfg-option-desc">Optocoupler-isolated relay module capable of safely switching 250VAC/10A appliances.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">250VAC 10A</span>
-              <span class="cfg-spec-pill">Opto-Isolated</span>
-            </div>
-          </div>
+                  {% if block.settings.badge != blank %}
+                    <span class="cfg-badge-mcu">{{ block.settings.badge }}</span>
+                  {% endif %}
+                </div>
 
-          <!-- L298N Motor Driver -->
-          <div class="cfg-option-card" data-component="act-motor" data-price="120" data-name="L298N Dual H-Bridge DC Motor Driver" data-sku="JT-MOD-L298N-2A">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&auto=format&fit=crop&q=80" alt="L298N Motor Driver" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">2A Dual</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">L298N Dual Motor Driver</span>
-              <span class="cfg-option-price">+₱120.00</span>
-            </div>
-            <p class="cfg-option-desc">Drives two DC motors bidirectionally with PWM speed control or one stepper motor.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">Dual 2A Peak</span>
-              <span class="cfg-spec-pill">PWM Speed</span>
-            </div>
-          </div>
+                <div class="cfg-option-header">
+                  <span class="cfg-option-title">{{ block.settings.title | default: 'Option Title' }}</span>
+                  <span class="cfg-option-price">+{{ block.settings.price | money }}</span>
+                </div>
 
-          <!-- SG90 Micro Servo -->
-          <div class="cfg-option-card" data-component="act-servo" data-price="95" data-name="SG90 9g Micro Servo Motor" data-sku="JT-ACT-SG90-9G">
-            <div class="cfg-option-media">
-              <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=400&auto=format&fit=crop&q=80" alt="SG90 Servo" class="cfg-option-img" width="400" height="300" loading="lazy">
-              <span class="cfg-badge-mcu">180° Sweep</span>
-            </div>
-            <div class="cfg-option-header">
-              <span class="cfg-option-title">SG90 9g Micro Servo</span>
-              <span class="cfg-option-price">+₱95.00</span>
-            </div>
-            <p class="cfg-option-desc">Lightweight 180° rotation actuator with 1.6 kg-cm stall torque for sensor steering sweeps.</p>
-            <div class="cfg-option-specs">
-              <span class="cfg-spec-pill">180° Range</span>
-              <span class="cfg-spec-pill">1.6 kg-cm</span>
-            </div>
-          </div>
+                <p class="cfg-option-desc">{{ block.settings.description | default: 'Add a description for this option.' }}</p>
+
+                <div class="cfg-option-specs">
+                  {% if block.settings.spec_1 != blank %}
+                    <span class="cfg-spec-pill">{{ block.settings.spec_1 }}</span>
+                  {% endif %}
+                  {% if block.settings.spec_2 != blank %}
+                    <span class="cfg-spec-pill">{{ block.settings.spec_2 }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
 
         <div style="display: flex; justify-content: flex-start; margin-top: 1.5rem;">
           <button type="button" class="btn btn--outline" data-cfg-prev="step-2">
-            ← Back to Sensors
+            {{ section.settings.step_3_back | default: '← Back to Sensors' }}
           </button>
         </div>
       </div>
@@ -294,14 +247,14 @@
         <div class="cfg-console-header">
           <div>
             <h4 style="font-size: 1.125rem; font-weight: 700; color: #1c1917; margin-bottom: 0.25rem;">
-              Hardware Configuration & Synergy Analysis
+              {{ section.settings.summary_title | default: 'Hardware Configuration & Synergy Analysis' }}
             </h4>
             <span style="font-size: 0.8125rem; color: var(--color-text-muted);">
-              Deterministic KitFlow verification engine running in real time.
+              {{ section.settings.summary_subtitle | default: 'Deterministic KitFlow verification engine running in real time.' }}
             </span>
           </div>
           <div class="cfg-score-badge">
-            <span class="cfg-score-label">KitFlow Synergy</span>
+            <span class="cfg-score-label">{{ section.settings.score_label | default: 'KitFlow Synergy' }}</span>
             <span class="cfg-score-val" data-cfg-score>96%</span>
           </div>
         </div>
@@ -310,9 +263,9 @@
         <div class="cfg-voltage-monitor" data-cfg-voltage-status="safe">
           <div class="cfg-v-status-icon">✓</div>
           <div>
-            <strong data-cfg-v-title>Voltage Rails Synchronous (3.3V Logic Safe)</strong>
+            <strong data-cfg-v-title>{{ section.settings.voltage_title | default: 'Voltage Rails Synchronous (3.3V Logic Safe)' }}</strong>
             <p data-cfg-v-desc style="margin: 0; font-size: 0.8125rem; color: var(--color-text-muted);">
-              ESP32 operates at 3.3V logic. I2C OLED and DHT22 are fully voltage-tolerant without level-shifter needed.
+              {{ section.settings.voltage_description | default: 'ESP32 operates at 3.3V logic. I2C OLED and DHT22 are fully voltage-tolerant without level-shifter needed.' }}
             </p>
           </div>
         </div>
@@ -320,7 +273,7 @@
         <!-- Selected Components Chips -->
         <div style="margin-bottom: 1rem;">
           <span style="font-size: 0.8125rem; font-weight: 600; color: var(--color-text-muted); display: block; margin-bottom: 0.5rem;">
-            Selected Lab Components:
+            {{ section.settings.selected_label | default: 'Selected Lab Components:' }}
           </span>
           <div class="cfg-selected-chips" data-cfg-chips>
             <!-- Rendered dynamically by JS -->
@@ -338,7 +291,7 @@
           </div>
 
           <button type="button" class="btn btn--amazon btn--lg" data-cfg-add-cart>
-            Add Complete Lab Kit to Cart
+            {{ section.settings.add_to_cart_label | default: 'Add Complete Lab Kit to Cart' }}
           </button>
         </div>
       </div>
@@ -351,6 +304,7 @@
 {% schema %}
 {
   "name": "Lab Bundle Configurator",
+  "max_blocks": 20,
   "settings": [
     {
       "type": "text",
@@ -363,11 +317,375 @@
       "id": "subtitle",
       "label": "Section Subtitle",
       "default": "Design your custom maker setup. Pick a microcontroller, attach telemetry sensors, configure motor or relay switching, and watch voltage logic safety and bundle savings calculate in real time."
+    },
+    {
+      "type": "text",
+      "id": "step_1_tab",
+      "label": "Step 1 tab label",
+      "default": "Core Microcontroller"
+    },
+    {
+      "type": "text",
+      "id": "step_2_tab",
+      "label": "Step 2 tab label",
+      "default": "Telemetry & Sensors"
+    },
+    {
+      "type": "text",
+      "id": "step_3_tab",
+      "label": "Step 3 tab label",
+      "default": "Actuation & Prototyping"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Step 1 heading",
+      "default": "Step 1: Choose Your Main Compute Core"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_subtitle",
+      "label": "Step 1 subtitle",
+      "default": "Select the microcontroller or single-board computer brain for your project."
+    },
+    {
+      "type": "text",
+      "id": "step_1_cta",
+      "label": "Step 1 button text",
+      "default": "Proceed to Sensors →"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Step 2 heading",
+      "default": "Step 2: Add Sensing & Telemetry Modules"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_subtitle",
+      "label": "Step 2 subtitle",
+      "default": "Select the telemetry inputs for your environment (toggle any on/off)."
+    },
+    {
+      "type": "text",
+      "id": "step_2_back",
+      "label": "Step 2 back button",
+      "default": "← Back to MCU"
+    },
+    {
+      "type": "text",
+      "id": "step_2_cta",
+      "label": "Step 2 button text",
+      "default": "Proceed to Actuators →"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Step 3 heading",
+      "default": "Step 3: Add Actuation, Switching & Breadboard Gear"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_subtitle",
+      "label": "Step 3 subtitle",
+      "default": "Choose power relays, motor controllers, servo steering, or breadboard wires."
+    },
+    {
+      "type": "text",
+      "id": "step_3_back",
+      "label": "Step 3 back button",
+      "default": "← Back to Sensors"
+    },
+    {
+      "type": "text",
+      "id": "summary_title",
+      "label": "Summary heading",
+      "default": "Hardware Configuration & Synergy Analysis"
+    },
+    {
+      "type": "text",
+      "id": "summary_subtitle",
+      "label": "Summary subtitle",
+      "default": "Deterministic KitFlow verification engine running in real time."
+    },
+    {
+      "type": "text",
+      "id": "score_label",
+      "label": "Score label",
+      "default": "KitFlow Synergy"
+    },
+    {
+      "type": "text",
+      "id": "voltage_title",
+      "label": "Voltage status title",
+      "default": "Voltage Rails Synchronous (3.3V Logic Safe)"
+    },
+    {
+      "type": "textarea",
+      "id": "voltage_description",
+      "label": "Voltage status description",
+      "default": "ESP32 operates at 3.3V logic. I2C OLED and DHT22 are fully voltage-tolerant without level-shifter needed."
+    },
+    {
+      "type": "text",
+      "id": "selected_label",
+      "label": "Selected components label",
+      "default": "Selected Lab Components:"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart button text",
+      "default": "Add Complete Lab Kit to Cart"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "option",
+      "name": "Option Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "group",
+          "label": "Which step does this belong to?",
+          "options": [
+            { "value": "step-1", "label": "Step 1 - Core Microcontroller" },
+            { "value": "step-2", "label": "Step 2 - Sensors & Telemetry" },
+            { "value": "step-3", "label": "Step 3 - Actuation & Prototyping" }
+          ],
+          "default": "step-1"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_selected",
+          "label": "Selected by default",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge text",
+          "default": "WiFi + BLE"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "ESP32 NodeMCU DevKit v1"
+        },
+        {
+          "type": "number",
+          "id": "price",
+          "label": "Price",
+          "default": 280
+        },
+        {
+          "type": "text",
+          "id": "voltage",
+          "label": "Voltage / logic label",
+          "default": "3.3V"
+        },
+        {
+          "type": "text",
+          "id": "sku",
+          "label": "SKU",
+          "default": "JT-MCU-ESP32-30P"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Add a short product description here."
+        },
+        {
+          "type": "text",
+          "id": "spec_1",
+          "label": "Spec pill 1",
+          "default": "3.3V Logic"
+        },
+        {
+          "type": "text",
+          "id": "spec_2",
+          "label": "Spec pill 2",
+          "default": "30-Pin USB-C"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Lab Bundle Configurator"
+      "name": "Lab Bundle Configurator",
+      "blocks": [
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "default_selected": true,
+            "badge": "WiFi + BLE",
+            "title": "ESP32 NodeMCU DevKit v1",
+            "price": 280,
+            "voltage": "3.3V",
+            "sku": "JT-MCU-ESP32-30P",
+            "description": "240MHz dual-core Tensilica with built-in 802.11 b/g/n Wi-Fi and Bluetooth v4.2 BLE. Ideal for cloud IoT.",
+            "spec_1": "3.3V Logic",
+            "spec_2": "30-Pin USB-C"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "badge": "5V Safe",
+            "title": "Arduino Uno R3 ATmega328P",
+            "price": 350,
+            "voltage": "5V",
+            "sku": "JT-MCU-UNO-R3",
+            "description": "Standard academic platform for electronics education, school prototyping, robotics, and beginner STEM.",
+            "spec_1": "16MHz Crystal",
+            "spec_2": "14 Digital I/O"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "badge": "64-bit Linux",
+            "title": "Raspberry Pi 4 (4GB RAM)",
+            "price": 3899,
+            "voltage": "3.3V",
+            "sku": "JT-SBC-RPI4-4GB",
+            "description": "High-compute 64-bit quad-core Linux computer. Exceptional for local OpenCV AI and LiDAR SLAM navigation.",
+            "spec_1": "4GB LPDDR4",
+            "spec_2": "Dual 4K HDMI"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-1",
+            "badge": "84MHz M4",
+            "title": "STM32F401 \"Black Pill\"",
+            "price": 240,
+            "voltage": "3.3V",
+            "sku": "JT-MCU-STM32-F401",
+            "description": "84MHz 32-bit ARM Cortex-M4 with hardware FPU. Built for high-speed industrial feedback loops and signal filters.",
+            "spec_1": "256KB Flash",
+            "spec_2": "Type-C Native"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "default_selected": true,
+            "badge": "±0.5°C",
+            "title": "DHT22 Temp & Humidity",
+            "price": 195,
+            "sku": "JT-SEN-DHT22-MOD",
+            "description": "Calibrated digital 1-wire output. Relative humidity 0-100% and temp -40 to 80°C.",
+            "spec_1": "1-Wire Digital",
+            "spec_2": "Calibrated"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "default_selected": true,
+            "badge": "I2C 0x3C",
+            "title": "0.96\" I2C OLED Display",
+            "price": 145,
+            "sku": "JT-DSP-OLED096-I2C",
+            "description": "High contrast 128x64 graphical readout. Standard 4-pin I2C interface.",
+            "spec_1": "128x64",
+            "spec_2": "Self-Emitting"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "badge": "2-400cm",
+            "title": "HC-SR04 Rangefinder",
+            "price": 85,
+            "sku": "JT-SEN-HCSR04-5V",
+            "description": "Non-contact 2cm to 400cm sonar transducer with 3mm resolution.",
+            "spec_1": "5V Echo",
+            "spec_2": "Obstacle Sonar"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-2",
+            "badge": "12m Laser",
+            "title": "TFmini-S ToF LiDAR",
+            "price": 1850,
+            "sku": "JT-SEN-TFMINIS-12M",
+            "description": "Single-point Time-of-Flight laser rangefinder measuring up to 12 meters with 1000Hz frame rate.",
+            "spec_1": "12m Range",
+            "spec_2": "UART & I2C"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "default_selected": true,
+            "badge": "830-Point",
+            "title": "Breadboard & 65-pc Wires",
+            "price": 175,
+            "sku": "JT-ACC-BB830-65J",
+            "description": "Standard 830-point MB-102 solderless breadboard with dual power rails and 65 flexible jumpers.",
+            "spec_1": "MB-102 Board",
+            "spec_2": "65 Jumpers"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "badge": "250V 10A",
+            "title": "4-Channel 5V Isolated Relay",
+            "price": 165,
+            "sku": "JT-MOD-RELAY4-5V",
+            "description": "Optocoupler-isolated relay module capable of safely switching 250VAC/10A appliances.",
+            "spec_1": "250VAC 10A",
+            "spec_2": "Opto-Isolated"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "badge": "2A Dual",
+            "title": "L298N Dual Motor Driver",
+            "price": 120,
+            "sku": "JT-MOD-L298N-2A",
+            "description": "Drives two DC motors bidirectionally with PWM speed control or one stepper motor.",
+            "spec_1": "Dual 2A Peak",
+            "spec_2": "PWM Speed"
+          }
+        },
+        {
+          "type": "option",
+          "settings": {
+            "group": "step-3",
+            "badge": "180° Sweep",
+            "title": "SG90 9g Micro Servo",
+            "price": 95,
+            "sku": "JT-ACT-SG90-9G",
+            "description": "Lightweight 180° rotation actuator with 1.6 kg-cm stall torque for sensor steering sweeps.",
+            "spec_1": "180° Range",
+            "spec_2": "1.6 kg-cm"
+          }
+        }
+      ]
     }
   ]
 }
