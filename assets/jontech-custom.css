@@ -670,9 +670,24 @@ a:hover { color: var(--color-primary); }
   .card__heading { font-size: .875rem !important; }
   .price__regular .price-item, .price .price-item--regular { font-size: 1rem !important; }
   .jontech-scroll-top { bottom: 1rem; right: 1rem; width: 40px; height: 40px; }
+
+  .spec-comparison-section { padding: 3.5rem 0; }
+  .comparison-table-wrapper { overflow: visible; border: 1px solid var(--color-border); background: transparent; box-shadow: none; }
+  .comparison-table { display: block; width: 100%; min-width: 0; border-collapse: separate; border-spacing: 0; }
+  .comparison-table thead { display: none; }
+  .comparison-table tbody { display: flex; flex-direction: column; gap: 0.75rem; }
+  .comparison-table tr { display: flex; flex-direction: column; width: 100%; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; }
+  .comparison-table td { display: block; width: 100%; padding: 0.9rem 1rem; border-bottom: 1px solid var(--color-border-subtle); }
+  .comparison-table td:last-child { border-bottom: none; }
+  .comparison-table td:first-child { background: #f7f3ee; }
+  .comparison-table td:nth-child(2) { background: #fdfaf5; }
+  .comparison-table td:nth-child(3) { background: #ffffff; }
+  .comparison-table td strong { display: block; margin-bottom: 0.2rem; }
 }
 @media (max-width: 480px) {
   .jontech-trust-strip__inner { gap: .4rem 1rem; }
+  .spec-comparison-section { padding: 3rem 0; }
+  .comparison-table td { padding: 0.8rem 0.9rem; }
 }
 
 /* ============================================================================
